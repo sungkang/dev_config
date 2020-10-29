@@ -1,0 +1,85 @@
+call plug#begin()
+" tpope
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+
+Plug 'junegunn/fzf', { 'dir':'~/.fzf', 'do': './install --no-bash' }
+Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
+
+Plug 'airblade/vim-gitgutter'
+Plug 'craigemery/vim-autotag'
+Plug 'easymotion/vim-easymotion'
+Plug 'evanleck/vim-svelte'
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plug 'godlygeek/tabular'
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tommcdo/vim-exchange'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+Plug 'reedes/vim-pencil'
+Plug 'mg979/vim-visual-multi'
+call plug#end()
+
+" color scheme
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+set background=dark
+
+syntax on
+
+filetype plugin indent on
+autocmd vimenter * NERDTree
+
+" general settings
+set autoindent
+set backspace=indent,eol,start
+set clipboard=unnamed
+set expandtab
+set hlsearch
+set incsearch
+set nostartofline
+set number
+set relativenumber
+set cursorline
+set ruler
+set shiftwidth=4
+set showcmd
+set softtabstop=4
+set timeoutlen=400
+set ttimeoutlen=10
+
+" mappings
+let mapleader=","
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+map <silent><leader>n :NERDTreeToggle<CR>
+map <silent><leader>/ :noh<cr>
+map <silent><leader>q :q<cr>
+map <silent><leader>Q :q!<cr>
+map <silent><leader>w :w<cr>
+
+" mappings: navigation
+nnoremap L Lzz
+nnoremap H Hzz
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+
+" fzf
+map <c-p> :GFiles<CR>
+map <c-f> :Files<CR>
+map <c-b> :BTags<CR>
+
+" macros
+runtime macros/matchit.vim
+
+" journaling
+source ~/.vim/local_functions
