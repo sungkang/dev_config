@@ -80,6 +80,3 @@ map <c-b> :BTags<CR>
 
 " macros
 runtime macros/matchit.vim
-
-" journaling
-source ~/.vim/local_functions
