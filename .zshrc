@@ -13,11 +13,10 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$HOME/go/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
     git
-    zsh-vim-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -49,7 +48,6 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 # startup apps
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
