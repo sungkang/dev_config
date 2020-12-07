@@ -7,8 +7,13 @@ set easymotion
 nnoremap ]m :action MethodDown<cr>
 nnoremap [m :action MethodUp<cr>
 
-" Debugging
+"" Debugging
 nnoremap <Space><Space> :action DebugMainMenu<cr>
 nnoremap <Space>dd :action Debug<cr>
 nnoremap <Space>dn :action DebugClass<cr>
 nnoremap <Space>dl :action Rerun<cr>
+
+"" Go
+nnoremap <leader>gf :action GoFmtFileAction<cr>
+
+" Section: various mappings
