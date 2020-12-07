@@ -17,6 +17,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-exchange'
 Plug 'vim-airline/vim-airline'
@@ -59,19 +60,33 @@ set ttimeoutlen=10
 let mapleader=","
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-map <silent><leader>n :NERDTreeToggle<CR>
-map <silent><leader>/ :noh<cr>
-map <silent><leader>q :q<cr>
-map <silent><leader>Q :q!<cr>
-map <silent><leader>w :w<cr>
+noremap <silent> <leader>n :NERDTreeToggle<CR>
+noremap <silent> <leader>/ :noh<cr>
+noremap <silent> <leader>q :q<cr>
+noremap <silent> <leader>Q :q!<cr>
+noremap <silent> <leader>w :w<cr>
 
 " mappings: navigation
 nnoremap L Lzz
 nnoremap H Hzz
+
+" mappings: window management
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
+
+noremap <leader>wh <c-w>H
+noremap <leader>wj <c-w>J
+noremap <leader>wk <c-w>K
+noremap <leader>wl <c-w>L
+
+" mappings: formatters
+noremap <silent> <leader>jf :%!python -m json.tool<CR>
+
+" mappings: diff
+noremap <silent> <leader>dfa :windo diffthis<CR>
+noremap <silent> <leader>dfo :windo diffoff<CR>
 
 " fzf
 map <c-p> :GFiles<CR>
