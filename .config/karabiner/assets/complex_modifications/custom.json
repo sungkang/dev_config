@@ -1,11 +1,39 @@
+
 {
     "rules": [
         {
-            "description": "tap esc / hold ctrl",
+            "description": "left ctrl is tap esc / hold ctrl",
             "manipulators": [
                 {
                     "from": {
                         "key_code": "left_control",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "capslock is tap esc / hold ctrl",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "caps_lock",
                         "modifiers": {
                             "optional": [
                                 "any"
@@ -48,7 +76,40 @@
                     "type": "basic"
                 }
             ]
+        },
+        {
+            "description": "space down",
+            "manipulators": [
+                {
+                    "from": {
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        },
+                        "simultaneous": [
+                            {
+                                "key_code": "space"
+                            },
+                            {
+                                "key_code": "j"
+                            }
+                        ],
+                        "simultaneous_options": {
+                            "key_down_order": "strict"
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow",
+                            "lazy": true
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
         }
     ],
     "title": "My custom keybindings"
 }
+
