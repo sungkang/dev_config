@@ -76,13 +76,14 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 
-noremap <leader>wh <c-w>H
-noremap <leader>wj <c-w>J
-noremap <leader>wk <c-w>K
-noremap <leader>wl <c-w>L
+noremap <leader>hh <c-w>H
+noremap <leader>jj <c-w>J
+noremap <leader>kk <c-w>K
+noremap <leader>ll <c-w>L
 
 " mappings: formatters
 noremap <silent> <leader>jf :'<,'>!python -m json.tool<CR>
+nnoremap <silent> <leader>xf :%!xmllint --format -<cr>
 
 " mappings: diff
 noremap <silent> <leader>dfa :windo diffthis<CR>
