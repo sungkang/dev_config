@@ -37,7 +37,6 @@ set background=dark
 syntax on
 
 filetype plugin indent on
-autocmd vimenter * NERDTree
 
 " general settings
 set autoindent
