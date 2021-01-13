@@ -83,7 +83,7 @@ noremap <leader>wk <c-w>K
 noremap <leader>wl <c-w>L
 
 " mappings: formatters
-noremap <silent> <leader>jf :%!python -m json.tool<CR>
+noremap <silent> <leader>jf :'<,'>!python -m json.tool<CR>
 
 " mappings: diff
 noremap <silent> <leader>dfa :windo diffthis<CR>
