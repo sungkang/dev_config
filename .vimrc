@@ -27,6 +27,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'reedes/vim-pencil'
 Plug 'mg979/vim-visual-multi'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " color scheme
