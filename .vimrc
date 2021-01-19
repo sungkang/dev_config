@@ -31,9 +31,15 @@ Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " color scheme
-colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'hard'
-set background=dark
+set nocompatible
+if(has("termguicolors"))
+    set termguicolors
+endif
+
+colorscheme nord
+"colorscheme gruvbox
+"let g:gruvbox_contrast_dark = 'hard'
+"set background=dark
 
 syntax on
 
