@@ -76,38 +76,6 @@
                     "type": "basic"
                 }
             ]
-        },
-        {
-            "description": "space down",
-            "manipulators": [
-                {
-                    "from": {
-                        "modifiers": {
-                            "optional": [
-                                "any"
-                            ]
-                        },
-                        "simultaneous": [
-                            {
-                                "key_code": "space"
-                            },
-                            {
-                                "key_code": "j"
-                            }
-                        ],
-                        "simultaneous_options": {
-                            "key_down_order": "strict"
-                        }
-                    },
-                    "to": [
-                        {
-                            "key_code": "down_arrow",
-                            "lazy": true
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
         }
     ],
     "title": "My custom keybindings"
