@@ -105,3 +105,7 @@ noremap <c-b> :BTags<CR>
 " macros
 runtime macros/matchit.vim
 
+" runtimes
+autocmd FileType lua nnoremap <buffer> <f9> :w<cr>:exec '!lua' shellescape(@%, 1)<cr>
+autocmd FileType lua inoremap <buffer> <f9> <esc><esc>:w<cr>:exec '!lua' shellescape(@%, 1)<cr>
+:map! <f9> <nop>
