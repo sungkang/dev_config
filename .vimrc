@@ -97,9 +97,10 @@ noremap <silent> <leader>dfa :windo diffthis<CR>
 noremap <silent> <leader>dfo :windo diffoff<CR>
 
 " fzf
-map <c-p> :GFiles<CR>
-map <c-f> :Files<CR>
-map <c-b> :BTags<CR>
+noremap <c-p> :GFiles<CR>
+noremap <leader>gg :GFiles?<CR>
+noremap <c-f> :Files<CR>
+noremap <c-b> :BTags<CR>
 
 " macros
 runtime macros/matchit.vim
