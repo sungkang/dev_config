@@ -3,16 +3,23 @@ set exchange
 set surround
 set easymotion
 
+" === ===
+
 " === Section: IDEAVIM actions ===
 nnoremap ]m :action MethodDown<cr>
 nnoremap [m :action MethodUp<cr>
 nnoremap <leader>ss :action FileStructurePopup<cr>
+nnoremap <leader>rn :action RenameElement<cr>
 
 " === Debugging ===
-nnoremap <Space><Space> :action DebugMainMenu<cr>
-nnoremap <Space>dd :action Debug<cr>
-nnoremap <Space>dn :action DebugClass<cr>
-nnoremap <Space>dl :action Rerun<cr>
+nnoremap <space><space> :action DebugMainMenu<cr>
+nnoremap <space>dd :action Debug<cr>
+nnoremap <space>dn :action DebugClass<cr>
+nnoremap <space>dl :action Rerun<cr>
+
+nnoremap <space>bb :action ToggleLineBreakpoint<cr>
+nnoremap <space>BB :action ViewBreakpoints<cr>
+nnoremap <space>rab :action Debugger.RemoveAllBreakpoints<cr>
 
 " === Go ===
 nnoremap <leader>gf :action GoFmtFileAction<cr>
