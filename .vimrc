@@ -1,5 +1,4 @@
 call plug#begin()
-" tpope
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
@@ -27,11 +26,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'mg979/vim-visual-multi'
-Plug 'junegunn/goyo.vim'
 call plug#end()
 
-" color scheme
-set nocompatible
+" color scheme and fonts
+set guifont=JetBrainsMono-Regular:h13
 if(has("termguicolors"))
     set termguicolors
 endif
@@ -46,6 +44,7 @@ syntax on
 filetype plugin indent on
 
 " general settings
+set nocompatible
 set autoindent
 set backspace=indent,eol,start
 set clipboard=unnamed
