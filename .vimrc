@@ -95,6 +95,10 @@ nnoremap <silent> <leader>xf :%!xmllint --format -<cr>
 noremap <silent> <leader>dfa :windo diffthis<CR>
 noremap <silent> <leader>dfo :windo diffoff<CR>
 
+" mappings: date
+" TODO: not there yet, I want it to paste at the current cursor
+noremap <silent> <leader>td :put! =strftime('%a %B %d, %Y')<cr>
+
 " fzf
 noremap <c-p> :GFiles<CR>
 noremap <leader>gg :GFiles?<CR>
