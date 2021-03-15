@@ -24,4 +24,5 @@ nnoremap <space>rab :action Debugger.RemoveAllBreakpoints<cr>
 " === Go ===
 nnoremap <leader>gf :action GoFmtFileAction<cr>
 
-" === Section: various mappings ===
+" === Section: window management ===
+noremap <leader>ca :action CloseAllEditorsButActive<cr>
