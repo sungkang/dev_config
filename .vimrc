@@ -30,8 +30,11 @@ Plug 'mg979/vim-visual-multi'
 call plug#end()
 
 " color scheme and fonts
-set guifont=JetBrainsMono-Regular:h13
-if(has("termguicolors"))
+if (has("gui_vimr") == 0)
+    set guifont=JetBrainsMono-Regular:h13
+endif
+
+if (has("termguicolors"))
     set termguicolors
 endif
 
