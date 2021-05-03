@@ -28,3 +28,5 @@ nnoremap <leader>gf :action GoFmtFileAction<cr>
 
 " === Section: window management ===
 noremap <leader>ca :action CloseAllEditorsButActive<cr>
+noremap <leader>vs :action MoveEditorToOppositeTabGroup<cr>
+noremap <leader>tt :action OpenEditorInOppositeTabGroup<cr>
