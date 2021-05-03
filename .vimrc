@@ -35,10 +35,10 @@ if(has("termguicolors"))
     set termguicolors
 endif
 
-colorscheme nord
-"colorscheme gruvbox
-"let g:gruvbox_contrast_dark = 'hard'
-"set background=dark
+"colorscheme nord
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+set background=dark
 
 syntax on
 
