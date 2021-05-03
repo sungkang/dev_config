@@ -4,6 +4,8 @@ set surround
 set easymotion
 
 " === Section: IDEAVIM actions ===
+noremap <leader>ev :vs ~/.ideavimrc<cr>
+noremap <leader>vv :vs ~/.vimrc<cr>
 noremap <leader>sv :action IdeaVim.ReloadVimRc.reload<cr>
 nnoremap ]m :action MethodDown<cr>
 nnoremap [m :action MethodUp<cr>
