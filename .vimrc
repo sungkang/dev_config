@@ -45,23 +45,29 @@ syntax on
 filetype plugin indent on
 
 " general settings
-set nocompatible
 set autoindent
 set backspace=indent,eol,start
+set belloff=all
 set clipboard=unnamed
+set cursorline
 set expandtab
+set hidden
 set hlsearch
+set ignorecase
 set incsearch
+set infercase
+set nocompatible
 set nostartofline
 set number
 set relativenumber
-set cursorline
 set ruler
 set shiftwidth=4
 set showcmd
+set smartcase
 set softtabstop=4
 set timeoutlen=400
 set ttimeoutlen=10
+set ttyfast
 
 " mappings
 let mapleader=","
