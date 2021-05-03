@@ -73,7 +73,7 @@ set ttyfast
 let mapleader=","
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-noremap <silent> <leader>n :NERDTreeToggle<CR>
+noremap <silent> <leader>n :NERDTreeToggle<cr>
 noremap <silent> <leader>/ :noh<cr>
 noremap <silent> <leader>q :q<cr>
 noremap <silent> <leader>Q :q!<cr>
