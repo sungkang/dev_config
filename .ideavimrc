@@ -17,7 +17,9 @@ nnoremap <leader>rn :action RenameElement<cr>
 nnoremap <space><space> :action DebugMainMenu<cr>
 nnoremap <space>dd :action Debug<cr>
 nnoremap <space>dn :action DebugClass<cr>
-nnoremap <space>dl :action Rerun<cr>
+
+nnoremap <space>rn :action RunClass<cr>
+nnoremap <space>rr :action Rerun<cr>
 
 nnoremap <space>bb :action ToggleLineBreakpoint<cr>
 nnoremap <space>BB :action ViewBreakpoints<cr>
