@@ -6,6 +6,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir':'~/.fzf', 'do': './install --no-bash' }
 Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'craigemery/vim-autotag'
