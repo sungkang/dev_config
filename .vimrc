@@ -27,6 +27,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'mg979/vim-visual-multi'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " color scheme and fonts
@@ -98,22 +99,45 @@ noremap <leader>kk <c-w>K
 noremap <leader>ll <c-w>L
 
 " mappings: formatters
-noremap <silent> <leader>jf :'<,'>!python -m json.tool<CR>
+noremap <silent> <leader>jf :'<,'>!python -m json.tool<cr>
 nnoremap <silent> <leader>xf :%!xmllint --format -<cr>
 
 " mappings: diff
-noremap <silent> <leader>dfa :windo diffthis<CR>
-noremap <silent> <leader>dfo :windo diffoff<CR>
+noremap <silent> <leader>dfa :windo diffthis<cr>
+noremap <silent> <leader>dfo :windo diffoff<cr>
 
 " mappings: date
 " TODO: not there yet, I want it to paste at the current cursor
 noremap <silent> <leader>td :put! =strftime('%a %B %d, %Y')<cr>
 
 " fzf
-noremap <c-p> :GFiles<CR>
-noremap <leader>gg :GFiles?<CR>
-noremap <c-f> :Files<CR>
-noremap <c-b> :BTags<CR>
+noremap <silent> <c-p> :Files<cr>
+noremap <silent> <leader>f :RG<cr>
+noremap <silent> <leader>g :GFiles?<cr>
+
+" This function makes ripgrepping behave like how finding in jetbrains works
+function! RipgrepFzf(query, fullscreen)
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" gitgutter
+let g:gitgutter_grep                    = 'rg'
+let g:gitgutter_map_keys                = 0
+let g:gitgutter_sign_added              = '▎'
+let g:gitgutter_sign_modified           = '▎'
+let g:gitgutter_sign_modified_removed   = '▶'
+let g:gitgutter_sign_removed            = '▶'
+let g:gitgutter_sign_removed_first_line = '◥'
+nmap [g <Plug>(GitGutterPrevHunk)
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap <Leader>P <Plug>(GitGutterPreviewHunk)
+nmap <Leader>+ <Plug>(GitGutterStageHunk)
+nmap <Leader>- <Plug>(GitGutterUndoHunk)
 
 " macros
 runtime macros/matchit.vim
@@ -122,3 +146,34 @@ runtime macros/matchit.vim
 autocmd FileType lua nnoremap <buffer> <f9> :w<cr>:exec '!lua' shellescape(@%, 1)<cr>
 autocmd FileType lua inoremap <buffer> <f9> <esc><esc>:w<cr>:exec '!lua' shellescape(@%, 1)<cr>
 :map! <f9> <nop>
+
+" development
+" use deoplete
+let g:deoplete#enable_at_startup = 1
+
+" commands
+command! -nargs=* Wrap set wrap linebreak nolist
+command EndOfLine normal! $
+
+" journaling
+let g:goyo_width = 120
+
+function! s:goyo_enter()
+    execute 'Limelight'
+    let b:quitting = 0
+    let b:quitting_bang = 0
+    autocmd QuitPre <buffer> let b:quitting = 1
+    cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+    execute ‘Limelight!’
+    “ Quit Vim if this is the only remaining buffer
+    if b:quitting && len(filter(range(1, bufnr(‘$’)), ‘buflisted(v:val)’)) == 1
+        if b:quitting_bang
+            qa!
+        else
+            qa
+        endif
+    endif
+endfunction
