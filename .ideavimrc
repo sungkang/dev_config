@@ -28,7 +28,11 @@ nnoremap <space>rab :action Debugger.RemoveAllBreakpoints<cr>
 " === Go ===
 nnoremap <leader>gf :action GoFmtFileAction<cr>
 
+" === Git ===
+nnoremap <leader>gga :action Annotate<cr>
+
 " === Section: window management ===
 noremap <leader>ca :action CloseAllEditorsButActive<cr>
 noremap <leader>vs :action MoveEditorToOppositeTabGroup<cr>
 noremap <leader>tt :action OpenEditorInOppositeTabGroup<cr>
+set ideajoin
