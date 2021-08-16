@@ -27,7 +27,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'mg979/vim-visual-multi'
-Plug 'dense-analysis/ale'
+
+if has('nvim')
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'neovim/nvim-lspconfig'
+endif
 call plug#end()
 
 " color scheme and fonts
@@ -52,7 +56,7 @@ filetype plugin indent on
 set autoindent
 set backspace=indent,eol,start
 set belloff=all
-set clipboard=unnamed
+set clipboard=unnamedplus
 set cursorline
 set expandtab
 set foldmethod=indent
@@ -74,6 +78,9 @@ set timeoutlen=400
 set ttimeoutlen=10
 set ttyfast
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
 " mappings
 let mapleader=","
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -93,6 +100,9 @@ noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
+
+nnoremap <silent> < 10<c-w><<cr>
+nnoremap <silent> > 10<c-w>><cr>
 
 noremap <leader>hh <c-w>H
 noremap <leader>jj <c-w>J
@@ -150,7 +160,7 @@ autocmd FileType lua inoremap <buffer> <f9> <esc><esc>:w<cr>:exec '!lua' shelles
 
 " development
 " use deoplete
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 " commands
 command! -nargs=* Wrap set wrap linebreak nolist
