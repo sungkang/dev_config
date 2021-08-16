@@ -55,6 +55,7 @@ set belloff=all
 set clipboard=unnamed
 set cursorline
 set expandtab
+set foldmethod=indent
 set hidden
 set hlsearch
 set ignorecase

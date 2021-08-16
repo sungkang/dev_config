@@ -18,6 +18,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     git
     alias-finder
+    autojump
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -36,9 +37,44 @@ alias szrc="source ~/.zshrc"
 alias vrc="vim ~/.vimrc"
 alias ohmy="vim ~/.oh-my-zsh"
 alias notes="cd ~/Documents/notes && vim"
+alias lg="lazygit"
+alias gcd="git checkout development"
 
 ## fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
+}
+
+# Modified version where you can press
+#   - CTRL-O to open with open command,
+#   - CTRL-E or Enter key to open with the $EDITOR
+fo() {
+  IFS=$'\n' out=("$(fzf --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file"  ${EDITOR:-vim} "$file"
+  fi
+}
+
+# fd - cd into matching directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '/.' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+# fh - repeat history
+fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1  history) | fzf +s --tac | sed -E 's/ [0-9]*? *//' | sed -E 's/\/\\/g')
+}
 
 ## p10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -57,3 +93,7 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# AWS
+export AWS_PROFILE=skang
+export AWS_SDK_LOAD_CONFIG=1
