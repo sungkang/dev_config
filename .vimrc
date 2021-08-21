@@ -9,14 +9,13 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-rooter'
 Plug 'craigemery/vim-autotag'
 Plug 'easymotion/vim-easymotion'
 Plug 'evanleck/vim-svelte'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'godlygeek/tabular'
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
@@ -27,10 +26,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'mg979/vim-visual-multi'
-
+Plug 'michaeljsmith/vim-indent-object'
+"Plug 'mhinz/vim-startify'
 if has('nvim')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'neovim/nvim-lspconfig'
+    Plug 'neovim/nvim-lspconfig'
 endif
 call plug#end()
 
@@ -43,7 +42,6 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-"colorscheme nord
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'hard'
 set background=dark
@@ -56,10 +54,11 @@ filetype plugin indent on
 set autoindent
 set backspace=indent,eol,start
 set belloff=all
-set clipboard=unnamedplus
+set clipboard=unnamed
 set cursorline
 set expandtab
 set foldmethod=indent
+set nofoldenable
 set hidden
 set hlsearch
 set ignorecase
@@ -78,13 +77,15 @@ set timeoutlen=400
 set ttimeoutlen=10
 set ttyfast
 
+" airline config
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " mappings
 let mapleader=","
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 noremap <silent> <leader>n :NERDTreeToggle<cr>
 noremap <silent> <leader>/ :noh<cr>
 noremap <silent> <leader>q :q<cr>
@@ -101,13 +102,19 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 
-nnoremap <silent> < 10<c-w><<cr>
-nnoremap <silent> > 10<c-w>><cr>
+nnoremap + 10<c-w>>
+nnoremap _ 10<c-w><
 
 noremap <leader>hh <c-w>H
 noremap <leader>jj <c-w>J
 noremap <leader>kk <c-w>K
 noremap <leader>ll <c-w>L
+
+" mappings: buffers
+nnoremap <silent> <c-f> :bn<cr>
+nnoremap <silent> <c-b> :bp<cr>
+nnoremap <silent> <leader>bb :bd<cr>
+nnoremap <silent> <leader>ba :%bd<cr>
 
 " mappings: formatters
 noremap <silent> <leader>jf :'<,'>!python -m json.tool<cr>
@@ -125,6 +132,12 @@ noremap <silent> <leader>td :put! =strftime('%a %B %d, %Y')<cr>
 noremap <silent> <c-p> :Files<cr>
 noremap <silent> <leader>f :RG<cr>
 noremap <silent> <leader>g :GFiles?<cr>
+
+" fugitive
+nnoremap <silent> <leader>gga :G blame<cr>
+
+" NERDTree
+nnoremap <silent> <leader>r :NERDTreeFind<cr>
 
 " This function makes ripgrepping behave like how finding in jetbrains works
 function! RipgrepFzf(query, fullscreen)
@@ -157,10 +170,6 @@ runtime macros/matchit.vim
 autocmd FileType lua nnoremap <buffer> <f9> :w<cr>:exec '!lua' shellescape(@%, 1)<cr>
 autocmd FileType lua inoremap <buffer> <f9> <esc><esc>:w<cr>:exec '!lua' shellescape(@%, 1)<cr>
 :map! <f9> <nop>
-
-" development
-" use deoplete
-"let g:deoplete#enable_at_startup = 1
 
 " commands
 command! -nargs=* Wrap set wrap linebreak nolist
