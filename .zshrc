@@ -36,9 +36,9 @@ alias zrc="vim ~/.zshrc"
 alias szrc="source ~/.zshrc"
 alias vrc="vim ~/.vimrc"
 alias ohmy="vim ~/.oh-my-zsh"
-alias notes="cd ~/Documents/notes && vim"
+alias notes="cd ~/Documents/notes && nvim"
 alias lg="lazygit"
-alias gcd="git checkout development"
+alias nl="npm list -g --depth=0"
 
 ## fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'

@@ -24,9 +24,14 @@ nnoremap <space>dn :action DebugClass<cr>
 nnoremap <space>rn :action RunClass<cr>
 nnoremap <space>rr :action Rerun<cr>
 
+nnoremap <space>ru :action Run<cr>
+nnoremap <space>st :action Stop<cr>
+
 nnoremap <space>bb :action ToggleLineBreakpoint<cr>
 nnoremap <space>BB :action ViewBreakpoints<cr>
 nnoremap <space>rab :action Debugger.RemoveAllBreakpoints<cr>
+
+" === Diff ===
 
 " === Go ===
 nnoremap <leader>gf :action GoFmtFileAction<cr>
