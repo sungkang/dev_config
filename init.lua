@@ -170,7 +170,11 @@ cmd([[runtime macros/matchit.vim]])
 -------------------
 -- lualine setup --
 -------------------
-require('lualine').setup()
+local theme = require('lualine.themes.gruvbox')
+theme.normal.a.bg = '#bbd8e8'
+require('lualine').setup({
+    options = { theme = theme},
+})
 
 ----------------
 -- lsp config --
