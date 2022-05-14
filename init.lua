@@ -107,10 +107,8 @@ set('n', 'ss', ':split<cr><c-w>w', opts)
 set('n', 'vs', ':vsplit<cr><c-w>w', opts)
 
 -- resize splits
-set('n', '+', '5<c-w>+', opts)
-set('n', '_', '5<c-w>-', opts)
-set('n', '<c-,>', '5<c-w><', opts)
-set('n', '<c-.>', '5<c-w>>', opts)
+set('n', '_', '5<c-w><', opts)
+set('n', '+', '5<c-w>>', opts)
 
 -- move around splits
 set('n', '<leader>hh', '<c-w>H', opts)
