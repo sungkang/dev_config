@@ -182,6 +182,11 @@ require('lualine').setup({
     options = { theme = theme},
 })
 
+--------------
+-- snippets --
+--------------
+require('luasnip.loaders.from_snipmate').load()
+
 ----------------
 -- lsp config --
 ----------------
