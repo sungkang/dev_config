@@ -100,8 +100,8 @@ set('n', '<c-k>', '<c-w>k', opts)
 set('n', '<c-l>', '<c-w>l', opts)
 
 -- quickfix
-set('n', '[q', ':cp<cr>', opts)
-set('n', ']q', ':cn<cr>', opts)
+set('n', '[q', ':cp<cr>zz', opts)
+set('n', ']q', ':cn<cr>zz', opts)
 
 -- tab management
 set('n', '<leader>t', ':tabnew<cr>', opts)
