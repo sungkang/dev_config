@@ -17,7 +17,6 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'preservim/nerdtree'
-Plug 'ellisonleao/gruvbox.nvim'
 Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -25,6 +24,12 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tommcdo/vim-exchange'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'vim-test/vim-test'
+
+-- color schemes
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/everforest'
+
 
 Plug ('iamcco/markdown-preview.nvim', {['do'] = 'cd app && yarn install'})
 
@@ -64,9 +69,10 @@ opt.timeoutlen = 400
 opt.ttimeoutlen = 10
 opt.termguicolors = true
 opt.mouse = 'nvi'
--- color scheme
-vim.o.background = "dark"
-cmd([[colorscheme gruvbox]])
+
+-- color scheme config
+opt.background = "dark"
+cmd('colorscheme everforest')
 
 --------------
 -- mappings --
