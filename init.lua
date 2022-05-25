@@ -12,6 +12,11 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dadbod'
+
+-- telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -72,7 +77,7 @@ opt.mouse = 'nvi'
 
 -- color scheme config
 opt.background = "dark"
-cmd('colorscheme everforest')
+cmd('colorscheme gruvbox')
 
 --------------
 -- mappings --
@@ -85,6 +90,9 @@ set('n', '<leader>q', ':q<cr>', opts)
 set('n', '<leader>Q', ':q!<cr>', opts)
 set('n', '<leader>w', ':w<cr>', opts)
 set('n', 'U', '<c-r>', opts)
+
+-- jump to normal mode in terminal
+set('t', '<c-\\><c-\\>', '<c-\\><c-n>', opts)
 
 -- navigation and search
 set('n', 'L', 'Lzz', opts)
@@ -104,7 +112,8 @@ set('n', '[q', ':cp<cr>zz', opts)
 set('n', ']q', ':cn<cr>zz', opts)
 
 -- tab management
-set('n', '<leader>t', ':tabnew<cr>', opts)
+set('n', '<leader>tt', ':tabnew<cr>', opts)
+set('n', '<leader>te', ':tabclose<cr>', opts)
 set('n', '<s-tab>', ':tabp<cr>', opts)
 set('n', '<tab>', ':tabn<cr>', opts)
 
@@ -113,8 +122,12 @@ set('n', 'ss', ':split<cr><c-w>w', opts)
 set('n', 'vs', ':vsplit<cr><c-w>w', opts)
 
 -- resize splits
+-- (vertical)
 set('n', '_', '5<c-w><', opts)
 set('n', '+', '5<c-w>>', opts)
+-- (horizontal)
+-- set('n', '?', '5<c-w>-', opts)
+-- set('n', '?', '5<c-w>+', opts)
 
 -- move around splits
 set('n', '<leader>hh', '<c-w>H', opts)
@@ -139,15 +152,24 @@ set('n', '<leader>gl', ':G log --graph<cr>', opts)
 set('n', '<leader>gla', ':G log --graph --decorate --all<cr>', opts)
 
 -- fzf
-set('n', '<c-p>', ':Files<cr>', opts)
-set('n', '<leader>f', ':RG<cr>', opts)
+-- set('n', '<c-p>', ':Files<cr>', opts)
+-- set('n', '<leader>f', ':RG<cr>', opts)
+-- set('n', '<leader>b', ':Buffers<cr>', opts)
+--
+-- telescope
+set('n', '<leader>ff', ':Telescope find_files<cr>', opts)
+set('n', '<leader>fg', ':Telescope live_grep<cr>', opts)
+set('n', '<leader>fb', ':Telescope buffers<cr>', opts)
+set('n', '<leader>fh', ':Telescope help_tags<cr>', opts)
+set('n', '<leader>fs', ':Telescope lsp_document_symbols<cr>', opts)
+set('n', '<leader>fr', ':Telescope lsp_references<cr>', opts)
+
 
 -- formatting
 set('n', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
 set('v', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
 
 -- testing
-vim.g['test#strategy'] = 'dispatch'
 set('n', '<space>t', ':TestNearest<cr>', opts)
 set('n', '<space>T', ':TestFile<cr>', opts)
 set('n', '<space>a', ':TestSuite<cr>', opts)
@@ -176,16 +198,38 @@ cmd([[runtime macros/matchit.vim]])
 -------------------
 -- lualine setup --
 -------------------
+-- local theme = 'auto'
 local theme = require('lualine.themes.gruvbox')
 theme.normal.a.bg = '#bbd8e8'
 require('lualine').setup({
-    options = { theme = theme},
+    options = {
+        theme = theme,
+    },
+})
+
+---------------
+-- telescope --
+---------------
+require('telescope').setup({
+    defaults = {
+        layout_strategy = 'horizontal',
+        layout_config = {
+            prompt_position = 'top',
+            height = 0.7,
+        },
+        sorting_strategy = 'ascending',
+    },
 })
 
 --------------
 -- snippets --
 --------------
 require('luasnip.loaders.from_snipmate').load()
+
+--------------
+-- vim-test --
+--------------
+vim.g['test#strategy'] = 'dispatch'
 
 ----------------
 -- lsp config --
@@ -211,7 +255,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local servers = { 'tsserver', 'phpactor', 'vuels' }
+local servers = { 'tsserver', 'phpactor', 'vuels', 'svelte' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
@@ -290,7 +334,7 @@ cmp.setup.cmdline(':', {
 
 -- nvim-treesitter
 require('nvim-treesitter.configs').setup {
-   ensure_installed = {'typescript', 'php'},
+   ensure_installed = 'all',
    sync_install = false,
    highlight = {
        enable = true,
