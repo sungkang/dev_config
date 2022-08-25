@@ -1,20 +1,85 @@
-so ~/.vimrc
-set exchange
-set surround
-set easymotion
-set multiple-cursors
-set vim-indent-object
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdtree'
+Plug 'vim-matchit'
 
-" === Section: IDEAVIM actions ===
+" =========================
+" === SECTION: Settings ===
+" =========================
+set backspace=indent,eol,start
+set clipboard=unnamed
+set hlsearch
+set ignorecase
+set incsearch
+set nostartofline
+set number
+set relativenumber
+set ruler
+set showcmd
+set showmode
+set smartcase
+set timeoutlen=400
+
+" =========================
+" === SECTION: Mappings ===
+" =========================
+let mapleader=","
+
+" === Configuration ===
 noremap <leader>ev :vs ~/.ideavimrc<cr>
-noremap <leader>vv :vs ~/.vimrc<cr>
-noremap <leader>sv :action IdeaVim.ReloadVimRc.reload<cr>
-noremap <leader>rr :action ManageRecentProjects<cr>
+noremap <leader>vv :action IdeaVim.ReloadVimRc.reload<cr>
+
+" === Navigation ===
+nnoremap L Lzz
+nnoremap H Hzz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <leader>, ,
 nnoremap ]m :action MethodDown<cr>
 nnoremap [m :action MethodUp<cr>
+
+" === Window ===
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+nnoremap + 5<c-w>>
+nnoremap _ 5<c-w><
+nnoremap <c-.> 5<c-w><
+nnoremap <c-,> 5<c-w><
+
+" === Jump List ===
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+
+" === Buffers ===
+nnoremap <silent> <c-f> :bn<cr>
+nnoremap <silent> <c-b> :bp<cr>
+nnoremap <silent> <leader>bb :bd<cr>
+nnoremap <silent> <leader>ba :%bd<cr>
+
+" === Search ===
+nnoremap <silent> <leader>/ :noh<cr>
+
+" === Goto Test ===
+nnoremap <silent> <leader>t :action GotoTest<cr>
+
+" === Project Management ===
+noremap <leader>rr :action ManageRecentProjects<cr>
 nnoremap <leader>ss :action FileStructurePopup<cr>
 nnoremap <leader>rn :action RenameElement<cr>
-nnoremap <leader>fa :action FindInPath<cr>
+
+" === FileChooser ===
+nnoremap <leader>,n :action FileChooser.GotoHome<cr>
+
+map <leader>f <Action>(FindInPath)
+map <C-p> :action GotoFile<cr>
+
+" === LSP ===
+nnoremap gr :action GotoDeclaration<cr>
+nnoremap <space>e :action ShowErrorDescription<cr>
 
 " === Debugging ===
 nnoremap <space><space> :action DebugMainMenu<cr>
@@ -31,17 +96,16 @@ nnoremap <space>bb :action ToggleLineBreakpoint<cr>
 nnoremap <space>BB :action ViewBreakpoints<cr>
 nnoremap <space>rab :action Debugger.RemoveAllBreakpoints<cr>
 
-" === Diff ===
-
-" === Go ===
-nnoremap <leader>gf :action GoFmtFileAction<cr>
+" === Formatting ===
+nnoremap <space>f :action ReformatCode<cr>
 
 " === Git ===
-nnoremap <leader>gga :action Annotate<cr>
+nnoremap <space>ga :action Annotate<cr>
 
 " === Section: window management ===
-noremap <leader>ca :action CloseAllEditorsButActive<cr>
-noremap <leader>vs :action MoveTabRight<cr>
-noremap <leader>vm :action MoveEditorToOppositeTabGroup<cr>
-noremap <leader>ww :action HideAllWindows<cr>
+noremap <C-w><C-o> :action CloseAllEditorsButActive<cr>
+noremap vs :action MoveTabRight<cr>
+noremap vm :action MoveEditorToOppositeTabGroup<cr>
+
+
 set ideajoin
