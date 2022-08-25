@@ -55,7 +55,8 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'vimwiki/vimwiki'
 Plug 'numToStr/Comment.nvim'
-Plug('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['mkdp#util#install()'], ['for'] = { 'markdown', 'vim-plug' }})
+Plug('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['mkdp#util#install()'], ['for'] = { 'markdown', 'vim-plug' } })
+Plug('fatih/vim-go', { ['do'] = vim.fn[':GoUpdateBinaries'] })
 
 vim.call('plug#end')
 
@@ -158,12 +159,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- choose default formatters for certain lsps
-local with_null_ls_formatter = function (client, bufnr)
+local with_null_ls_formatter = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = false
   on_attach(client, bufnr)
 end
 
-local servers = { 'tsserver', 'phpactor', 'vuels', 'svelte', 'sumneko_lua', 'gopls', 'denols', 'cssls', 'prismals', 'sqlls', 'gdscript' }
+local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'sumneko_lua', 'gopls', 'denols', 'cssls', 'prismals',
+  'sqlls', 'gdscript' }
 for _, lsp in pairs(servers) do
   local config = {
     on_attach = on_attach,
@@ -289,4 +291,3 @@ require('mason-lspconfig').setup {}
 require('Comment').setup()
 local ft = require('Comment.ft')
 ft.lang('javascript')
-
