@@ -2,7 +2,7 @@ session: cac_platform
 root: ~/dev/cac_platform
 windows:
 - name: web
-  root: cac_patform_web
+  root: cac_platform_web
   layout: "fe74,213x77,0,0[213x54,0,0,1,213x22,0,55{106x22,0,55,3,106x22,107,55,2}]"
   commands:
   - nvim

@@ -1,0 +1,2 @@
+#!/bin/bash
+smug start -f ~/.local/share/tmux_sessions/just_right.yml

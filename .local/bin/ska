@@ -1,0 +1,2 @@
+#!/bin/bash
+smug start -f ~/dev/tmux_projects/sketch_apps.yml
