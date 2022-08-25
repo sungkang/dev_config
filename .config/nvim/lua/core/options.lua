@@ -27,6 +27,7 @@ M.config = function()
   opt.signcolumn = 'yes'
   opt.updatetime = 100
   opt.conceallevel = 0
+  vim.g.do_filetype_lua = 1
   -- opt.cmdheight = 0
 
   -- color scheme config
