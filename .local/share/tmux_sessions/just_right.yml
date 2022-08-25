@@ -1,0 +1,43 @@
+session: just-right
+root: ~/dev/purina/
+windows:
+- name: platform
+  root: docker-magento-dev-env/src
+  layout: "5531,213x77,0,0[213x59,0,0,0,213x17,0,60{106x17,0,60,2,106x17,107,60,3}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
+  
+- name: CAB
+  root: purina-us-justright-module-react-app
+  layout: "5531,213x77,0,0[213x59,0,0,0,213x17,0,60{106x17,0,60,2,106x17,107,60,3}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
+    
+- name: blend-tab
+  root: purina-us-justright-module-react-blend-tab
+  layout: "5531,213x77,0,0[213x59,0,0,0,213x17,0,60{106x17,0,60,2,106x17,107,60,3}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
+
+- name: addons
+  root: purina-us-justright-react-addons
+  layout: "5531,213x77,0,0[213x59,0,0,0,213x17,0,60{106x17,0,60,2,106x17,107,60,3}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
+
+- name: smoke-tests
+  root: jr-mage-e2e-tests
+  layout: "5531,213x77,0,0[213x59,0,0,0,213x17,0,60{106x17,0,60,2,106x17,107,60,3}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
+
