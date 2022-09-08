@@ -16,3 +16,12 @@ windows:
   - nvim
   panes:
   - type: horizontal
+
+- name: infra
+  root: cac_platform_infra
+  layout: "fe74,213x77,0,0[213x54,0,0,1,213x22,0,55{106x22,0,55,3,106x22,107,55,2}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
+ 
