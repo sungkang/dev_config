@@ -53,8 +53,8 @@ function M.config()
   set('n', '<c-w><c-=>', '5<c-w>+', opts)
 
   -- buffers
-  set('n', '<c-f>', ':bn<cr>', opts)
-  set('n', '<c-b>', ':bp<cr>', opts)
+  set('n', '<c-f>', '<c-^>', opts)
+  set('n', '<c-b>', '<c-^>', opts)
   set('n', '<leader>BB', ':bd<cr>', opts)
   set('n', '<leader>BA', ':%bd<cr>', opts)
 
