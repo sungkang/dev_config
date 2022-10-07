@@ -4,8 +4,6 @@ M.config = function()
   local cmd = vim.cmd
   local opt = vim.opt
 
-  vim.g.mapleader = ','
-
   opt.showmode = false
   opt.cursorline = true
   opt.clipboard = 'unnamed'

@@ -82,7 +82,7 @@ nnoremap gr :action GotoDeclaration<cr>
 nnoremap <space>e :action ShowErrorDescription<cr>
 
 " === Debugging ===
-nnoremap <space><space> :action DebugMainMenu<cr>
+nnoremap <space><space> :action ChooseRunConfiguration<cr>
 nnoremap <space>dd :action Debug<cr>
 nnoremap <space>dn :action DebugClass<cr>
 

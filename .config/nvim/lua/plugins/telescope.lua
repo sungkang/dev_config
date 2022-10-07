@@ -20,6 +20,9 @@ M.config = function()
       }
     },
     pickers = {
+      find_files = {
+        hidden = true,
+      },
       buffers = {
         mappings = {
           n = {
@@ -31,18 +34,23 @@ M.config = function()
       },
       lsp_definitions = {
         initial_mode = "normal",
+        show_line = false,
       },
       lsp_references = {
         show_line = false,
       },
       quickfix = {
         initial_mode = "normal",
-      }
+      },
+      marks = {
+        initial_mode = "normal",
+      },
     }
   })
+
+  -- extensions
+  require('telescope').load_extension('harpoon')
 end
-
-
 
 M.changed_on_branch = function()
   local previewers = require('telescope.previewers')
@@ -105,11 +113,11 @@ set('v', '<leader>f', function()
   local text = vim.getVisualSelection()
   require('telescope.builtin').live_grep({ default_text = text })
 end, opts)
-set('n', '<leader>g', '<cmd>lua require("plugins.telescope").changed_on_branch()<cr>', opts)
+-- set('n', '<leader>g', '<cmd>lua require("plugins.telescope").changed_on_branch()<cr>', opts)
 set('n', '<leader>b', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 set('n', '<leader>h', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
 set('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
 set('n', '<leader>k', '<cmd>lua require("telescope.builtin").quickfix()<cr>', opts)
-
+set('n', '<space>m', '<cmd>Telescope harpoon marks<cr>', opts)
 
 return M

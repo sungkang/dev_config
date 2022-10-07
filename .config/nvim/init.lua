@@ -12,34 +12,32 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-dotenv'
+Plug 'nvim-lua/plenary.nvim'
 
 -- telescope
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install'] })
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 Plug 'tommcdo/vim-exchange'
 Plug 'michaeljsmith/vim-indent-object'
+-- Plug 'klen/nvim-test'
 Plug 'vim-test/vim-test'
 
 -- color schemes
 Plug 'sainnhe/gruvbox-material'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'windwp/nvim-autopairs'
-Plug 'windwp/nvim-ts-autotag'
+-- Plug 'windwp/nvim-ts-autotag'
 
 -- lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'phpactor/phpactor'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -49,14 +47,15 @@ Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
 Plug 'RRethy/vim-illuminate'
 Plug 'folke/trouble.nvim'
--- Plug 'folke/which-key.nvim'
 Plug 'anuvyklack/pretty-fold.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'vimwiki/vimwiki'
 Plug 'numToStr/Comment.nvim'
-Plug('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['mkdp#util#install()'], ['for'] = { 'markdown', 'vim-plug' } })
 Plug('fatih/vim-go', { ['do'] = vim.fn[':GoUpdateBinaries'] })
+Plug 'leoluz/nvim-dap-go'
+Plug 'ThePrimeagen/harpoon'
+Plug 'voldikss/vim-floaterm'
 
 vim.call('plug#end')
 
@@ -66,20 +65,23 @@ require('core.globals').config()
 require('core.options').config()
 require('core.mappings').config()
 require('core.autocommands').config()
-require('plugins.lsp').config()
-require('plugins.nvim-tree').config()
-require('plugins.telescope').config()
-require('plugins.vimwiki').config()
 require('plugins.treesitter').config()
-require('plugins.pretty-fold').config()
 require('plugins.lualine').config()
+require('plugins.nvim-tree').config()
+require('plugins.pretty-fold').config()
+require('plugins.vimwiki').config()
+require('plugins.lsp').config()
+require('plugins.nvim-dap').config()
+require('plugins.telescope').config()
+require('plugins.vim-test').config()
+require('plugins.vim-floaterm').config()
+-- require('plugins.nvim-test').config()
 
 ---------------------------------
 -- nvim-autopairs / ts-autotag --
 ---------------------------------
 require('nvim-autopairs').setup {}
 -- require('nvim-ts-autotag').setup()
-
 
 ----------------------------
 -- indent blankline setup --
@@ -89,7 +91,6 @@ require("indent_blankline").setup {
 }
 vim.cmd('highlight IndentBlanklineContextChar guifg=#88aeb2 gui=nocombine')
 
-
 ------------------
 -- trouble.nvim --
 ------------------
@@ -98,19 +99,12 @@ require('trouble').setup {
 }
 
 -- enable jumping between <tags></tags> with %
-cmd([[runtime macros/matchit.vim]])
+cmd('runtime macros/matchit.vim')
 
 --------------
 -- snippets --
 --------------
 require('luasnip.loaders.from_snipmate').load()
-
-
---------------
--- vim-test --
---------------
-vim.g['test#strategy'] = 'dispatch'
-
 
 -----------------
 -- code fences --
@@ -118,7 +112,6 @@ vim.g['test#strategy'] = 'dispatch'
 vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }
-
 
 ----------------
 -- lsp config --
@@ -165,7 +158,7 @@ local with_null_ls_formatter = function(client, bufnr)
 end
 
 local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'sumneko_lua', 'gopls', 'denols', 'cssls', 'prismals',
-  'sqlls', 'gdscript' }
+  'gdscript', 'pyright', 'sqlls', 'html' }
 for _, lsp in pairs(servers) do
   local config = {
     on_attach = on_attach,
@@ -174,6 +167,11 @@ for _, lsp in pairs(servers) do
     },
     capabilities = capabilities,
   }
+
+  if lsp == 'volar' then
+    -- goto continue
+    config.filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+  end
 
   if lsp == 'sumneko_lua' then
     config.settings = {
@@ -195,6 +193,7 @@ for _, lsp in pairs(servers) do
   end
 
   if lsp == 'tsserver' then
+    goto continue  -- temp disable tsserver for vue dev (volar)
     config.root_dir = nvim_lsp.util.root_pattern('package.json')
     config.on_attach = with_null_ls_formatter
   end
@@ -206,78 +205,8 @@ for _, lsp in pairs(servers) do
   end
 
   nvim_lsp[lsp].setup(config)
+  ::continue::
 end
-
-
---------------------
--- lsp completion --
---------------------
--- opt.completeopt = menu, menuone, noselect
-
-local luasnip = require('luasnip')
-local cmp = require('cmp')
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end,
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, {
-    { name = 'buffer' },
-  }),
-})
-
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' },
-  },
-})
-
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
-
 
 -------------------------------------
 -- mason.nvim (lsp server manager) --
@@ -290,4 +219,4 @@ require('mason-lspconfig').setup {}
 -------------
 require('Comment').setup()
 local ft = require('Comment.ft')
-ft.lang('javascript')
+-- ft.lang('javascript')

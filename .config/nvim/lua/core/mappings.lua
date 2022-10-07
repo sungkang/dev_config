@@ -57,6 +57,7 @@ function M.config()
   set('n', '<c-b>', '<c-^>', opts)
   set('n', '<leader>BB', ':bd<cr>', opts)
   set('n', '<leader>BA', ':%bd<cr>', opts)
+  set('n', '<space>a', '<cmd>lua require("harpoon.mark").add_file()<cr>', opts)
 
   -- nvim-tree
   set('n', '<leader>n', ':NvimTreeToggle<cr>', opts)
@@ -88,11 +89,16 @@ function M.config()
   set('v', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
 
   -- testing
-  set('n', '<space>t', ':TestNearest<cr>', opts)
-  set('n', '<space>T', ':TestFile<cr>', opts)
-  set('n', '<space>a', ':TestSuite<cr>', opts)
-  set('n', '<space>l', ':TestLast<cr>', opts)
+  set('n', '<space>rt', ':TestNearest<cr>', opts)
+  set('n', '<space>rf', ':TestFile<cr>', opts)
+  set('n', '<space>ra', ':TestSuite<cr>', opts)
+  set('n', '<space>rr', ':TestLast<cr>', opts)
   -- set('n', '<space>g', ':TestVisit<cr>', opts)
+
+  -- gitgutter
+  set('n', '<space>hp', '<cmd>GitGutterPreviewHunk<cr>')
+  set('n', '<space>hs', '<cmd>GitGutterStageHunk<cr>')
+  set('n', '<space>hu', '<cmd>GitGutterUndoHunk<cr>')
 
   -- timestamp line
   set('n', '<leader>T', ":pu=strftime('%c')<cr>kJ", opts)

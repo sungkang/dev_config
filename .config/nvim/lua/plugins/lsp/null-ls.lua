@@ -1,14 +1,17 @@
 M = {}
 
 M.config = function()
-  require('null-ls').setup {
+  local null_ls = require('null-ls')
+
+  null_ls.setup {
     sources = {
-      require('null-ls').builtins.diagnostics.eslint_d.with({
+      null_ls.builtins.diagnostics.eslint.with({
         condition = function(utils)
           return utils.root_has_file('package.json')
         end
       }),
-      require('null-ls').builtins.formatting.prettierd,
+      null_ls.builtins.code_actions.eslint,
+      null_ls.builtins.formatting.prettierd,
     },
   }
 end
