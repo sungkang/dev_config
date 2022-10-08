@@ -42,9 +42,12 @@ M.config = function()
       quickfix = {
         initial_mode = "normal",
       },
-      marks = {
+    },
+    extensions = {
+      -- the plugin currently doesn't support this
+      harpoon = {
         initial_mode = "normal",
-      },
+      }
     }
   })
 
@@ -118,6 +121,6 @@ set('n', '<leader>b', '<cmd>lua require("telescope.builtin").buffers()<cr>', opt
 set('n', '<leader>h', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
 set('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
 set('n', '<leader>k', '<cmd>lua require("telescope.builtin").quickfix()<cr>', opts)
-set('n', '<space>m', '<cmd>Telescope harpoon marks<cr>', opts)
+set('n', '<space>m', '<cmd>Telescope harpoon marks initial_mode=normal<cr>', opts)
 
 return M
