@@ -1,0 +1,10 @@
+session: excalidraw
+root: ~/dev/me/excalidraw
+windows:
+- name: app
+  root: ./
+  layout: "fe74,213x77,0,0[213x54,0,0,1,213x22,0,55{106x22,0,55,3,106x22,107,55,2}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
