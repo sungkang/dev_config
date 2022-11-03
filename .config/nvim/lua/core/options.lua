@@ -34,6 +34,8 @@ M.config = function()
   vim.g.gruvbox_material_visual = 'reverse'
   cmd('colorscheme gruvbox-material')
   cmd('highlight CursorLine guibg=#3f3d3b')
+  cmd('highlight LineNr guifg=#5b5b5b')
+  cmd('highlight CursorLineNr guifg=orange')
 end
 
 return M
