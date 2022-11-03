@@ -149,7 +149,7 @@ end
 
 -- update capabilities with completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- choose default formatters for certain lsps
 local with_null_ls_formatter = function(client, bufnr)
@@ -171,6 +171,7 @@ for _, lsp in pairs(servers) do
   if lsp == 'volar' then
     -- goto continue
     config.filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+    config.on_attach = with_null_ls_formatter
   end
 
   if lsp == 'sumneko_lua' then
