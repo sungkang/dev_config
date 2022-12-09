@@ -27,6 +27,14 @@ M.config = function()
         mappings = {
           n = {
             ["dd"] = "delete_buffer",
+            ["<C-c>"] = "close",
+            ["<C-n>"] = "move_selection_next",
+            ["<C-p>"] = "move_selection_previous",
+          },
+          i = {
+            ["<C-c>"] = "close",
+            ["<C-n>"] = "move_selection_next",
+            ["<C-p>"] = "move_selection_previous",
           }
         },
         sort_mru = true,
@@ -38,6 +46,8 @@ M.config = function()
       },
       lsp_references = {
         show_line = false,
+        initial_mode = "normal",
+        ignore_filename = true,
       },
       quickfix = {
         initial_mode = "normal",
@@ -47,6 +57,12 @@ M.config = function()
       -- the plugin currently doesn't support this
       harpoon = {
         initial_mode = "normal",
+        path_display = { 'truncate' },
+        mappings = {
+          n = {
+            ["dd"] = "delete_buffer",
+          }
+        },
       }
     }
   })
@@ -104,7 +120,7 @@ local set = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 set('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
-set('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references({initial_mode="normal", ignore_filename=true})<cr>'
+set('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>'
   , opts)
 set('n', '<c-p>', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
 set('v', '<c-p>', function()
@@ -122,5 +138,6 @@ set('n', '<leader>h', '<cmd>lua require("telescope.builtin").help_tags()<cr>', o
 set('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
 set('n', '<leader>k', '<cmd>lua require("telescope.builtin").quickfix()<cr>', opts)
 set('n', '<space>m', '<cmd>Telescope harpoon marks initial_mode=normal<cr>', opts)
+-- set('n', '<space>m', '<cmd>Telescope harpoon marks<cr>', opts)
 
 return M

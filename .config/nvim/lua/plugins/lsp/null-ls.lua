@@ -12,6 +12,9 @@ M.config = function()
       }),
       null_ls.builtins.code_actions.eslint,
       null_ls.builtins.formatting.prettierd,
+      null_ls.builtins.formatting.sqlfluff.with({
+        extra_args = { "--dialect", "mysql" },
+      }),
     },
   }
 end

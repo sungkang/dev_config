@@ -55,7 +55,9 @@ Plug 'numToStr/Comment.nvim'
 Plug('fatih/vim-go', { ['do'] = vim.fn[':GoUpdateBinaries'] })
 Plug 'leoluz/nvim-dap-go'
 Plug 'ThePrimeagen/harpoon'
+-- Plug 'sungkang/harpoon'
 Plug 'voldikss/vim-floaterm'
+Plug 'icatalina/vim-case-change'
 
 vim.call('plug#end')
 
@@ -104,7 +106,7 @@ cmd('runtime macros/matchit.vim')
 --------------
 -- snippets --
 --------------
-require('luasnip.loaders.from_snipmate').load()
+require('luasnip.loaders.from_snipmate').lazy_load()
 
 -----------------
 -- code fences --
@@ -158,7 +160,7 @@ local with_null_ls_formatter = function(client, bufnr)
 end
 
 local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'sumneko_lua', 'gopls', 'denols', 'cssls', 'prismals',
-  'gdscript', 'pyright', 'sqlls', 'html' }
+  'gdscript', 'pyright', 'html' }
 for _, lsp in pairs(servers) do
   local config = {
     on_attach = on_attach,
@@ -169,7 +171,7 @@ for _, lsp in pairs(servers) do
   }
 
   if lsp == 'volar' then
-    -- goto continue
+    goto continue
     config.filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
     config.on_attach = with_null_ls_formatter
   end
@@ -194,7 +196,7 @@ for _, lsp in pairs(servers) do
   end
 
   if lsp == 'tsserver' then
-    goto continue  -- temp disable tsserver for vue dev (volar)
+    -- goto continue  -- temp disable tsserver for vue dev (volar)
     config.root_dir = nvim_lsp.util.root_pattern('package.json')
     config.on_attach = with_null_ls_formatter
   end
@@ -219,5 +221,5 @@ require('mason-lspconfig').setup {}
 -- Comment --
 -------------
 require('Comment').setup()
-local ft = require('Comment.ft')
+-- local ft = require('Comment.ft')
 -- ft.lang('javascript')

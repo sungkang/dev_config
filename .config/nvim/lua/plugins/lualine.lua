@@ -9,6 +9,9 @@ M.config = function()
       theme = theme,
     },
     sections = {
+      lualine_b = {
+        'diff', 'diagnostics'
+      },
       lualine_c = {
         {
           'filename',

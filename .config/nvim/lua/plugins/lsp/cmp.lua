@@ -6,6 +6,10 @@ M.config = function()
   local luasnip = require('luasnip')
   local cmp = require('cmp')
 
+  luasnip.setup({
+    region_check_events = "CursorMovedI",
+  })
+
   cmp.setup({
     snippet = {
       expand = function(args)

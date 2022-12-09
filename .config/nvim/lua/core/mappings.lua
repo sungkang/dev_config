@@ -36,7 +36,7 @@ function M.config()
 
   -- tab management
   set('n', '<leader>tt', ':tabnew<cr>', opts)
-  set('n', '<leader>te', ':tabclose<cr>', opts)
+  set('n', '<leader>td', ':tabclose<cr>', opts)
   set('n', '[t', ':tabp<cr>', opts)
   set('n', ']t', ':tabn<cr>', opts)
 
