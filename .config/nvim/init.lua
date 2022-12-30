@@ -58,6 +58,7 @@ Plug 'ThePrimeagen/harpoon'
 -- Plug 'sungkang/harpoon'
 Plug 'voldikss/vim-floaterm'
 Plug 'icatalina/vim-case-change'
+Plug 'dstein64/vim-startuptime'
 
 vim.call('plug#end')
 
@@ -171,7 +172,7 @@ for _, lsp in pairs(servers) do
   }
 
   if lsp == 'volar' then
-    goto continue
+    -- goto continue
     config.filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
     config.on_attach = with_null_ls_formatter
   end
