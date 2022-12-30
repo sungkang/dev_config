@@ -20,8 +20,34 @@ M.config = function()
       }
     },
     pickers = {
+      live_grep = {
+        mappings = {
+          n = {
+            ["<C-c>"] = "close",
+            ["<C-n>"] = "move_selection_next",
+            ["<C-p>"] = "move_selection_previous",
+          },
+          i = {
+            ["<C-c>"] = "close",
+            ["<C-n>"] = "move_selection_next",
+            ["<C-p>"] = "move_selection_previous",
+          }
+        },
+      },
       find_files = {
         hidden = true,
+        mappings = {
+          n = {
+            ["<C-c>"] = "close",
+            ["<C-n>"] = "move_selection_next",
+            ["<C-p>"] = "move_selection_previous",
+          },
+          i = {
+            ["<C-c>"] = "close",
+            ["<C-n>"] = "move_selection_next",
+            ["<C-p>"] = "move_selection_previous",
+          }
+        },
       },
       buffers = {
         mappings = {
