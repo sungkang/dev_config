@@ -8,6 +8,7 @@ windows:
   - nvim
   panes:
   - type: horizontal
+  - type: horizontal
   
 - name: api
   root: cac_platform_api
@@ -16,6 +17,7 @@ windows:
   - nvim
   panes:
   - type: horizontal
+  - type: horizontal
 
 - name: infra
   root: cac_platform_infra
@@ -23,5 +25,6 @@ windows:
   commands:
   - nvim
   panes:
+  - type: horizontal
   - type: horizontal
  
