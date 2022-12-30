@@ -55,8 +55,8 @@ nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
 
 " === Buffers ===
-nnoremap <silent> <c-f> :bn<cr>
-nnoremap <silent> <c-b> :bp<cr>
+nnoremap <silent> <c-f> <c-6>
+nnoremap <silent> <c-b> <c-6>
 nnoremap <silent> <leader>bb :bd<cr>
 nnoremap <silent> <leader>ba :%bd<cr>
 
@@ -68,7 +68,7 @@ nnoremap <silent> <leader>t :action GotoTest<cr>
 
 " === Project Management ===
 noremap <leader>rr :action ManageRecentProjects<cr>
-nnoremap <leader>ss :action FileStructurePopup<cr>
+nnoremap <leader>s :action FileStructurePopup<cr>
 nnoremap <leader>rn :action RenameElement<cr>
 
 " === FileChooser ===
