@@ -7,6 +7,8 @@ function M.config()
   -- local wk = require('which-key')
 
   -- general mappings
+	set('n', '<C-U>', '<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>M', opts)
+	set('n', '<C-D>', '<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>M', opts)
   set('n', '<leader>ev', ':vsplit $MYVIMRC<cr>', opts)
   set('n', '<leader>vv', ':source $MYVIMRC<cr>', opts)
   set('n', '<leader>/', ':noh<cr>', opts)
