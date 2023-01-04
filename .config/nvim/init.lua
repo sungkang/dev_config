@@ -59,16 +59,23 @@ require("lazy").setup({
   {
     'fatih/vim-go',
     config = function()
-      -- TODO: find out how to run this async
-      -- vim.fn['GoUpdateBinaries']()
-      -- vim.cmd([[GoUpdateBinaries]])
+      -- vim.cmd([[:GoUpdateBinaries]])
     end,
   },
   'leoluz/nvim-dap-go',
   'ThePrimeagen/harpoon',
   'voldikss/vim-floaterm',
   'icatalina/vim-case-change',
-  'dstein64/vim-startuptime',
+  {
+    'dstein64/vim-startuptime',
+    cmd = "StartupTime",
+  },
+}, {
+  performance = {
+    cache = {
+      enable = true,
+    },
+  },
 })
 
 
@@ -208,7 +215,7 @@ for _, lsp in pairs(servers) do
   end
 
   if lsp == 'tsserver' then
-    -- goto continue  -- temp disable tsserver for vue dev (volar)
+    goto continue -- temp disable tsserver for vue dev (volar)
     config.root_dir = nvim_lsp.util.root_pattern('package.json')
     config.on_attach = with_null_ls_formatter
   end
