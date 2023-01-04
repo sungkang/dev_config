@@ -1,69 +1,87 @@
 local cmd = vim.cmd
 local opts = { noremap = true, silent = true }
-local Plug = vim.fn['plug#']
+
+-- custom leader
+vim.g.mapleader = ','
+
+-- bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazypath })
+    vim.fn.system({ "git", "-C", lazypath, "checkout", "tags/stable" }) -- last stable release
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
 
 -------------
 -- plugins --
 -------------
-vim.call('plug#begin', '~/.config/nvim/plugged')
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-dadbod'
-Plug 'tpope/vim-dotenv'
-Plug 'nvim-lua/plenary.nvim'
+require("lazy").setup({
+  'nvim-treesitter/nvim-treesitter',
+  'tpope/vim-surround',
+  'tpope/vim-repeat',
+  'tpope/vim-fugitive',
+  'tpope/vim-dispatch',
+  'tpope/vim-dadbod',
+  'tpope/vim-dotenv',
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
+  'nvim-lualine/lualine.nvim',
+  'kyazdani42/nvim-web-devicons',
+  'kyazdani42/nvim-tree.lua',
+  'airblade/vim-gitgutter',
+  'easymotion/vim-easymotion',
+  'tommcdo/vim-exchange',
+  'michaeljsmith/vim-indent-object',
+  'vim-test/vim-test',
+  'sainnhe/gruvbox-material',
+  'lukas-reineke/indent-blankline.nvim',
+  'windwp/nvim-autopairs',
+  'neovim/nvim-lspconfig',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+  'L3MON4D3/LuaSnip', -- Snippets plugin
+  'RRethy/vim-illuminate',
+  'folke/trouble.nvim',
+  'anuvyklack/pretty-fold.nvim',
+  'jose-elias-alvarez/null-ls.nvim',
+  'mfussenegger/nvim-dap',
+  'vimwiki/vimwiki',
+  'numToStr/Comment.nvim',
+  {
+    'fatih/vim-go',
+    config = function()
+      -- vim.cmd([[:GoUpdateBinaries]])
+    end,
+  },
+  'leoluz/nvim-dap-go',
+  'ThePrimeagen/harpoon',
+  'voldikss/vim-floaterm',
+  'icatalina/vim-case-change',
+  {
+    'dstein64/vim-startuptime',
+    cmd = "StartupTime",
+  },
+}, {
+  performance = {
+    cache = {
+      enable = true,
+    },
+  },
+})
 
--- telescope
-Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'airblade/vim-gitgutter'
-Plug 'easymotion/vim-easymotion'
-Plug 'tommcdo/vim-exchange'
-Plug 'michaeljsmith/vim-indent-object'
--- Plug 'klen/nvim-test'
-Plug 'vim-test/vim-test'
-
--- color schemes
-Plug 'sainnhe/gruvbox-material'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'windwp/nvim-autopairs'
--- Plug 'windwp/nvim-ts-autotag'
-
--- lsp
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
-Plug 'RRethy/vim-illuminate'
-Plug 'folke/trouble.nvim'
-Plug 'anuvyklack/pretty-fold.nvim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'mfussenegger/nvim-dap'
-Plug 'vimwiki/vimwiki'
-Plug 'numToStr/Comment.nvim'
-Plug('fatih/vim-go', { ['do'] = vim.fn[':GoUpdateBinaries'] })
-Plug 'leoluz/nvim-dap-go'
-Plug 'ThePrimeagen/harpoon'
--- Plug 'sungkang/harpoon'
-Plug 'voldikss/vim-floaterm'
-Plug 'icatalina/vim-case-change'
-Plug 'dstein64/vim-startuptime'
-
-vim.call('plug#end')
-
-vim.g.mapleader = ','
-
+-------------
+-- configs --
+-------------
 require('core.globals').config()
 require('core.options').config()
 require('core.mappings').config()
@@ -173,7 +191,7 @@ for _, lsp in pairs(servers) do
 
   if lsp == 'volar' then
     -- goto continue
-    config.filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+    config.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
     config.on_attach = with_null_ls_formatter
   end
 
@@ -197,7 +215,7 @@ for _, lsp in pairs(servers) do
   end
 
   if lsp == 'tsserver' then
-    -- goto continue  -- temp disable tsserver for vue dev (volar)
+    goto continue -- temp disable tsserver for vue dev (volar)
     config.root_dir = nvim_lsp.util.root_pattern('package.json')
     config.on_attach = with_null_ls_formatter
   end
