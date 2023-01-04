@@ -29,7 +29,7 @@ let mapleader=","
 
 " === Configuration ===
 noremap <leader>ev :vs ~/.ideavimrc<cr>
-noremap <leader>vv :action IdeaVim.ReloadVimRc.reload<cr>
+map <leader>vv <Action>(IdeaVim.ReloadVimRc.reload)
 
 " === Navigation ===
 nnoremap L Lzz
@@ -37,8 +37,8 @@ nnoremap H Hzz
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <leader>, ,
-nnoremap ]m :action MethodDown<cr>
-nnoremap [m :action MethodUp<cr>
+map ]m <Action>(MethodDown)
+map [m <Action>(MethodUp)
 
 " === Window ===
 noremap <c-h> <c-w>h
@@ -51,8 +51,8 @@ nnoremap <c-.> 5<c-w><
 nnoremap <c-,> 5<c-w><
 
 " === Jump List ===
-nmap <C-o> <Action>(Back)
-nmap <C-i> <Action>(Forward)
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
 
 " === Buffers ===
 nnoremap <silent> <c-f> <c-6>
@@ -64,48 +64,49 @@ nnoremap <silent> <leader>ba :%bd<cr>
 nnoremap <silent> <leader>/ :noh<cr>
 
 " === Goto Test ===
-nnoremap <silent> <leader>t :action GotoTest<cr>
+map <silent> <leader>t <Action>(GotoTest)
 
 " === Project Management ===
-noremap <leader>rr :action ManageRecentProjects<cr>
-nnoremap <leader>s :action FileStructurePopup<cr>
-nnoremap <leader>rn :action RenameElement<cr>
+map <leader>rr <Action>(ManageRecentProjects)
+map <leader>s <Action>(FileStructurePopup)
+map <leader>rn <Action>(RenameElement)
 
 " === FileChooser ===
-nnoremap <leader>,n :action FileChooser.GotoHome<cr>
+map <leader>,n <Action>(FileChooser.GotoHome)
 
 map <leader>f <Action>(FindInPath)
-map <C-p> :action GotoFile<cr>
+map <C-p> <Action>(GotoFile)
 
 " === LSP ===
-nnoremap gr :action GotoDeclaration<cr>
-nnoremap <space>e :action ShowErrorDescription<cr>
+map gr <Action>(GotoDeclaration)
+map <space>e <Action>(ShowErrorDescription)
 
 " === Debugging ===
-nnoremap <space><space> :action ChooseRunConfiguration<cr>
-nnoremap <space>dd :action Debug<cr>
-nnoremap <space>dn :action DebugClass<cr>
+map <space><space> <Action>(ChooseRunConfiguration)
+map <space>dd <Action>(Debug)
+map <space>dn <Action>(DebugClass)
 
-nnoremap <space>rn :action RunClass<cr>
-nnoremap <space>rr :action Rerun<cr>
+map <space>rn <Action>(RunClass)
+map <space>rr <Action>(Rerun)
 
-nnoremap <space>ru :action Run<cr>
-nnoremap <space>st :action Stop<cr>
+map <space>ru <Action>(Run)
+map <space>st <Action>(Stop)
 
-nnoremap <space>bb :action ToggleLineBreakpoint<cr>
-nnoremap <space>BB :action ViewBreakpoints<cr>
-nnoremap <space>rab :action Debugger.RemoveAllBreakpoints<cr>
+map <space>bb <Action>(ToggleLineBreakpoint)
+map <space>BB <Action>(ViewBreakpoints)
+map <space>rab <Action>(Debugger.RemoveAllBreakpoints)
 
 " === Formatting ===
-nnoremap <space>f :action ReformatCode<cr>
+map <space>f <Action>(ReformatCode)
 
 " === Git ===
-nnoremap <space>ga :action Annotate<cr>
+map <space>ga <Action>(Annotate)
 
 " === Section: window management ===
-noremap <C-w><C-o> :action CloseAllEditorsButActive<cr>
-noremap vs :action MoveTabRight<cr>
-noremap vm :action MoveEditorToOppositeTabGroup<cr>
+map <C-s>z <Action>(HideAllWindows)
+map <C-w><C-o> <Action>(CloseAllEditorsButActive)
+map vs <Action>(MoveTabRight)
+map vm <Action>(MoveEditorToOppositeTabGroup)
 
 
 set ideajoin
