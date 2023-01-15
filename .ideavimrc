@@ -40,7 +40,7 @@ nnoremap <leader>, ,
 map ]m <Action>(MethodDown)
 map [m <Action>(MethodUp)
 
-" === Window ===
+" === Windows and Tabs ===
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
@@ -49,6 +49,7 @@ nnoremap + 5<c-w>>
 nnoremap _ 5<c-w><
 nnoremap <c-.> 5<c-w><
 nnoremap <c-,> 5<c-w><
+map <leader>q <Action>(CloseContent)
 
 " === Jump List ===
 map <C-o> <Action>(Back)
@@ -69,7 +70,6 @@ map <silent> <leader>t <Action>(GotoTest)
 " === Project Management ===
 map <leader>rr <Action>(ManageRecentProjects)
 map <leader>s <Action>(FileStructurePopup)
-map <leader>rn <Action>(RenameElement)
 
 " === FileChooser ===
 map <leader>,n <Action>(FileChooser.GotoHome)
@@ -84,10 +84,10 @@ map <space>e <Action>(ShowErrorDescription)
 " === Debugging ===
 map <space><space> <Action>(ChooseRunConfiguration)
 map <space>dd <Action>(Debug)
-map <space>dn <Action>(DebugClass)
+map <space>dc <Action>(DebugClass)
 
-map <space>rn <Action>(RunClass)
-map <space>rr <Action>(Rerun)
+map <space>rr <Action>(RunClass)
+map <space>re <Action>(Rerun)
 
 map <space>ru <Action>(Run)
 map <space>st <Action>(Stop)
@@ -96,8 +96,9 @@ map <space>bb <Action>(ToggleLineBreakpoint)
 map <space>BB <Action>(ViewBreakpoints)
 map <space>rab <Action>(Debugger.RemoveAllBreakpoints)
 
-" === Formatting ===
+" === Formatting and Refactor ===
 map <space>f <Action>(ReformatCode)
+map <space>rn <Action>(RenameElement)
 
 " === Git ===
 map <space>ga <Action>(Annotate)
