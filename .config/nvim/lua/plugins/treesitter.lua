@@ -16,6 +16,15 @@ M.config = function()
     indent = {
       enable = true,
     },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = '<cr>',
+        node_incremental = '<cr>',
+        scope_incremental = '<s-cr>',
+        node_decremental = '<bs>',
+      },
+    },
   }
 end
 
