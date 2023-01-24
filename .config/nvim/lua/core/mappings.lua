@@ -40,8 +40,8 @@ function M.config()
   set('n', ']q', ':cn<cr>zz', opts)
 
   -- tab management
-  set('n', '<leader>tt', ':tabnew<cr>', opts)
-  set('n', '<leader>td', ':tabclose<cr>', opts)
+  set('n', '<leader>tn', ':tabnew<cr>', opts)
+  set('n', '<leader>tc', ':tabclose<cr>', opts)
   set('n', '[t', ':tabp<cr>', opts)
   set('n', ']t', ':tabn<cr>', opts)
 
@@ -65,8 +65,10 @@ function M.config()
   set('n', '<space>a', '<cmd>lua require("harpoon.mark").add_file()<cr>', opts)
 
   -- nvim-tree
-  set('n', '<leader>n', ':NvimTreeToggle<cr>', opts)
-  set('n', '<leader>r', ':NvimTreeFindFile<cr>', opts)
+  -- set('n', '<leader>n', ':NvimTreeToggle<cr>', opts)
+  -- set('n', '<leader>r', ':NvimTreeFindFile<cr>', opts)
+  -- neo-tree
+  set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
 
   -- mappings: diff
   set('n', '<leader>dfa', ':windo diffthis<cr>', opts)

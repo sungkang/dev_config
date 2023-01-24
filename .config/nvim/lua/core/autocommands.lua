@@ -9,7 +9,7 @@ M.config = function()
 
     augroup _help
       autocmd!
-      autocmd BufEnter *.txt if &buftype == 'help' && winwidth(0) == &columns | wincmd L | endif
+      autocmd BufEnter * if &buftype == 'help' && winwidth(0) == &columns | wincmd L | endif
     augroup END
   ]])
     -- Notes: _help

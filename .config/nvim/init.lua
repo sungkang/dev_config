@@ -29,8 +29,15 @@ require("lazy").setup({
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
   'nvim-lualine/lualine.nvim',
-  'kyazdani42/nvim-web-devicons',
-  'kyazdani42/nvim-tree.lua',
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+      's1n7ax/nvim-window-picker',
+    },
+  },
   'airblade/vim-gitgutter',
   'easymotion/vim-easymotion',
   'tommcdo/vim-exchange',
@@ -65,7 +72,6 @@ require("lazy").setup({
   'leoluz/nvim-dap-go',
   'ThePrimeagen/harpoon',
   'voldikss/vim-floaterm',
-  -- 'icatalina/vim-case-change',
   {
     'dstein64/vim-startuptime',
     cmd = "StartupTime",
@@ -88,7 +94,7 @@ require('core.mappings').config()
 require('core.autocommands').config()
 require('plugins.treesitter').config()
 require('plugins.lualine').config()
-require('plugins.nvim-tree').config()
+require('plugins.neo-tree').config()
 require('plugins.pretty-fold').config()
 require('plugins.vimwiki').config()
 require('plugins.lsp').config()
@@ -139,7 +145,6 @@ vim.g.markdown_fenced_languages = {
 ----------------
 local nvim_lsp = require('lspconfig')
 local bset = vim.api.nvim_buf_set_keymap
--- local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 local on_attach = function(client, bufnr)
   bset(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -158,17 +163,6 @@ local on_attach = function(client, bufnr)
   bset(bufnr, 'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
   bset(bufnr, 'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
   require('illuminate').on_attach(client)
-
-  -- if client.supports_method('textDocument/formatting') then
-  --   vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-  --   vim.api.nvim_create_autocmd('BufWritePre', {
-  --     group = augroup,
-  --     buffer = bufnr,
-  --     callback = function()
-  --       vim.lsp.buf.format()
-  --     end
-  --   })
-  -- end
 end
 
 -- update capabilities with completion
@@ -182,7 +176,7 @@ local with_null_ls_formatter = function(client, bufnr)
 end
 
 local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'sumneko_lua', 'gopls', 'denols', 'cssls', 'prismals',
-  'gdscript', 'pyright', 'html' }
+  'gdscript', 'pyright', 'html', 'tailwindcss' }
 for _, lsp in pairs(servers) do
   local config = {
     on_attach = on_attach,
@@ -194,6 +188,7 @@ for _, lsp in pairs(servers) do
 
   if lsp == 'volar' then
     -- goto continue
+    config.root_dir = nvim_lsp.util.root_pattern('vue.config.js')
     config.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
     -- config.on_attach = with_null_ls_formatter
   end
@@ -209,6 +204,7 @@ for _, lsp in pairs(servers) do
         },
         workspace = {
           library = vim.api.nvim_get_runtime_file("", true),
+          checkThirdParty = false,
         },
         telemetry = {
           enable = false,
@@ -218,7 +214,7 @@ for _, lsp in pairs(servers) do
   end
 
   if lsp == 'tsserver' then
-    goto continue -- temp disable tsserver for vue dev (volar)
+    -- goto continue -- temp disable tsserver for vue dev (volar)
     config.root_dir = nvim_lsp.util.root_pattern('package.json')
     config.on_attach = with_null_ls_formatter
   end
@@ -230,7 +226,7 @@ for _, lsp in pairs(servers) do
   end
 
   nvim_lsp[lsp].setup(config)
-  ::continue::
+  -- ::continue::
 end
 
 -------------------------------------
@@ -243,5 +239,3 @@ require('mason-lspconfig').setup {}
 -- Comment --
 -------------
 require('Comment').setup()
--- local ft = require('Comment.ft')
--- ft.lang('javascript')
