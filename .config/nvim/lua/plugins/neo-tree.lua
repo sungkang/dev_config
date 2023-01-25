@@ -9,9 +9,12 @@ M.config = function()
         nowait = true,
       },
       mappings = {
-        ["o"] = "toggle_node",
+        ["o"] = "open_with_window_picker",
         ["x"] = "close_node",
         ["X"] = "cut_to_clipboard",
+        ["W"] = "close_all_nodes",
+        ["z"] = "",
+        ["H"] = "",
       },
     },
     filesystem = {

@@ -30,12 +30,27 @@ M.config = function()
 
   -- color scheme config
   opt.background = 'dark'
-  vim.g.gruvbox_material_background = 'medium'
-  vim.g.gruvbox_material_visual = 'reverse'
-  cmd('colorscheme gruvbox-material')
+
+  -- gruvbox-material
+--  vim.g.gruvbox_material_background = 'medium'
+--  vim.g.gruvbox_material_visual = 'reverse'
+--  cmd('colorscheme gruvbox-material')
+--  cmd('highlight CursorLine guibg=#3f3d3b')
+--  cmd('highlight LineNr guifg=#5b5b5b')
+--  cmd('highlight CursorLineNr guifg=orange')
+  -- 
+  -- everforest
+  -- vim.g.everforest_background = 'medium'
+  -- cmd('colorscheme everforest')
+  -- cmd('highlight CursorLine guibg=#3f3d3b')
+  -- cmd('highlight LineNr guifg=#5b5b5b')
+  -- cmd('highlight CursorLineNr guifg=orange')
+
+  -- tokyo night
+  cmd('colorscheme tokyonight-moon')
+  cmd('highlight CursorLineNr guifg=orange')
   cmd('highlight CursorLine guibg=#3f3d3b')
   cmd('highlight LineNr guifg=#5b5b5b')
-  cmd('highlight CursorLineNr guifg=orange')
 end
 
 return M

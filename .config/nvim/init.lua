@@ -44,6 +44,7 @@ require("lazy").setup({
   'michaeljsmith/vim-indent-object',
   'vim-test/vim-test',
   'sainnhe/gruvbox-material',
+  'sainnhe/everforest',
   'lukas-reineke/indent-blankline.nvim',
   'windwp/nvim-autopairs',
   'neovim/nvim-lspconfig',
@@ -58,11 +59,13 @@ require("lazy").setup({
   'L3MON4D3/LuaSnip', -- Snippets plugin
   'RRethy/vim-illuminate',
   'folke/trouble.nvim',
+  'folke/tokyonight.nvim',
   'anuvyklack/pretty-fold.nvim',
   'jose-elias-alvarez/null-ls.nvim',
   'mfussenegger/nvim-dap',
   'vimwiki/vimwiki',
   'numToStr/Comment.nvim',
+  {'catppuccin/nvim', name="catppuccin"},
   {
     'fatih/vim-go',
     config = function()
@@ -72,6 +75,7 @@ require("lazy").setup({
   'leoluz/nvim-dap-go',
   'ThePrimeagen/harpoon',
   'voldikss/vim-floaterm',
+  'akinsho/toggleterm.nvim',
   {
     'dstein64/vim-startuptime',
     cmd = "StartupTime",
