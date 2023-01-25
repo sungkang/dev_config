@@ -5,6 +5,8 @@
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 
+set -g default-terminal "xterm-256color"
+set-option -ga terminal-overrides ",xterm-256color:Tc"
 # -- navigation ----------------------------------------------------------------
 
 # if you're running tmux within iTerm2
