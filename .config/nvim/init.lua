@@ -1,5 +1,8 @@
+local cmd = vim.cmd
 local opts = { noremap = true, silent = true }
 
+-- custom leader
+vim.g.mapleader = ','
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -12,17 +15,122 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-require('core.options').config()
+-------------
+-- plugins --
+-------------
+require("lazy").setup({
+  'nvim-treesitter/nvim-treesitter',
+  'tpope/vim-surround',
+  'tpope/vim-repeat',
+  'tpope/vim-fugitive',
+  'tpope/vim-dispatch',
+  'tpope/vim-dadbod',
+  'tpope/vim-dotenv',
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
+  'nvim-lualine/lualine.nvim',
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+      's1n7ax/nvim-window-picker',
+    },
+  },
+  'airblade/vim-gitgutter',
+  'easymotion/vim-easymotion',
+  'tommcdo/vim-exchange',
+  'michaeljsmith/vim-indent-object',
+  'vim-test/vim-test',
+  'sainnhe/gruvbox-material',
+  'sainnhe/everforest',
+  'lukas-reineke/indent-blankline.nvim',
+  'windwp/nvim-autopairs',
+  'neovim/nvim-lspconfig',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+  'L3MON4D3/LuaSnip', -- Snippets plugin
+  'RRethy/vim-illuminate',
+  'folke/trouble.nvim',
+  'folke/tokyonight.nvim',
+  'anuvyklack/pretty-fold.nvim',
+  'jose-elias-alvarez/null-ls.nvim',
+  'mfussenegger/nvim-dap',
+  'vimwiki/vimwiki',
+  'numToStr/Comment.nvim',
+  {'catppuccin/nvim', name="catppuccin"},
+  {
+    'fatih/vim-go',
+    config = function()
+      -- vim.cmd([[:GoUpdateBinaries]])
+    end,
+  },
+  'leoluz/nvim-dap-go',
+  'ThePrimeagen/harpoon',
+  'voldikss/vim-floaterm',
+  'akinsho/toggleterm.nvim',
+  {
+    'dstein64/vim-startuptime',
+    cmd = "StartupTime",
+  },
+}, {
+  performance = {
+    cache = {
+      enable = true,
+    },
+  },
+})
+
+
+-------------
+-- configs --
+-------------
 require('core.globals').config()
+require('core.options').config()
 require('core.mappings').config()
-require('core.lazy').config()
-require('core.runtimes').config()
 require('core.autocommands').config()
+require('plugins.treesitter').config()
+require('plugins.lualine').config()
+require('plugins.neo-tree').config()
+require('plugins.pretty-fold').config()
 require('plugins.vimwiki').config()
 require('plugins.lsp').config()
 require('plugins.nvim-dap').config()
--- require('plugins.telescope').config()
+require('plugins.telescope').config()
+require('plugins.vim-test').config()
 require('plugins.vim-floaterm').config()
+-- require('plugins.nvim-test').config()
+
+---------------------------------
+-- nvim-autopairs / ts-autotag --
+---------------------------------
+require('nvim-autopairs').setup {}
+-- require('nvim-ts-autotag').setup()
+
+----------------------------
+-- indent blankline setup --
+----------------------------
+require("indent_blankline").setup {
+  show_current_context = true,
+}
+vim.cmd('highlight IndentBlanklineContextChar guifg=#88aeb2 gui=nocombine')
+
+------------------
+-- trouble.nvim --
+------------------
+require('trouble').setup {
+  mode = 'document_diagnostics',
+}
+
+-- enable jumping between <tags></tags> with %
+cmd('runtime macros/matchit.vim')
 
 --------------
 -- snippets --
@@ -59,7 +167,6 @@ local on_attach = function(client, bufnr)
   bset(bufnr, 'n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
   bset(bufnr, 'n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
   require('illuminate').on_attach(client)
-  require('lsp-format').on_attach(client)
 end
 
 -- update capabilities with completion
@@ -72,7 +179,7 @@ local with_null_ls_formatter = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
-local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'lua_ls', 'gopls', 'denols', 'cssls', 'prismals',
+local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'sumneko_lua', 'gopls', 'denols', 'cssls', 'prismals',
   'gdscript', 'pyright', 'html', 'tailwindcss' }
 for _, lsp in pairs(servers) do
   local config = {
@@ -90,7 +197,7 @@ for _, lsp in pairs(servers) do
     -- config.on_attach = with_null_ls_formatter
   end
 
-  if lsp == 'lua_ls' then
+  if lsp == 'sumneko_lua' then
     config.settings = {
       Lua = {
         runtime = {
@@ -105,12 +212,6 @@ for _, lsp in pairs(servers) do
         },
         telemetry = {
           enable = false,
-        },
-        format = {
-          defaultConfig = {
-            indent_size = "2",
-            continuation_indent = "2",
-          },
         },
       },
     }
@@ -131,3 +232,14 @@ for _, lsp in pairs(servers) do
   nvim_lsp[lsp].setup(config)
   -- ::continue::
 end
+
+-------------------------------------
+-- mason.nvim (lsp server manager) --
+-------------------------------------
+require('mason').setup {}
+require('mason-lspconfig').setup {}
+
+-------------
+-- Comment --
+-------------
+require('Comment').setup()

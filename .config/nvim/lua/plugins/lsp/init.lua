@@ -1,4 +1,4 @@
-local M = {}
+M = {}
 
 M.setup_servers = function ()
   -- do nothing  

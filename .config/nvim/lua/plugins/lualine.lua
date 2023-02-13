@@ -1,15 +1,9 @@
 local M = {}
 
 M.config = function()
-  -- default --
   -- local theme = 'auto'
-  --
-  -- gruvbox --
-  -- local theme = require('lualine.themes.gruvbox')
-  -- theme.normal.a.bg = '#bbd8e8'
-  --
-  local theme = 'kanagawa'
-
+  local theme = require('lualine.themes.gruvbox')
+  theme.normal.a.bg = '#bbd8e8'
   require('lualine').setup({
     options = {
       theme = theme,

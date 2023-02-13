@@ -1,4 +1,4 @@
-local M = {}
+M = {}
 
 M.config = function()
   local null_ls = require('null-ls')
