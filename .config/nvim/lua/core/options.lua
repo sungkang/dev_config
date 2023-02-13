@@ -32,13 +32,13 @@ M.config = function()
   opt.background = 'dark'
 
   -- gruvbox-material
---  vim.g.gruvbox_material_background = 'medium'
---  vim.g.gruvbox_material_visual = 'reverse'
---  cmd('colorscheme gruvbox-material')
---  cmd('highlight CursorLine guibg=#3f3d3b')
---  cmd('highlight LineNr guifg=#5b5b5b')
---  cmd('highlight CursorLineNr guifg=orange')
-  -- 
+  --  vim.g.gruvbox_material_background = 'medium'
+  --  vim.g.gruvbox_material_visual = 'reverse'
+  --  cmd('colorscheme gruvbox-material')
+  --  cmd('highlight CursorLine guibg=#3f3d3b')
+  --  cmd('highlight LineNr guifg=#5b5b5b')
+  --  cmd('highlight CursorLineNr guifg=orange')
+  --
   -- everforest
   -- vim.g.everforest_background = 'medium'
   -- cmd('colorscheme everforest')
@@ -47,10 +47,14 @@ M.config = function()
   -- cmd('highlight CursorLineNr guifg=orange')
 
   -- tokyo night
-  cmd('colorscheme tokyonight-moon')
-  cmd('highlight CursorLineNr guifg=orange')
-  cmd('highlight CursorLine guibg=#3f3d3b')
-  cmd('highlight LineNr guifg=#5b5b5b')
+  -- cmd('colorscheme tokyonight-moon')
+  -- cmd('highlight CursorLineNr guifg=orange')
+  -- cmd('highlight CursorLine guibg=#3f3d3b')
+  -- cmd('highlight LineNr guifg=#5b5b5b')
+
+
+  -- kanagawa
+  cmd('colorscheme kanagawa')
 end
 
 return M

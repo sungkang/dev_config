@@ -7,11 +7,11 @@ function M.config()
   -- local wk = require('which-key')
 
   -- lazy.nvim
-	set('n', '<leader>l', ':Lazy<cr>', opts)
+  set('n', '<leader>l', ':Lazy<cr>', opts)
 
   -- general mappings
-	set('n', '<C-U>', '<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>M', opts)
-	set('n', '<C-D>', '<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>M', opts)
+  set('n', '<C-U>', '<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>M', opts)
+  set('n', '<C-D>', '<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>M', opts)
   set('n', '<leader>ev', ':vsplit $MYVIMRC<cr>', opts)
   set('n', '<leader>vv', ':source $MYVIMRC<cr>', opts)
   set('n', '<leader>/', ':noh<cr>', opts)
@@ -68,6 +68,7 @@ function M.config()
   -- set('n', '<leader>n', ':NvimTreeToggle<cr>', opts)
   -- set('n', '<leader>r', ':NvimTreeFindFile<cr>', opts)
   -- neo-tree
+  set('n', '<leader>r', ':Neotree  reveal reveal_force_cwd<cr>', opts)
   set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
 
   -- mappings: diff

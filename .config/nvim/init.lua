@@ -65,7 +65,7 @@ require("lazy").setup({
   'mfussenegger/nvim-dap',
   'vimwiki/vimwiki',
   'numToStr/Comment.nvim',
-  {'catppuccin/nvim', name="catppuccin"},
+  { 'catppuccin/nvim', name = "catppuccin" },
   {
     'fatih/vim-go',
     config = function()
@@ -80,6 +80,7 @@ require("lazy").setup({
     'dstein64/vim-startuptime',
     cmd = "StartupTime",
   },
+  'rebelot/kanagawa.nvim',
 }, {
   performance = {
     cache = {
@@ -179,7 +180,7 @@ local with_null_ls_formatter = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
-local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'sumneko_lua', 'gopls', 'denols', 'cssls', 'prismals',
+local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'lua_ls', 'gopls', 'denols', 'cssls', 'prismals',
   'gdscript', 'pyright', 'html', 'tailwindcss' }
 for _, lsp in pairs(servers) do
   local config = {
@@ -197,7 +198,7 @@ for _, lsp in pairs(servers) do
     -- config.on_attach = with_null_ls_formatter
   end
 
-  if lsp == 'sumneko_lua' then
+  if lsp == 'lua_ls' then
     config.settings = {
       Lua = {
         runtime = {
