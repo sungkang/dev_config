@@ -15,12 +15,14 @@ M.config = function()
         ["W"] = "close_all_nodes",
         ["z"] = "",
         ["H"] = "",
+        ["/"] = "",
       },
     },
     filesystem = {
       follow_current_file = true,
       filtered_items = {
         hide_dotfiles = false,
+        hide_gitignored = false,
       },
     },
   }

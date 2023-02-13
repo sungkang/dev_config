@@ -64,36 +64,18 @@ function M.config()
   set('n', '<leader>BA', ':%bd<cr>', opts)
   set('n', '<space>a', '<cmd>lua require("harpoon.mark").add_file()<cr>', opts)
 
-  -- nvim-tree
-  -- set('n', '<leader>n', ':NvimTreeToggle<cr>', opts)
-  -- set('n', '<leader>r', ':NvimTreeFindFile<cr>', opts)
-  -- neo-tree
-  set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
-
   -- mappings: diff
   set('n', '<leader>dfa', ':windo diffthis<cr>', opts)
   set('n', '<leader>dfo', ':windo diffoff<cr>', opts)
 
-  -- fugitive
-  set('n', '<space>gst', ':G<cr>', opts)
-  set('n', '<space>ga', ':G blame<cr>', opts)
-  set('n', '<space>gl', ':G log --graph<cr>', opts)
-  set('n', '<space>gla', ':G log --graph --decorate --all<cr>', opts)
-
-  -- trouble
-  set('n', '<leader>xx', ':TroubleToggle<cr>', opts)
-  set('n', '<leader>xw', ':Trouble workspace_diagnostics<cr>', opts)
-  set('n', '<leader>xd', ':Trouble document_diagnostics<cr>', opts)
-
   -- formatting
-  -- wk.register({
-  --     F = {
-  --         name = "filetype",
-  --         j = { "<cmd>set filetype=json foldmethod=indent<cr>", "JSON" },
-  --     },
-  -- }, { prefix = '<leader>'})
+  -- formatting: JSON
   set('n', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
   set('v', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
+
+  -- folding
+  set('n', 'z<cr>', "zr", opts)
+  set('n', 'z<bs>', "zm", opts)
 
   -- testing
   set('n', '<space>rt', ':TestNearest<cr>', opts)
@@ -101,11 +83,6 @@ function M.config()
   set('n', '<space>ra', ':TestSuite<cr>', opts)
   set('n', '<space>rr', ':TestLast<cr>', opts)
   -- set('n', '<space>g', ':TestVisit<cr>', opts)
-
-  -- gitgutter
-  set('n', '<space>hp', '<cmd>GitGutterPreviewHunk<cr>')
-  set('n', '<space>hs', '<cmd>GitGutterStageHunk<cr>')
-  set('n', '<space>hu', '<cmd>GitGutterUndoHunk<cr>')
 
   -- timestamp line
   set('n', '<leader>T', ":pu=strftime('%c')<cr>kJ", opts)

@@ -1,56 +1,31 @@
 local M = {}
 
 M.config = function()
-  local cmd = vim.cmd
-  local opt = vim.opt
+  vim.g.mapleader = ','
 
-  opt.showmode = false
-  opt.cursorline = true
-  opt.clipboard = 'unnamed'
-  opt.ignorecase = true
-  opt.smartcase = true
-  opt.infercase = true
-  opt.number = true
-  opt.relativenumber = true
-  opt.tabstop = 2
-  opt.shiftwidth = 2
-  opt.expandtab = true
-  opt.foldenable = false
-  opt.foldmethod = 'expr'
-  opt.foldexpr = 'nvim_treesitter#foldexpr()'
-  opt.timeoutlen = 400
-  opt.ttimeoutlen = 10
-  opt.termguicolors = true
-  opt.mouse = 'nvi'
-  opt.signcolumn = 'yes'
-  opt.updatetime = 100
-  opt.conceallevel = 0
+  vim.opt.showmode = false
+  vim.opt.cursorline = true
+  vim.opt.clipboard = 'unnamed'
+  vim.opt.ignorecase = true
+  vim.opt.smartcase = true
+  vim.opt.infercase = true
+  vim.opt.number = true
+  vim.opt.relativenumber = true
+  vim.opt.tabstop = 2
+  vim.opt.shiftwidth = 2
+  vim.opt.expandtab = true
+  vim.opt.foldenable = false
+  vim.opt.foldmethod = 'expr'
+  vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+  vim.opt.timeoutlen = 400
+  vim.opt.ttimeoutlen = 10
+  vim.opt.termguicolors = true
+  vim.opt.mouse = 'nvi'
+  vim.opt.signcolumn = 'yes'
+  vim.opt.updatetime = 100
+  vim.opt.conceallevel = 0
   vim.g.do_filetype_lua = 1
-  -- opt.cmdheight = 0
-
-  -- color scheme config
-  opt.background = 'dark'
-
-  -- gruvbox-material
---  vim.g.gruvbox_material_background = 'medium'
---  vim.g.gruvbox_material_visual = 'reverse'
---  cmd('colorscheme gruvbox-material')
---  cmd('highlight CursorLine guibg=#3f3d3b')
---  cmd('highlight LineNr guifg=#5b5b5b')
---  cmd('highlight CursorLineNr guifg=orange')
-  -- 
-  -- everforest
-  -- vim.g.everforest_background = 'medium'
-  -- cmd('colorscheme everforest')
-  -- cmd('highlight CursorLine guibg=#3f3d3b')
-  -- cmd('highlight LineNr guifg=#5b5b5b')
-  -- cmd('highlight CursorLineNr guifg=orange')
-
-  -- tokyo night
-  cmd('colorscheme tokyonight-moon')
-  cmd('highlight CursorLineNr guifg=orange')
-  cmd('highlight CursorLine guibg=#3f3d3b')
-  cmd('highlight LineNr guifg=#5b5b5b')
+  -- vim.opt.cmdheight = 0
 end
 
 return M

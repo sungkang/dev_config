@@ -79,7 +79,7 @@ map <C-p> <Action>(GotoFile)
 map gr <Action>(GotoDeclaration)
 map <space>e <Action>(ShowErrorDescription)
 
-" === Debugging ===
+" === Debugging and Testing ===
 map <space><space> <Action>(ChooseRunConfiguration)
 map <space>dd <Action>(Debug)
 map <space>dc <Action>(DebugClass)
@@ -108,5 +108,7 @@ map vs <Action>(MoveTabRight)
 map vm <Action>(MoveEditorToOppositeTabGroup)
 
 map <space>t <Action>(ActivateTerminalToolWindow)
+map <f1> <Action>(GuiDesigner.ExpandSelection)
+map <f2> <Action>(GuiDesigner.ShrinkSelection)
 
 set ideajoin

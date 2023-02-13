@@ -1,16 +1,15 @@
-local M = {}
+-- default --
+-- local theme = 'auto'
 
-M.config = function()
-  -- default --
-  -- local theme = 'auto'
-  --
-  -- gruvbox --
-  -- local theme = require('lualine.themes.gruvbox')
-  -- theme.normal.a.bg = '#bbd8e8'
-  --
-  local theme = 'kanagawa'
+-- gruvbox --
+-- local theme = require('lualine.themes.gruvbox')
+-- theme.normal.a.bg = '#bbd8e8'
 
-  require('lualine').setup({
+local theme = 'kanagawa'
+
+return {
+  'nvim-lualine/lualine.nvim',
+  opts = {
     options = {
       theme = theme,
     },
@@ -33,7 +32,5 @@ M.config = function()
         }
       }
     },
-  })
-end
-
-return M
+  }
+}
