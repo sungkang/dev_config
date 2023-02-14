@@ -81,6 +81,13 @@ require("lazy").setup({
     cmd = "StartupTime",
   },
   'rebelot/kanagawa.nvim',
+  {
+    'declancm/cinnamon.nvim',
+    opts = {
+      default_delay = 1,
+      extra_keymaps = true,
+    },
+  },
 }, {
   performance = {
     cache = {

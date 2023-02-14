@@ -10,8 +10,6 @@ function M.config()
   set('n', '<leader>l', ':Lazy<cr>', opts)
 
   -- general mappings
-  set('n', '<C-U>', '<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>M', opts)
-  set('n', '<C-D>', '<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>M', opts)
   set('n', '<leader>ev', ':vsplit $MYVIMRC<cr>', opts)
   set('n', '<leader>vv', ':source $MYVIMRC<cr>', opts)
   set('n', '<leader>/', ':noh<cr>', opts)
@@ -25,8 +23,8 @@ function M.config()
   set('t', '<c-\\><c-\\>', '<c-\\><c-n>', opts)
 
   -- navigation and search
-  set('n', 'L', 'Lzz', opts)
-  set('n', 'H', 'Hzz', opts)
+  set('n', 'L', '<cmd>lua Scroll("Lzz", 1, 1)<cr>', opts)
+  set('n', 'H', '<cmd>lua Scroll("Hzz", 1, 1)<cr>', opts)
   set('n', '<leader>,', ',', opts)
 
   -- window management
