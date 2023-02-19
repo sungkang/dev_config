@@ -25,6 +25,8 @@ function M.config()
   -- navigation and search
   set('n', 'L', '<cmd>lua Scroll("Lzz", 1, 1)<cr>', opts)
   set('n', 'H', '<cmd>lua Scroll("Hzz", 1, 1)<cr>', opts)
+  -- set('n', 'L', 'Lzz', opts)
+  -- set('n', 'H', 'Hzz', opts)
   set('n', '<leader>,', ',', opts)
 
   -- window management
@@ -66,7 +68,7 @@ function M.config()
   -- set('n', '<leader>n', ':NvimTreeToggle<cr>', opts)
   -- set('n', '<leader>r', ':NvimTreeFindFile<cr>', opts)
   -- neo-tree
-  set('n', '<leader>r', ':Neotree  reveal reveal_force_cwd<cr>', opts)
+  set('n', '<leader>r', ':Neotree reveal reveal_force_cwd<cr>', opts)
   set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
 
   -- mappings: diff
@@ -94,11 +96,15 @@ function M.config()
   set('n', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
   set('v', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
 
+  -- folding
+  set('n', 'z<cr>', "zr", opts)
+  set('n', 'z<bs>', "zm", opts)
+
   -- testing
-  set('n', '<space>rt', ':TestNearest<cr>', opts)
-  set('n', '<space>rf', ':TestFile<cr>', opts)
-  set('n', '<space>ra', ':TestSuite<cr>', opts)
-  set('n', '<space>rr', ':TestLast<cr>', opts)
+  -- set('n', '<space>rt', ':TestNearest<cr>', opts)
+  -- set('n', '<space>rf', ':TestFile<cr>', opts)
+  -- set('n', '<space>ra', ':TestSuite<cr>', opts)
+  -- set('n', '<space>rr', ':TestLast<cr>', opts)
   -- set('n', '<space>g', ':TestVisit<cr>', opts)
 
   -- gitgutter

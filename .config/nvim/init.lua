@@ -88,6 +88,26 @@ require("lazy").setup({
       extra_keymaps = true,
     },
   },
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-neotest/neotest-go',
+      'haydenmeade/neotest-jest',
+    },
+    config = function ()
+      require('neotest').setup({
+        adapters = {
+          require('neotest-jest')({
+            jestCommand = "npm run test:unit --",
+          }),
+          require('neotest-go')({}),
+        },
+      })
+    end,
+  },
 }, {
   performance = {
     cache = {
