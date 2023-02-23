@@ -23,10 +23,10 @@ function M.config()
   set('t', '<c-\\><c-\\>', '<c-\\><c-n>', opts)
 
   -- navigation and search
-  set('n', 'L', '<cmd>lua Scroll("Lzz", 1, 1)<cr>', opts)
-  set('n', 'H', '<cmd>lua Scroll("Hzz", 1, 1)<cr>', opts)
-  -- set('n', 'L', 'Lzz', opts)
-  -- set('n', 'H', 'Hzz', opts)
+  -- set('n', 'L', '<cmd>lua Scroll("Lzz", 1, 1)<cr>', opts)
+  -- set('n', 'H', '<cmd>lua Scroll("Hzz", 1, 1)<cr>', opts)
+  set('n', 'L', 'Lzz', opts)
+  set('n', 'H', 'Hzz', opts)
   set('n', '<leader>,', ',', opts)
 
   -- window management
