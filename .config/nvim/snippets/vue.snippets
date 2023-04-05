@@ -1,21 +1,17 @@
 extends typescript
 
 # vue template
-snippet vue "basic vue 2 template"
-	<template>
-	<div></div>
-	</template>
-	
-
+snippet vue "basic vue 3 template"
 	<script lang="ts">
-	import Vue from 'vue';
-
-	export default Vue.extend({
-		name: '${0}',
-	})
+		export default {
+			name: '${0}',
+		}
 	</script>
 
+	<script setup lang="ts">
 
-	<style scoped>
-	</style>
+	</script>
 
+	<template>
+		<div></div>
+	</template>

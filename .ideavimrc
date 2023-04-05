@@ -84,7 +84,7 @@ map <space><space> <Action>(ChooseRunConfiguration)
 map <space>dd <Action>(Debug)
 map <space>dn <Action>(DebugClass)
 
-map <space>rn <Action>(RunClass)
+map <space>ru <Action>(RunClass)
 map <space>rr <Action>(Rerun)
 
 map <space>ru <Action>(Run)
@@ -106,6 +106,8 @@ map <C-s>z <Action>(HideAllWindows)
 map <C-w><C-o> <Action>(CloseAllEditorsButActive)
 map vs <Action>(MoveTabRight)
 map vm <Action>(MoveEditorToOppositeTabGroup)
+
+" === Folding ===
 
 map <space>t <Action>(ActivateTerminalToolWindow)
 

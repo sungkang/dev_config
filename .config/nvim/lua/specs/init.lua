@@ -9,7 +9,24 @@ return {
     'numToStr/Comment.nvim',
     config = true,
   },
-  'vimwiki/vimwiki',
+  {
+    'vimwiki/vimwiki',
+    config = function()
+      vim.g.vimwiki_folding = 'expr'
+      vim.g.vimwiki_list = {
+        {
+          path = '~/.local/share/vimwiki/purina_just_right',
+          syntax = 'markdown',
+          ext = '.md',
+        },
+        {
+          path = '~/.local/share/vimwiki/personal',
+          syntax = 'markdown',
+          ext = '.md',
+        },
+      }
+    end
+  },
   'anuvyklack/pretty-fold.nvim',
   'tommcdo/vim-exchange',
   'michaeljsmith/vim-indent-object',
@@ -47,5 +64,17 @@ return {
   {
     'folke/trouble.nvim',
     opts = { mode = 'document_diagnostics' },
+  },
+  {
+    'voldikss/vim-floaterm',
+    config = function()
+      local opts = { noremap = true, silent = true }
+
+      vim.g.floaterm_title = ''
+      vim.g.floaterm_width = 0.95
+      vim.g.floaterm_height = 0.95
+      vim.keymap.set('n', '<leader>g', ':FloatermNew lazygit<cr>', opts)
+      vim.keymap.set('n', '<leader>d', ':FloatermNew lazydocker<cr>', opts)
+    end
   },
 }

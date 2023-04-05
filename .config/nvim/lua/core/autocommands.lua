@@ -11,6 +11,7 @@ M.config = function()
       autocmd!
       autocmd BufEnter * if &buftype == 'help' && winwidth(0) == &columns | wincmd L | endif
     augroup END
+
   ]])
     -- Notes: _help
     -- When opening the help buffer, upon open, set the buffer to the right most vertical split.

@@ -25,8 +25,6 @@ require("lazy").setup({
     import = "specs",
   },
   'nvim-lua/plenary.nvim',
-  'nvim-telescope/telescope.nvim',
-  'nvim-lualine/lualine.nvim',
   'vim-test/vim-test',
   'neovim/nvim-lspconfig',
   'hrsh7th/cmp-nvim-lsp',
@@ -35,18 +33,21 @@ require("lazy").setup({
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
   'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
-  'L3MON4D3/LuaSnip', -- Snippets plugin
+  'L3MON4D3/LuaSnip',         -- Snippets plugin
   'RRethy/vim-illuminate',
   'jose-elias-alvarez/null-ls.nvim',
   'mfussenegger/nvim-dap',
   {
     'fatih/vim-go',
+    enabled = false,
     config = function()
       -- vim.cmd([[:GoUpdateBinaries]])
+      -- vim.g.go_def_mode = 'gopls'
+      -- vim.g.go_info_mode = 'gopls'
+      -- vim.g.go_gopls_enabled = 0
     end,
   },
   'leoluz/nvim-dap-go',
-  'voldikss/vim-floaterm',
   'akinsho/toggleterm.nvim',
 }, {
   performance = {
@@ -61,16 +62,10 @@ require("lazy").setup({
 -------------
 require('core.mappings').config()
 require('core.autocommands').config()
-require('plugins.treesitter').config()
-require('plugins.lualine').config()
 require('plugins.pretty-fold').config()
-require('plugins.vimwiki').config()
 require('plugins.lsp').config()
 require('plugins.nvim-dap').config()
-require('plugins.telescope').config()
 require('plugins.vim-test').config()
-require('plugins.vim-floaterm').config()
--- require('plugins.nvim-test').config()
 
 
 -- enable jumping between <tags></tags> with %
@@ -123,7 +118,7 @@ local with_null_ls_formatter = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
-local servers = { 'tsserver', 'phpactor', 'volar', 'svelte', 'lua_ls', 'gopls', 'denols', 'cssls', 'prismals',
+local servers = { 'volar', 'tsserver', 'phpactor', 'svelte', 'lua_ls', 'gopls', 'denols', 'cssls', 'prismals',
   'gdscript', 'pyright', 'html', 'tailwindcss', 'emmet_ls' }
 for _, lsp in pairs(servers) do
   local config = {
@@ -135,10 +130,23 @@ for _, lsp in pairs(servers) do
   }
 
   if lsp == 'volar' then
-    -- goto continue
     config.root_dir = nvim_lsp.util.root_pattern('vue.config.js')
     config.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
-    -- config.on_attach = with_null_ls_formatter
+    config.on_attach = with_null_ls_formatter
+  end
+
+  if lsp == 'tsserver' then
+    config.root_dir = function(startpath)
+      local vue_config_path
+      vue_config_path = nvim_lsp.util.root_pattern('vue.config.js')(startpath)
+      if vue_config_path then
+        return nil
+      end
+      return nvim_lsp.util.root_pattern('package.json')(startpath)
+    end
+
+    config.single_file_support = false
+    config.on_attach = with_null_ls_formatter
   end
 
   if lsp == 'lua_ls' then
@@ -161,11 +169,6 @@ for _, lsp in pairs(servers) do
     }
   end
 
-  if lsp == 'tsserver' then
-    -- goto continue -- temp disable tsserver for vue dev (volar)
-    config.root_dir = nvim_lsp.util.root_pattern('package.json')
-    config.on_attach = with_null_ls_formatter
-  end
 
   if lsp == 'denols' then
     config.root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc')
@@ -174,5 +177,4 @@ for _, lsp in pairs(servers) do
   end
 
   nvim_lsp[lsp].setup(config)
-  -- ::continue::
 end

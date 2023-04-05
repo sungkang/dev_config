@@ -7,14 +7,16 @@ return {
       'antoinemadec/FixCursorHold.nvim',
       'nvim-neotest/neotest-go',
       'haydenmeade/neotest-jest',
+      'nvim-neotest/neotest-vim-test',
     },
     config = function()
       require('neotest').setup({
         adapters = {
-          require('neotest-jest')({
-            jestCommand = "npm run test:unit --",
-          }),
+          -- require('neotest-jest')({
+          --   jestCommand = "npm run test:unit --",
+          -- }),
           require('neotest-go')({}),
+          require('neotest-vim-test')({ ignore_filetypes = { "javascript" }}),
         },
       })
 

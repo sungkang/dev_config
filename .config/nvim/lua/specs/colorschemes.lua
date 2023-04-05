@@ -1,7 +1,9 @@
 return {
   {
     'rebelot/kanagawa.nvim',
-    enabled = false,
+    enabled = true,
+    lazy = false,
+    priority = 1000,
     config = function()
       vim.cmd('colorscheme kanagawa')
     end
@@ -23,7 +25,7 @@ return {
   },
   {
     'sainnhe/gruvbox-material',
-    enabled = true,
+    enabled = false,
     config = function()
       vim.g.gruvbox_material_background = 'medium'
       vim.g.gruvbox_material_visual = 'reverse'
@@ -44,5 +46,4 @@ return {
       vim.cmd('highlight CursorLineNr guifg=orange')
     end
   },
-
 }
