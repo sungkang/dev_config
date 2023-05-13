@@ -65,16 +65,4 @@ return {
     'folke/trouble.nvim',
     opts = { mode = 'document_diagnostics' },
   },
-  {
-    'voldikss/vim-floaterm',
-    config = function()
-      local opts = { noremap = true, silent = true }
-
-      vim.g.floaterm_title = ''
-      vim.g.floaterm_width = 0.95
-      vim.g.floaterm_height = 0.95
-      vim.keymap.set('n', '<leader>g', ':FloatermNew lazygit<cr>', opts)
-      vim.keymap.set('n', '<leader>d', ':FloatermNew lazydocker<cr>', opts)
-    end
-  },
 }
