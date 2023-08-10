@@ -68,8 +68,8 @@ function M.config()
   -- set('n', '<leader>n', ':NvimTreeToggle<cr>', opts)
   -- set('n', '<leader>r', ':NvimTreeFindFile<cr>', opts)
   -- neo-tree
-  set('n', '<leader>r', ':Neotree reveal reveal_force_cwd<cr>', opts)
-  set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
+  -- set('n', '<leader>r', ':Neotree reveal reveal_force_cwd<cr>', opts)
+  -- set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
 
   -- mappings: diff
   set('n', '<leader>dfa', ':windo diffthis<cr>', opts)

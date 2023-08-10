@@ -8,8 +8,8 @@ return {
       's1n7ax/nvim-window-picker',
     },
     config = function()
-      require('window-picker').setup {}
-      require('neo-tree').setup {
+      require('window-picker').setup()
+      require('neo-tree').setup({
         default_component_configs = {
           indent = {
             with_expanders = true,
@@ -46,7 +46,14 @@ return {
             end
           },
         },
-      }
+      })
+
+      -- mappings
+      local set = vim.keymap.set
+      local opts = { noremap = true, silent = true }
+
+      set('n', '<leader>r', ':Neotree reveal reveal_force_cwd<cr>', opts)
+      set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
     end
   },
 }

@@ -65,4 +65,19 @@ return {
     'folke/trouble.nvim',
     opts = { mode = 'document_diagnostics' },
   },
+  {
+    'zbirenbaum/copilot.lua',
+    lazy = true,
+    event = 'InsertEnter',
+    config = function ()
+      require('copilot').setup({
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "<C-y>",
+          }
+        }
+      })
+    end,
+  },
 }

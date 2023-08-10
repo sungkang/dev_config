@@ -22,6 +22,7 @@ return {
       require('telescope').setup({
         defaults = {
           layout_strategy = 'horizontal',
+          -- wrap_results = true,
           path_display = { 'truncate' },
           layout_config = {
             prompt_position = 'top',
@@ -38,6 +39,8 @@ return {
         },
         pickers = {
           live_grep = {
+            hidden = true,
+            no_ignore = true,
             mappings = {
               n = {
                 ["<C-c>"] = "close",

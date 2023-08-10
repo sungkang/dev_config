@@ -1,7 +1,10 @@
+snippet lam  lambda
+	(${1}) => {${0}}
 
-# lambda
-snippet lam
-		(${1}) => {${0}}
+snippet doc  block comment
+	/**
+	 * ${0}
+	 */
 
 # logf
 snippet logf
@@ -10,3 +13,15 @@ snippet logf
 # logff
 snippet logff
   console.log('🔥 ${1}', JSON.parse(JSON.stringify(${1})));
+
+
+## playwright
+snippet des  playwright test describe
+	test.describe('${1}', () => {
+		${0}
+	});
+
+snippet tes  playwright test
+	test('${1}', async ({ page }) => {
+		${0}
+	});

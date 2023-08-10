@@ -130,7 +130,7 @@ for _, lsp in pairs(servers) do
   }
 
   if lsp == 'volar' then
-    config.root_dir = nvim_lsp.util.root_pattern('vue.config.js')
+    config.root_dir = nvim_lsp.util.root_pattern('.vue')
     config.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
     config.on_attach = with_null_ls_formatter
   end
@@ -138,7 +138,7 @@ for _, lsp in pairs(servers) do
   if lsp == 'tsserver' then
     config.root_dir = function(startpath)
       local vue_config_path
-      vue_config_path = nvim_lsp.util.root_pattern('vue.config.js')(startpath)
+      vue_config_path = nvim_lsp.util.root_pattern('.vue')(startpath)
       if vue_config_path then
         return nil
       end

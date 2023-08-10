@@ -16,7 +16,7 @@ return {
           --   jestCommand = "npm run test:unit --",
           -- }),
           require('neotest-go')({}),
-          require('neotest-vim-test')({ ignore_filetypes = { "javascript" }}),
+          require('neotest-vim-test')({ ignore_filetypes = { }}),
         },
       })
 

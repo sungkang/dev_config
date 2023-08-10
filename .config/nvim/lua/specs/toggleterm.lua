@@ -27,8 +27,7 @@ return {
         hidden = true,
         direction = 'float',
         env = {
-          -- pip install neovim-remote
-          GIT_EDITOR = [[nvr -cc vsplit --remote-wait +'set bufhidden=wipe']],
+          GIT_EDITOR = [[nvr -cc vsplit +'set bufhidden=wipe']],
         },
         on_open = function(term)
           vim.cmd('startinsert!')

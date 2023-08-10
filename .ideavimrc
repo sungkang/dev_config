@@ -26,6 +26,7 @@ set timeoutlen=400
 " === SECTION: Mappings ===
 " =========================
 let mapleader=","
+set easymotion
 
 " === Configuration ===
 noremap <leader>ev :vs ~/.ideavimrc<cr>
@@ -68,6 +69,7 @@ map <silent> <leader>t <Action>(GotoTest)
 " === Project Management ===
 map <leader>rr <Action>(ManageRecentProjects)
 map <leader>s <Action>(FileStructurePopup)
+map <leader>b <Action>(RecentFiles)
 
 " === FileChooser ===
 map <leader>,n <Action>(FileChooser.GotoHome)
@@ -100,6 +102,7 @@ map <space>rn <Action>(RenameElement)
 
 " === Git ===
 map <space>ga <Action>(Annotate)
+map <space>gp <Action>(ActivatePullRequestsToolWindow)
 
 " === Section: window management ===
 map <C-s>z <Action>(HideAllWindows)
