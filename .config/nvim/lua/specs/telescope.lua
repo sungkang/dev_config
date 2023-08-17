@@ -15,10 +15,13 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      'folke/trouble.nvim'
+      'folke/trouble.nvim',
+      'nvim-telescope/telescope-live-grep-args.nvim',
     },
     config = function()
       local trouble = require('trouble.providers.telescope')
+      local lga_actions = require('telescope-live-grep-args.actions')
+
       require('telescope').setup({
         defaults = {
           layout_strategy = 'horizontal',
@@ -100,6 +103,15 @@ return {
           },
         },
         extensions = {
+          live_grep_args = {
+            auto_quoting = true,
+            mappings = {
+              i = {
+                ["<C-k>"] = lga_actions.quote_prompt(),
+                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              },
+            }
+          },
           -- the plugin currently doesn't support this
           harpoon = {
             initial_mode = "normal",
@@ -115,7 +127,7 @@ return {
 
       -- extensions
       require('telescope').load_extension('harpoon')
-
+      require('telescope').load_extension('live_grep_args')
 
       -- mappings
       local set = vim.keymap.set
@@ -130,7 +142,12 @@ return {
         require('telescope.builtin').find_files({ default_text = text })
       end, opts)
 
-      set('n', '<leader>f', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+      -- set('n', '<leader>f', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+      -- set('v', '<leader>f', function()
+      --   local text = vim.getVisualSelection()
+      --   require('telescope.builtin').live_grep({ default_text = text })
+      -- end, opts)
+      set('n', '<leader>f', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>', opts)
       set('v', '<leader>f', function()
         local text = vim.getVisualSelection()
         require('telescope.builtin').live_grep({ default_text = text })

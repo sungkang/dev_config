@@ -36,6 +36,8 @@ function M.config()
   set('n', '<c-l>', '<c-w>l', opts)
 
   -- quickfix
+  set('n', '<leader>cc', ':copen<cr>', opts)
+  set('n', '<leader>co', ':cclose<cr>', opts)
   set('n', '[q', ':cp<cr>zz', opts)
   set('n', ']q', ':cn<cr>zz', opts)
 
