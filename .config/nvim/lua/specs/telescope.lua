@@ -25,6 +25,7 @@ return {
       require('telescope').setup({
         defaults = {
           layout_strategy = 'horizontal',
+          file_ignore_patterns = { 'node_modules', '.git' },
           -- wrap_results = true,
           path_display = { 'truncate' },
           layout_config = {

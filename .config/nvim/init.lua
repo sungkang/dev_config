@@ -8,7 +8,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local opts = { noremap = true, silent = true }
 
 -- custom leader
@@ -90,7 +89,7 @@ local nvim_lsp = require('lspconfig')
 local bset = vim.api.nvim_buf_set_keymap
 
 local on_attach = function(client, bufnr)
-  bset(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+  bset(bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   bset(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
   bset(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
   bset(bufnr, 'n', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
@@ -99,7 +98,7 @@ local on_attach = function(client, bufnr)
   bset(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
   bset(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   bset(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  bset(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  bset(bufnr, 'n', '<space>c', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   bset(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
   bset(bufnr, 'v', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
   bset(bufnr, 'n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
@@ -119,7 +118,7 @@ local with_null_ls_formatter = function(client, bufnr)
 end
 
 local servers = { 'volar', 'tsserver', 'phpactor', 'svelte', 'lua_ls', 'gopls', 'denols', 'cssls', 'prismals',
-  'gdscript', 'pyright', 'html', 'tailwindcss', 'emmet_ls' }
+  'gdscript', 'pyright', 'html', 'tailwindcss', 'emmet_ls', 'clangd' }
 for _, lsp in pairs(servers) do
   local config = {
     on_attach = on_attach,

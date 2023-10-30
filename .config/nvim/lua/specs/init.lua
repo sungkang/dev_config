@@ -4,7 +4,12 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-dotenv',
   'easymotion/vim-easymotion',
-  'airblade/vim-gitgutter',
+  {
+    'airblade/vim-gitgutter',
+    config = function()
+      vim.g.gitgutter_grep = 'rg'
+    end
+  },
   {
     'numToStr/Comment.nvim',
     config = true,
@@ -33,9 +38,7 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      require("indent_blankline").setup {
-        show_current_context = true,
-      }
+      require("ibl").setup {}
       vim.cmd('highlight IndentBlanklineContextChar guifg=#88aeb2 gui=nocombine')
     end
   },
