@@ -36,8 +36,6 @@ nnoremap H Hzz
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <leader>, ,
-map ]m <Action>(MethodDown)
-map [m <Action>(MethodUp)
 
 " === Windows and Tabs ===
 map <c-h> <c-w>h
@@ -60,8 +58,16 @@ nnoremap <silent> <c-b> <c-6>
 nnoremap <silent> <leader>bb :bd<cr>
 nnoremap <silent> <leader>ba :%bd<cr>
 
-" === Search ===
+" === Search & Navigation ===
+map <leader>f <Action>(FindInPath)
+map <C-p> <Action>(GotoFile)
 nnoremap <silent> <leader>/ :noh<cr>
+map ]m <Action>(MethodDown)
+map [m <Action>(MethodUp)
+map ]e <Action>(GotoNextError)
+map [e <Action>(GotoPreviousError)
+map ]c <Action>(VcsShowNextChangeMarker)
+map [c <Action>(VcsShowPrevChangeMarker)
 
 " === Goto Test ===
 map <silent> <leader>t <Action>(GotoTest)
@@ -72,13 +78,11 @@ map <leader>s <Action>(FileStructurePopup)
 map <leader>b <Action>(RecentFiles)
 
 " === FileChooser ===
-map <leader>,n <Action>(FileChooser.GotoHome)
-
-map <leader>f <Action>(FindInPath)
-map <C-p> <Action>(GotoFile)
+map <leader>n <Action>(FileChooser.GotoHome)
 
 " === LSP ===
 map gr <Action>(GotoDeclaration)
+map gt <Action>(GotoTypeDeclaration)
 map <space>e <Action>(ShowErrorDescription)
 
 " === Debugging ===
@@ -103,6 +107,8 @@ map <space>rn <Action>(RenameElement)
 " === Git ===
 map <space>ga <Action>(Annotate)
 map <space>gp <Action>(ActivatePullRequestsToolWindow)
+map <space>hp <Action>(VcsShowCurrentChangeMarker)
+map <space>hu <Action>(Vcs.RollbackChangedLines)
 
 " === Section: window management ===
 map <C-s>z <Action>(HideAllWindows)

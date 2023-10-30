@@ -1,19 +1,42 @@
 snippet lam  lambda
 	(${1}) => {${0}}
 
+## comments
 snippet doc  block comment
 	/**
 	 * ${0}
 	 */
 
-# logf
-snippet logf
-  console.log('🔥 ${1}', ${1});
+## comments (vue)
+snippet vdf	vue doc functions
+	// ----------
+	// functions
+	// ----------
 
-# logff
-snippet logff
-  console.log('🔥 ${1}', JSON.parse(JSON.stringify(${1})));
+snippet vdl	vue doc lifecycles 
+	// -----------
+	// lifecycles
+	// -----------
 
+snippet vdd	vue doc data 
+	// -----
+	// data
+	// -----
+
+snippet vdc	vue doc computed 
+	// ---------
+	// computed
+	// ---------
+
+snippet vdw	vue doc watchers 
+	// ---------
+	// watchers
+	// ---------
+
+snippet vdh	vue doc handlers
+	// ---------
+	// handlers
+	// ---------
 
 ## playwright
 snippet des  playwright test describe
