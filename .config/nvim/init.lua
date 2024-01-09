@@ -34,7 +34,7 @@ require("lazy").setup({
   'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
   'L3MON4D3/LuaSnip',         -- Snippets plugin
   'RRethy/vim-illuminate',
-  'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim',
   'mfussenegger/nvim-dap',
   {
     'fatih/vim-go',
