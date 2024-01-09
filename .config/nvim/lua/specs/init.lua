@@ -53,14 +53,6 @@ return {
     },
   },
   {
-    'declancm/cinnamon.nvim',
-    enabled = false,
-    opts = {
-      default_delay = 1,
-      extra_keymaps = true,
-    },
-  },
-  {
     'folke/neodev.nvim',
     config = true,
   },
