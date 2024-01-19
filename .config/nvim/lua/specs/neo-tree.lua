@@ -16,6 +16,7 @@ return {
           },
         },
         window = {
+          position = "float",
           mapping_options = {
             noremap = true,
             nowait = true,
