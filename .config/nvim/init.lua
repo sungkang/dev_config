@@ -117,8 +117,7 @@ local with_null_ls_formatter = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
-local servers = { 'volar', 'tsserver', 'phpactor', 'svelte', 'lua_ls', 'gopls', 'denols', 'cssls', 'prismals',
-  'gdscript', 'pyright', 'html', 'tailwindcss', 'emmet_ls', 'clangd' }
+local servers = { 'volar', 'tsserver', 'svelte', 'lua_ls', 'gopls', 'cssls', 'gdscript', 'pyright', 'html', 'tailwindcss', 'emmet_ls', 'clangd' }
 for _, lsp in pairs(servers) do
   local config = {
     on_attach = on_attach,

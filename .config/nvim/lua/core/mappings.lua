@@ -7,20 +7,20 @@ function M.config()
   -- local wk = require('which-key')
 
   -- lazy.nvim
-  set('n', '<leader>l', ':Lazy<cr>', opts)
+  set('n', '<leader>l', '<Cmd>Lazy<CR>', opts)
 
   -----------------
   -- misc mappings
   -----------------
-  set('n', '<leader>ev', ':vsplit $MYVIMRC<cr>', opts)
-  set('n', '<leader>vv', ':source $MYVIMRC<cr>', opts)
-  set('n', '<leader>/', ':noh<cr>', opts)
-  set('n', '<leader>q', ':q<cr>', opts)
-  set('n', '<leader>Q', ':q!<cr>', opts)
-  set('n', '<leader>w', ':w<cr>', opts)
-  set('n', '<leader>ee', ':e<cr>', opts)
+  set('n', '<leader>ev', '<Cmd>vsplit $MYVIMRC<CR>', opts)
+  set('n', '<leader>vv', '<Cmd>source $MYVIMRC<CR>', opts)
+  set('n', '<leader>/', '<Cmd>noh<CR>', opts)
+  set('n', '<leader>q', '<Cmd>q<CR>', opts)
+  set('n', '<leader>Q', '<Cmd>q!<CR>', opts)
+  set('n', '<leader>w', '<Cmd>w<CR>', opts)
+  set('n', '<leader>ee', '<Cmd>e<CR>', opts)
   set('n', 'U', '<c-r>', opts)
-  set('n', '<space>lf', ':!eslint_d --fix %<cr>', opts)
+  set('n', '<space>lf', '<Cmd>!eslint_d --fix %<CR>', opts)
 
   -- jump to normal mode in terminal
   set('t', '<c-\\><c-\\>', '<c-\\><c-n>', opts)
@@ -28,8 +28,7 @@ function M.config()
   -------------------------
   -- navigation and search
   -------------------------
-  -- set('n', 'L', '<cmd>lua Scroll("Lzz", 1, 1)<cr>', opts)
-  -- set('n', 'H', '<cmd>lua Scroll("Hzz", 1, 1)<cr>', opts)
+  set('n', '<c-f>', '<Cmd>silent !tmux neww tmux-sessionizer<CR>', opts)
   set('n', 'L', 'Lzz', opts)
   set('n', 'H', 'Hzz', opts)
   set('n', '<leader>,', ',', opts)
@@ -45,24 +44,24 @@ function M.config()
   ------------
   -- quickfix
   ------------
-  set('n', '<leader>cc', ':copen<cr>', opts)
-  set('n', '<leader>cl', ':cclose<cr>', opts)
-  set('n', '[q', ':cp<cr>zz', opts)
-  set('n', ']q', ':cn<cr>zz', opts)
+  set('n', '<leader>cc', '<Cmd>copen<CR>', opts)
+  set('n', '<leader>cl', '<Cmd>cclose<CR>', opts)
+  set('n', '[q', '<Cmd>cp<CR>zz', opts)
+  set('n', ']q', '<Cmd>cn<CR>zz', opts)
 
   ------------------
   -- tab management
   ------------------
-  set('n', '<leader>tn', ':tabnew<cr>', opts)
-  set('n', '<leader>tc', ':tabclose<cr>', opts)
-  set('n', '[t', ':tabp<cr>', opts)
-  set('n', ']t', ':tabn<cr>', opts)
+  set('n', '<leader>tn', '<Cmd>tabnew<CR>', opts)
+  set('n', '<leader>tc', '<Cmd>tabclose<CR>', opts)
+  set('n', '[t', '<Cmd>tabp<CR>', opts)
+  set('n', ']t', '<Cmd>tabn<CR>', opts)
 
   ----------
   -- splits
   ----------
-  set('n', 'ss', ':split<cr><c-w>w', opts)
-  set('n', 'vs', ':vsplit<cr><c-w>w', opts)
+  set('n', 'ss', '<Cmd>split<CR><c-w>w', opts)
+  set('n', 'vs', '<Cmd>vsplit<CR><c-w>w', opts)
 
   -- resize splits
   -- (vertical)
@@ -75,32 +74,31 @@ function M.config()
   -----------
   -- buffers
   -----------
-  set('n', '<c-f>', '<c-^>', opts)
-  set('n', '<c-b>', '<c-^>', opts)
-  set('n', '<leader>BB', ':bd<cr>', opts)
-  set('n', '<leader>BA', ':%bd<cr>', opts)
-  set('n', '<space>a', '<cmd>lua require("harpoon.mark").add_file()<cr>', opts)
+  set('n', '<c-t>', '<c-^>', opts)
+  set('n', '<leader>BB', '<Cmd>bd<CR>', opts)
+  set('n', '<leader>BA', '<Cmd>%bd<CR>', opts)
+  set('n', '<space>a', '<Cmd>lua require("harpoon.mark").add_file()<CR>', opts)
 
   -----------
   -- diffing
   -----------
-  set('n', '<leader>dfa', ':windo diffthis<cr>', opts)
-  set('n', '<leader>dfo', ':windo diffoff<cr>', opts)
+  set('n', '<leader>dfa', '<Cmd>windo diffthis<CR>', opts)
+  set('n', '<leader>dfo', '<Cmd>windo diffoff<CR>', opts)
 
   ------------
   -- fugitive
   ------------
-  set('n', '<space>gst', ':G<cr>', opts)
-  set('n', '<space>ga', ':G blame<cr>', opts)
-  set('n', '<space>gl', ':G log --graph<cr>', opts)
-  set('n', '<space>gla', ':G log --graph --decorate --all<cr>', opts)
+  set('n', '<space>gst', '<Cmd>G<CR>', opts)
+  set('n', '<space>ga', '<Cmd>G blame<CR>', opts)
+  set('n', '<space>gl', '<Cmd>G log --graph<CR>', opts)
+  set('n', '<space>gla', '<Cmd>G log --graph --decorate --all<CR>', opts)
 
   -----------
   -- trouble
   -----------
-  set('n', '<leader>xx', ':TroubleToggle<cr>', opts)
-  set('n', '<leader>xw', ':Trouble workspace_diagnostics<cr>', opts)
-  set('n', '<leader>xd', ':Trouble document_diagnostics<cr>', opts)
+  set('n', '<leader>xx', '<Cmd>TroubleToggle<CR>', opts)
+  set('n', '<leader>xw', '<Cmd>Trouble workspace_diagnostics<CR>', opts)
+  set('n', '<leader>xd', '<Cmd>Trouble document_diagnostics<CR>', opts)
 
   --------------
   -- formatting
@@ -108,38 +106,38 @@ function M.config()
   -- wk.register({
   --     F = {
   --         name = "filetype",
-  --         j = { "<cmd>set filetype=json foldmethod=indent<cr>", "JSON" },
+  --         j = { "<Cmd>set filetype=json foldmethod=indent<CR>", "JSON" },
   --     },
   -- }, { prefix = '<leader>'})
-  set('n', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
-  set('v', '<leader>jf', ":'<,'>!python3 -m json.tool<cr>", opts)
+  set('n', '<leader>jf', "<Cmd>'<,'>!python3 -m json.tool<CR>", opts)
+  set('v', '<leader>jf', "<Cmd>'<,'>!python3 -m json.tool<CR>", opts)
 
   -----------
   -- folding
   -----------
-  set('n', 'z<cr>', "zr", opts)
+  set('n', 'z<CR>', "zr", opts)
   set('n', 'z<bs>', "zm", opts)
 
   -----------
   -- testing
   -----------
-  -- set('n', '<space>rt', ':TestNearest<cr>', opts)
-  -- set('n', '<space>rf', ':TestFile<cr>', opts)
-  -- set('n', '<space>ra', ':TestSuite<cr>', opts)
-  -- set('n', '<space>rr', ':TestLast<cr>', opts)
-  -- set('n', '<space>g', ':TestVisit<cr>', opts)
+  -- set('n', '<space>rt', '<Cmd>TestNearest<CR>', opts)
+  -- set('n', '<space>rf', '<Cmd>TestFile<CR>', opts)
+  -- set('n', '<space>ra', '<Cmd>TestSuite<CR>', opts)
+  -- set('n', '<space>rr', '<Cmd>TestLast<CR>', opts)
+  -- set('n', '<space>g', '<Cmd>TestVisit<CR>', opts)
 
   -------------
   -- gitgutter
   -------------
-  set('n', '<space>hp', '<cmd>GitGutterPreviewHunk<cr>')
-  set('n', '<space>hs', '<cmd>GitGutterStageHunk<cr>')
-  set('n', '<space>hu', '<cmd>GitGutterUndoHunk<cr>')
+  set('n', '<space>hp', '<Cmd>GitGutterPreviewHunk<CR>')
+  set('n', '<space>hs', '<Cmd>GitGutterStageHunk<CR>')
+  set('n', '<space>hu', '<Cmd>GitGutterUndoHunk<CR>')
 
   ------------------
   -- timestamp line
   ------------------
-  set('n', '<leader>T', ":pu=strftime('%c')<cr>kJ", opts)
+  set('n', '<leader>T', "<Cmd>pu=strftime('%c')<CR>kJ", opts)
 end
 
 return M
