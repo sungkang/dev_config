@@ -3,7 +3,10 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/dev/me ~/dev/work/cac_platform ~/dev/sketch -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$({
+    tmux ls | awk -F: '{print $1}';  # List tmux sessions and extract only the session names
+    find ~/dev/me ~/dev/work/cac_platform ~/dev/sketch -mindepth 1 -maxdepth 1 -type d;  # Find directories one level deep in the specified paths
+} | fzf)  # Use fzf to select from the combined list
 fi
 
 if [[ -z $selected ]]; then
