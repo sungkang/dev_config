@@ -10,15 +10,15 @@ vim.opt.rtp:prepend(lazypath)
 
 local opts = { noremap = true, silent = true }
 
--- custom leader
+-- custom leader --
 vim.g.mapleader = ','
 
 require('core.globals').config()
 require('core.options').config()
 
--------------
--- plugins --
--------------
+-----------
+-- plugins 
+-----------
 require("lazy").setup({
   {
     import = "specs",

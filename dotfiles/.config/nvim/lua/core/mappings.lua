@@ -28,7 +28,7 @@ function M.config()
   -------------------------
   -- navigation and search
   -------------------------
-  set('n', '<c-f>', '<Cmd>silent !tmux neww tmux-sessionizer<CR>', opts)
+  set('n', '<c-t>', '<Cmd>silent !tmux neww tmux-sessionizer<CR>', opts)
   set('n', 'L', 'Lzz', opts)
   set('n', 'H', 'Hzz', opts)
   set('n', '<leader>,', ',', opts)
@@ -74,7 +74,7 @@ function M.config()
   -----------
   -- buffers
   -----------
-  set('n', '<c-t>', '<c-^>', opts)
+  set('n', '<c-f>', '<c-^>', opts)
   set('n', '<leader>BB', '<Cmd>bd<CR>', opts)
   set('n', '<leader>BA', '<Cmd>%bd<CR>', opts)
   set('n', '<space>a', '<Cmd>lua require("harpoon.mark").add_file()<CR>', opts)
