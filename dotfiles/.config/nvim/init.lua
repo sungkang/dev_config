@@ -17,7 +17,7 @@ require('core.globals').config()
 require('core.options').config()
 
 -----------
--- plugins 
+-- plugins
 -----------
 require("lazy").setup({
   {
@@ -117,7 +117,8 @@ local with_null_ls_formatter = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
-local servers = { 'volar', 'tsserver', 'svelte', 'lua_ls', 'gopls', 'cssls', 'gdscript', 'pyright', 'html', 'tailwindcss', 'emmet_ls', 'clangd' }
+local servers = { 'volar', 'tsserver', 'svelte', 'lua_ls', 'gopls', 'cssls', 'gdscript', 'pyright', 'tailwindcss',
+  'emmet_ls', 'clangd' }
 for _, lsp in pairs(servers) do
   local config = {
     on_attach = on_attach,
@@ -130,6 +131,11 @@ for _, lsp in pairs(servers) do
   if lsp == 'volar' then
     config.root_dir = nvim_lsp.util.root_pattern('.vue')
     config.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+    config.on_attach = with_null_ls_formatter
+  end
+
+  if lsp == 'svelte' then
+    config.root_dir = nvim_lsp.util.root_pattern('svelte.config.js')
     config.on_attach = with_null_ls_formatter
   end
 

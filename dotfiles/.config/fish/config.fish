@@ -20,8 +20,8 @@ if status is-interactive
   fish_vi_key_bindings
 
   # custom bindings
-  bind -M insert \ct 'tmux-sessionizer; commandline -f repaint'
-  bind -M default \ct 'tmux-sessionizer; commandline -f repaint'
+  bind -M insert \cf 'tmux-sessionizer; commandline -f repaint'
+  bind -M default \cf 'tmux-sessionizer; commandline -f repaint'
 
   # source autojump for fish
   set --local AUTOJUMP_PATH /opt/homebrew/share/autojump/autojump.fish
