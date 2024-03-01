@@ -4,8 +4,6 @@ function M.config()
   local set = vim.keymap.set
   local opts = { noremap = true, silent = true }
 
-  -- local wk = require('which-key')
-
   -- lazy.nvim
   set('n', '<leader>l', '<Cmd>Lazy<CR>', opts)
 

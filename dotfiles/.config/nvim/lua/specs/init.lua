@@ -1,4 +1,29 @@
 return {
+  'nvim-lua/plenary.nvim',
+  'vim-test/vim-test',
+  'neovim/nvim-lspconfig',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+  'L3MON4D3/LuaSnip',         -- Snippets plugin
+  'RRethy/vim-illuminate',
+  'nvimtools/none-ls.nvim',
+  'mfussenegger/nvim-dap',
+  {
+    'fatih/vim-go',
+    enabled = false,
+    config = function()
+      -- vim.cmd([[:GoUpdateBinaries]])
+      -- vim.g.go_def_mode = 'gopls'
+      -- vim.g.go_info_mode = 'gopls'
+      -- vim.g.go_gopls_enabled = 0
+    end,
+  },
+  'leoluz/nvim-dap-go',
+  'akinsho/toggleterm.nvim',
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'tpope/vim-fugitive',
@@ -64,7 +89,7 @@ return {
     'zbirenbaum/copilot.lua',
     lazy = true,
     event = 'InsertEnter',
-    config = function ()
+    config = function()
       require('copilot').setup({
         suggestion = {
           auto_trigger = true,
