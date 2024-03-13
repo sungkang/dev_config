@@ -12,6 +12,10 @@ M.config = function()
       autocmd BufEnter * if &buftype == 'help' && winwidth(0) == &columns | wincmd L | endif
     augroup END
 
+    augroup _go
+      autocmd!
+      autocmd BufWritePre *.go lua vim.lsp.buf.format()
+
   ]])
     -- Notes: _help
     -- When opening the help buffer, upon open, set the buffer to the right most vertical split.
