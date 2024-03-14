@@ -8,18 +8,18 @@ return {
       vim.g['test#basic#start_normal'] = 1
     end,
   },
-  'neovim/nvim-lspconfig',
+  {
+    'L3MON4D3/LuaSnip',
+    config = function()
+      require("luasnip.loaders.from_snipmate").lazy_load()
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end
+  },
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
   'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
-  {
-    'L3MON4D3/LuaSnip',
-    config = function()
-      require('luasnip.loaders.from_vscode').lazy_load()
-    end
-  },
   {
     'hrsh7th/nvim-cmp',
     config = function()
@@ -70,8 +70,8 @@ return {
           end,
         },
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'nvim_lsp' },
         }, {
           { name = 'buffer' },
         }),
@@ -95,25 +95,6 @@ return {
     end
   },
   'RRethy/vim-illuminate',
-  {
-    'nvimtools/none-ls.nvim',
-    config = function()
-      local bset = vim.api.nvim_buf_set_keymap
-      local opts = { noremap = true, silent = true }
-      local null_ls = require('null-ls')
-
-      null_ls.setup {
-        sources = {
-          null_ls.builtins.formatting.prettierd,
-          null_ls.builtins.formatting.pg_format,
-        },
-        on_attach = function(client, bufnr)
-          bset(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-          bset(bufnr, 'v', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-        end
-      }
-    end
-  },
   {
     'mfussenegger/nvim-dap',
     config = function()

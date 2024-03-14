@@ -3,6 +3,9 @@ local is_npm_package_installed = require('utils').is_npm_package_installed
 return {
   {
     'neovim/nvim-lspconfig',
+    dependencies = {
+      'nvimtools/none-ls.nvim'
+    },
     config = function()
       local nvim_lsp = require('lspconfig')
       local bset = vim.api.nvim_buf_set_keymap
@@ -108,6 +111,25 @@ return {
 
         nvim_lsp[lsp].setup(config)
       end
+    end
+  },
+  {
+    'nvimtools/none-ls.nvim',
+    config = function()
+      local bset = vim.api.nvim_buf_set_keymap
+      local opts = { noremap = true, silent = false }
+      local null_ls = require('null-ls')
+
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.pg_format,
+        },
+        on_attach = function(client, bufnr)
+          bset(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+          bset(bufnr, 'v', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+        end
+      }
     end
   },
 }

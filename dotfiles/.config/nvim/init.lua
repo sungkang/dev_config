@@ -47,4 +47,3 @@ vim.cmd('runtime macros/matchit.vim')
 vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }
-
