@@ -53,10 +53,10 @@ map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
 
 " === Buffers ===
-nnoremap <silent> <c-f> <c-6>
-nnoremap <silent> <c-b> <c-6>
+nnoremap <silent> <leader>b <Action>(RecentFiles)
 nnoremap <silent> <leader>bb :bd<cr>
 nnoremap <silent> <leader>ba :%bd<cr>
+nnoremap <silent> <c-n> <c-6>
 
 " === Search & Navigation ===
 map <leader>f <Action>(FindInPath)

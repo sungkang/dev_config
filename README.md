@@ -1,2 +1,2 @@
 # dev_config
-Contains common configurations for zsh, vim, and others
+dot file goodies

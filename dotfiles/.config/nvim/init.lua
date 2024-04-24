@@ -28,22 +28,17 @@ require("lazy").setup(
     {
       import = "plugins",
     },
-  },
-  {
-    performance = {
-      cache = {
-        enable = true,
-      },
-    },
   }
 )
 
+-----------------------------------------------
 -- enable jumping between <tags></tags> with %
+-----------------------------------------------
 vim.cmd('runtime macros/matchit.vim')
 
------------------
--- code fences --
------------------
+---------------
+-- code fences
+---------------
 vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }

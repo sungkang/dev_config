@@ -52,7 +52,10 @@ return {
         }
 
         if lsp == 'volar' then
-          config.on_attach = with_null_ls_formatter
+          if is_npm_package_installed 'vue' then
+            config.on_attach = with_null_ls_formatter
+            config.filetypes = { 'typescript', 'javascript', 'vue', 'json' }
+          end
         end
 
         if lsp == 'svelte' then
@@ -61,21 +64,23 @@ return {
         end
 
         if lsp == 'tsserver' then
-          config.root_dir = function(startpath)
-            return nvim_lsp.util.root_pattern('package.json')(startpath)
+          if is_npm_package_installed 'vue' then
+            goto continue
+            -- ** this is for volar v2 ( which is currently kinda broken atm ) **
+            -- config.init_options = {
+            --   plugins = {
+            --     {
+            --       name = '@vue/typescript-plugin',
+            --       location = "node_modules/@vue/typescript-plugin",
+            --       languages = { 'javascript', 'typescript', 'vue' },
+            --     },
+            --   },
+            -- }
+            -- config.filetypes = { 'typescript', 'javascript', 'vue' }
           end
 
-          if is_npm_package_installed 'vue' then
-            config.init_options = {
-              plugins = {
-                {
-                  name = '@vue/typescript-plugin',
-                  location = "node_modules/@vue/typescript-plugin",
-                  languages = { 'javascript', 'typescript', 'vue' },
-                },
-              },
-            }
-            config.filetypes = { 'typescript', 'javascript', 'vue' }
+          config.root_dir = function(startpath)
+            return nvim_lsp.util.root_pattern('package.json')(startpath)
           end
 
           config.single_file_support = false
@@ -110,6 +115,7 @@ return {
         end
 
         nvim_lsp[lsp].setup(config)
+        ::continue::
       end
     end
   },
@@ -117,13 +123,13 @@ return {
     'nvimtools/none-ls.nvim',
     config = function()
       local bset = vim.api.nvim_buf_set_keymap
-      local opts = { noremap = true, silent = false }
+      local opts = { noremap = true, silent = true }
       local null_ls = require('null-ls')
 
       null_ls.setup {
         sources = {
           null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.pg_format,
+          null_ls.builtins.formatting.sql_formatter,
         },
         on_attach = function(client, bufnr)
           bset(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
