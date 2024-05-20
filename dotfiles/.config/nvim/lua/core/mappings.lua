@@ -136,6 +136,11 @@ function M.config()
   -- timestamp line
   ------------------
   set('n', '<leader>T', "<Cmd>pu=strftime('%c')<CR>kJ", opts)
+
+  ----------------
+  -- inlay hints
+  ----------------
+  set('n', '<leader>ih', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
 end
 
 return M

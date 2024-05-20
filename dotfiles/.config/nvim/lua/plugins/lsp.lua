@@ -54,7 +54,7 @@ return {
         if lsp == 'volar' then
           if is_npm_package_installed 'vue' then
             config.on_attach = with_null_ls_formatter
-            config.filetypes = { 'typescript', 'javascript', 'vue', 'json' }
+            -- config.filetypes = { 'typescript', 'javascript', 'vue', 'json' }
           end
         end
 
@@ -65,18 +65,45 @@ return {
 
         if lsp == 'tsserver' then
           if is_npm_package_installed 'vue' then
-            goto continue
+            -- goto continue
             -- ** this is for volar v2 ( which is currently kinda broken atm ) **
-            -- config.init_options = {
-            --   plugins = {
-            --     {
-            --       name = '@vue/typescript-plugin',
-            --       location = "node_modules/@vue/typescript-plugin",
-            --       languages = { 'javascript', 'typescript', 'vue' },
-            --     },
-            --   },
-            -- }
-            -- config.filetypes = { 'typescript', 'javascript', 'vue' }
+            config.init_options = {
+              plugins = {
+                {
+                  name = '@vue/typescript-plugin',
+                  location = "node_modules/@vue/typescript-plugin",
+                  languages = { 'javascript', 'typescript', 'vue' },
+                },
+              },
+            }
+            config.filetypes = { 'typescript', 'javascript', 'vue' }
+            config.settings = {
+              typescript = {
+                inlayHints = {
+                  includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                  includeInlayVariableTypeHints = true,
+                  includeInlayFunctionParameterTypeHints = true,
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                  includeInlayPropertyDeclarationTypeHints = true,
+                  includeInlayFunctionLikeReturnTypeHints = true,
+                  includeInlayEnumMemberValueHints = true,
+                },
+              },
+              javascript = {
+                inlayHints = {
+                  includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                  includeInlayVariableTypeHints = true,
+
+                  includeInlayFunctionParameterTypeHints = true,
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                  includeInlayPropertyDeclarationTypeHints = true,
+                  includeInlayFunctionLikeReturnTypeHints = true,
+                  includeInlayEnumMemberValueHints = true,
+                },
+              },
+            }
           end
 
           config.root_dir = function(startpath)

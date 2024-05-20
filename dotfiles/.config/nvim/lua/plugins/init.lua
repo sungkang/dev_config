@@ -124,10 +124,6 @@ return {
     end
   },
   {
-    'numToStr/Comment.nvim',
-    config = true,
-  },
-  {
     'vimwiki/vimwiki',
     config = function()
       vim.g.vimwiki_folding = 'expr'
