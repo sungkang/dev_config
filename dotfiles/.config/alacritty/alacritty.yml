@@ -117,7 +117,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: OperatorMonoSSm Nerd Font
+    family: MonaLisa2 Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Book
@@ -128,7 +128,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: OperatorMonoSSm Nerd Font
+    family: MonaLisa2 Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Medium
@@ -139,7 +139,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: OperatorMonoSSm Nerd Font
+    family: MonaLisa2 Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Book Italic
@@ -150,7 +150,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: OperatorMonoSSm Nerd Font
+    family: MonaLisa2 Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Medium Italic
