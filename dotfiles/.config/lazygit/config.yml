@@ -1,0 +1,16 @@
+os:
+  edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send ''<cmd>lua require("utils").lazygit_open_file({{filename}})<CR>'')'
+  editAtLine: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send ''<cmd>lua require("utils").lazygit_open_file({{filename}}, {{line}})<CR>'')'
+  editAtLineAndWait: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send ''<cmd>lua require("utils").lazygit_open_file({{filename}}, {{line}})<CR>'')'
+  openDirInEditor: '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote-tab {{dir}})'
+  editInTerminal: false 
+# git:
+#   paging:
+#     colorArg: always
+#     pager: delta --dark --paging=never --no-gitconfig
+    # useConfig: true # enable this so we can use git's custom pager (delta)
+gui:
+  theme:
+    selectedLineBgColor:
+      - '#3f3d3b'
+# promptToReturnFromSubprocess: false
