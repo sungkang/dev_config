@@ -41,7 +41,7 @@ return {
       end
 
       local servers = { 'volar', 'tsserver', 'svelte', 'lua_ls', 'gopls', 'cssls', 'gdscript', 'pyright', 'tailwindcss',
-        'emmet_ls', 'clangd' }
+        'emmet_ls', 'clangd', 'gleam', 'zls' }
       for _, lsp in pairs(servers) do
         local config = {
           on_attach = on_attach,
@@ -54,7 +54,6 @@ return {
         if lsp == 'volar' then
           if is_npm_package_installed 'vue' then
             config.on_attach = with_null_ls_formatter
-            -- config.filetypes = { 'typescript', 'javascript', 'vue', 'json' }
           end
         end
 
@@ -65,7 +64,6 @@ return {
 
         if lsp == 'tsserver' then
           if is_npm_package_installed 'vue' then
-            -- goto continue
             -- ** this is for volar v2 ( which is currently kinda broken atm ) **
             config.init_options = {
               plugins = {
@@ -77,34 +75,35 @@ return {
               },
             }
             config.filetypes = { 'typescript', 'javascript', 'vue' }
-            config.settings = {
-              typescript = {
-                inlayHints = {
-                  includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                  includeInlayVariableTypeHints = true,
-                  includeInlayFunctionParameterTypeHints = true,
-                  includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                  includeInlayPropertyDeclarationTypeHints = true,
-                  includeInlayFunctionLikeReturnTypeHints = true,
-                  includeInlayEnumMemberValueHints = true,
-                },
-              },
-              javascript = {
-                inlayHints = {
-                  includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                  includeInlayVariableTypeHints = true,
-
-                  includeInlayFunctionParameterTypeHints = true,
-                  includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                  includeInlayPropertyDeclarationTypeHints = true,
-                  includeInlayFunctionLikeReturnTypeHints = true,
-                  includeInlayEnumMemberValueHints = true,
-                },
-              },
-            }
           end
+
+          config.settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",   -- 'none' | 'literals' | 'all'
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",   -- 'none' | 'literals' | 'all'
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayVariableTypeHints = true,
+
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          }
 
           config.root_dir = function(startpath)
             return nvim_lsp.util.root_pattern('package.json')(startpath)
