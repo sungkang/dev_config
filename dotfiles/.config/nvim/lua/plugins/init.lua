@@ -186,6 +186,11 @@ return {
     'zbirenbaum/copilot.lua',
     lazy = true,
     event = 'InsertEnter',
+    keys = {
+      {'<leader>ce', '<cmd>Copilot enable<cr>'},
+      {'<leader>cd', '<cmd>Copilot disable<cr>'},
+      {'<leader>cs', '<cmd>Copilot status<cr>'},
+    },
     config = function()
       require('copilot').setup({
         suggestion = {
