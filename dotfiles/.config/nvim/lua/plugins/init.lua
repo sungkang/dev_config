@@ -1,6 +1,30 @@
 return {
   'nvim-lua/plenary.nvim',
   {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('oil').setup {
+        columns = { 'icon' },
+        keymaps = {
+          ['<C-h>'] = false,
+          ['<C-l>'] = false,
+          ['<C-p>'] = false,
+          ['<C-s>'] = false,
+        },
+        view_options = {
+          show_hidden = true,
+        }
+      }
+
+      -- Open parent directory in current window
+      vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'Open parent directory'})
+    end,
+  },
+  {
     'vim-test/vim-test',
     config = function()
       vim.g['test#strategy'] = 'neovim'
@@ -33,6 +57,7 @@ return {
       })
 
       cmp.setup({
+        preselect = cmp.PreselectMode.None,
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -47,7 +72,7 @@ return {
           ['<C-y>'] = cmp.config.disable,
           ['<C-e>'] = cmp.mapping.close(),
           ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
+            -- behavior = cmp.ConfirmBehavior.Replace,
             select = true,
           },
           ['<Tab>'] = function(fallback)
