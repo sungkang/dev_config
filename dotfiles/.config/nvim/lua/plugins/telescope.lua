@@ -19,7 +19,7 @@ return {
       'nvim-telescope/telescope-live-grep-args.nvim',
     },
     config = function()
-      local trouble = require('trouble.providers.telescope')
+      local trouble = require('trouble.sources.telescope')
       local lga_actions = require('telescope-live-grep-args.actions')
 
       require('telescope').setup({
@@ -37,7 +37,7 @@ return {
             n = {
               ["o"] = "select_default",
               ["q"] = "close",
-              ["t"] = trouble.open_with_trouble,
+              ["t"] = trouble.open,
             },
           }
         },
