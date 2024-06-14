@@ -110,6 +110,9 @@ if status is-interactive
   alias lg="lazygit"
   alias gb="echo (git branch --show-current)"
 
+  # youtube dlp
+  alias yt="yt-dlp"
+
   # starship
   starship init fish | source
 
