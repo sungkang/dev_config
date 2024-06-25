@@ -1,6 +1,11 @@
 return {
   'nvim-lua/plenary.nvim',
   {
+    enabled = false,
+    'numToStr/Comment.nvim',
+    config = true,
+  },
+  {
     'stevearc/oil.nvim',
     opts = {},
     dependencies = {
@@ -14,14 +19,21 @@ return {
           ['<C-l>'] = false,
           ['<C-p>'] = false,
           ['<C-s>'] = false,
+          ['q'] = function()
+            require('oil').close()
+          end,
         },
         view_options = {
           show_hidden = true,
-        }
+        },
+        float = {
+          max_width = 100,
+          max_height = 50,
+        },
       }
 
       -- Open parent directory in current window
-      vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'Open parent directory'})
+      vim.keymap.set('n', '-', '<Cmd>lua require("oil").open_float()<CR>', { desc = 'Open parent directory' })
     end,
   },
   {
@@ -44,81 +56,6 @@ return {
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
   'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
-  {
-    'hrsh7th/nvim-cmp',
-    config = function()
-      -- opt.completeopt = menu, menuone, noselect
-
-      local luasnip = require('luasnip')
-      local cmp = require('cmp')
-
-      luasnip.setup({
-        region_check_events = "CursorMovedI",
-      })
-
-      cmp.setup({
-        preselect = cmp.PreselectMode.None,
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end
-        },
-        mapping = {
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-          ['<C-y>'] = cmp.config.disable,
-          ['<C-e>'] = cmp.mapping.close(),
-          ['<CR>'] = cmp.mapping.confirm {
-            -- behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
-          ['<Tab>'] = function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end,
-          ['<S-Tab>'] = function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end,
-        },
-        sources = cmp.config.sources({
-          { name = 'luasnip' },
-          { name = 'nvim_lsp' },
-        }, {
-          { name = 'buffer' },
-        }),
-      })
-
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' },
-        },
-      })
-
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' }
-        }, {
-          { name = 'cmdline' }
-        })
-      })
-    end
-  },
   'RRethy/vim-illuminate',
   {
     'mfussenegger/nvim-dap',
@@ -168,6 +105,7 @@ return {
   },
   {
     'anuvyklack/pretty-fold.nvim',
+    enabled = false,
     config = function()
       require('pretty-fold').setup {
         sections = {
@@ -195,9 +133,21 @@ return {
   },
   {
     'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+    config = function()
+      local harpoon = require('harpoon')
+      harpoon.setup {}
+
+      -- Open parent directory in current window
+      vim.keymap.set('n', '<Space>a', function() harpoon:list():add() end, { desc = 'Add a harpoon mark' })
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+      vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+    end,
   },
   {
     'folke/neodev.nvim',
@@ -212,9 +162,9 @@ return {
     lazy = true,
     event = 'InsertEnter',
     keys = {
-      {'<leader>ce', '<cmd>Copilot enable<cr>'},
-      {'<leader>cd', '<cmd>Copilot disable<cr>'},
-      {'<leader>cs', '<cmd>Copilot status<cr>'},
+      { '<leader>ce', '<Cmd>Copilot enable<CR>' },
+      { '<leader>cd', '<Cmd>Copilot disable<CR>' },
+      { '<leader>cs', '<Cmd>Copilot status<CR>' },
     },
     config = function()
       require('copilot').setup({

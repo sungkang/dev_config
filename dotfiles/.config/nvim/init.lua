@@ -8,6 +8,8 @@ if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({ "git", "-C", lazypath, "checkout", "tags/stable" }) -- last stable release
   end
 end
+
+-- Add lazy to the `runtimepath`, this allows us to `require` it.
 vim.opt.rtp:prepend(lazypath)
 
 --------------
@@ -23,13 +25,11 @@ require('core.autocommands').config()
 -----------
 -- plugins
 -----------
-require("lazy").setup(
-  {
-    {
-      import = "plugins",
-    },
+require("lazy").setup({ import = "plugins" }, {
+  change_detection = {
+    notify = false,
   }
-)
+})
 
 -----------------------------------------------
 -- enable jumping between <tags></tags> with %

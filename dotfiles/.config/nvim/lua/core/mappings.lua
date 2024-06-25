@@ -60,14 +60,13 @@ function M.config()
   ----------
   set('n', 'ss', '<Cmd>split<CR><c-w>w', opts)
   set('n', 'vs', '<Cmd>vsplit<CR><c-w>w', opts)
-
   -- resize splits
   -- (vertical)
   set('n', '_', '5<c-w><', opts)
   set('n', '+', '5<c-w>>', opts)
   -- (horizontal)
-  set('n', '<c-w><c-_>', '5<c-w>-', opts)
-  set('n', '<c-w><c-=>', '5<c-w>+', opts)
+  set('n', '<c-->', '5<c-w>-', opts)
+  set('n', '<c-_>', '5<c-w>+', opts)
 
   -----------
   -- buffers
@@ -75,7 +74,6 @@ function M.config()
   set('n', '<c-n>', '<c-^>', opts)
   set('n', '<leader>BB', '<Cmd>bd<CR>', opts)
   set('n', '<leader>BA', '<Cmd>%bd<CR>', opts)
-  set('n', '<space>a', '<Cmd>lua require("harpoon.mark").add_file()<CR>', opts)
 
   -----------
   -- diffing

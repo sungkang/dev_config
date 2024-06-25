@@ -19,6 +19,8 @@ return {
       'nvim-telescope/telescope-live-grep-args.nvim',
     },
     config = function()
+      local set = vim.keymap.set
+      local opts = { noremap = true, silent = true }
       local trouble = require('trouble.sources.telescope')
       local lga_actions = require('telescope-live-grep-args.actions')
 
@@ -130,10 +132,32 @@ return {
       require('telescope').load_extension('harpoon')
       require('telescope').load_extension('live_grep_args')
 
-      -- mappings
-      local set = vim.keymap.set
-      local opts = { noremap = true, silent = true }
+      -- harpoon:: start
+      local harpoon = require('harpoon')
+      harpoon:setup({})
 
+      local conf = require('telescope.config').values
+      local function toggle_telescope(harpoon_files)
+        local file_paths = {}
+        for _, item in ipairs(harpoon_files.items) do
+          table.insert(file_paths, item.value)
+        end
+
+        require('telescope.pickers').new({}, {
+          prompt_title = 'Harpoon',
+          finder = require('telescope.finders').new_table({
+            results = file_paths,
+          }),
+          previewer = conf.file_previewer({}),
+          sorter = conf.generic_sorter({}),
+          path_display = { 'truncate' },
+        }):find()
+      end
+
+      set('n', '<space>m', function() toggle_telescope(harpoon:list()) end, opts)
+      -- harpoon:: end
+
+      -- mappings
       set('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
       set('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)
       set('n', '<c-p>', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
@@ -158,7 +182,6 @@ return {
       set('n', '<leader>h', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
       set('n', '<leader>s', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
       set('n', '<leader>k', '<cmd>lua require("telescope.builtin").quickfix()<cr>', opts)
-      set('n', '<space>m', '<cmd>Telescope harpoon marks initial_mode=normal<cr>', opts)
     end
   },
 }

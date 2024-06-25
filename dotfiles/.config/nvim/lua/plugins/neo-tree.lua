@@ -1,7 +1,7 @@
 return {
   {
     'nvim-neo-tree/neo-tree.nvim',
-    enabled = false,
+    enabled = true,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
@@ -54,7 +54,7 @@ return {
       local set = vim.keymap.set
       local opts = { noremap = true, silent = true }
 
-      -- set('n', '<leader>r', ':Neotree reveal reveal_force_cwd<cr>', opts)
+      set('n', '<leader>r', ':Neotree reveal reveal_force_cwd<cr>', opts)
       set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
     end
   },
