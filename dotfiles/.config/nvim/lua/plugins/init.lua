@@ -19,6 +19,9 @@ return {
           ['<C-l>'] = false,
           ['<C-p>'] = false,
           ['<C-s>'] = false,
+          ['<BS>'] = function ()
+            require('oil').open()
+          end,
           ['q'] = function()
             require('oil').close()
           end,
@@ -33,7 +36,10 @@ return {
       }
 
       -- Open parent directory in current window
-      vim.keymap.set('n', '-', '<Cmd>lua require("oil").open_float()<CR>', { desc = 'Open parent directory' })
+      -- vim.keymap.set('n', '-', '<Cmd>lua require("oil").open_float()<CR>', { desc = 'Open parent directory' })
+      -- vim.keymap.set('n', '<Space>o', '<Cmd>lua require("oil").open_float()<CR>', { desc = 'Open parent directory' })
+      vim.keymap.set('n', '-', '<Cmd>lua require("oil").open()<CR>', { desc = 'Open parent directory' })
+      vim.keymap.set('n', '<Space>o', '<Cmd>lua require("oil").open()<CR>', { desc = 'Open parent directory' })
     end,
   },
   {
@@ -130,24 +136,6 @@ return {
   {
     'windwp/nvim-autopairs',
     config = true,
-  },
-  {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      local harpoon = require('harpoon')
-      harpoon.setup {}
-
-      -- Open parent directory in current window
-      vim.keymap.set('n', '<Space>a', function() harpoon:list():add() end, { desc = 'Add a harpoon mark' })
-
-      -- Toggle previous & next buffers stored within Harpoon list
-      vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-      vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-    end,
   },
   {
     'folke/neodev.nvim',

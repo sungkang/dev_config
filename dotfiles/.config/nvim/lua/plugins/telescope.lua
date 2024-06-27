@@ -115,47 +115,11 @@ return {
               },
             }
           },
-          -- the plugin currently doesn't support this
-          harpoon = {
-            initial_mode = "normal",
-            path_display = { 'truncate' },
-            mappings = {
-              n = {
-                ["dd"] = "delete_buffer",
-              }
-            },
-          }
-        }
+        },
       })
 
       -- extensions
-      require('telescope').load_extension('harpoon')
       require('telescope').load_extension('live_grep_args')
-
-      -- harpoon:: start
-      local harpoon = require('harpoon')
-      harpoon:setup({})
-
-      local conf = require('telescope.config').values
-      local function toggle_telescope(harpoon_files)
-        local file_paths = {}
-        for _, item in ipairs(harpoon_files.items) do
-          table.insert(file_paths, item.value)
-        end
-
-        require('telescope.pickers').new({}, {
-          prompt_title = 'Harpoon',
-          finder = require('telescope.finders').new_table({
-            results = file_paths,
-          }),
-          previewer = conf.file_previewer({}),
-          sorter = conf.generic_sorter({}),
-          path_display = { 'truncate' },
-        }):find()
-      end
-
-      set('n', '<space>m', function() toggle_telescope(harpoon:list()) end, opts)
-      -- harpoon:: end
 
       -- mappings
       set('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
