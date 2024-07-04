@@ -1,7 +1,7 @@
 return {
   'nvim-lua/plenary.nvim',
   {
-    enabled = false,
+    enabled = true,
     'numToStr/Comment.nvim',
     config = true,
   },

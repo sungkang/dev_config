@@ -1,10 +1,11 @@
 lastupdatecheck: 1684093416
 recentrepos:
     - /Users/skang/dev/me/dev_config
-    - /Users/skang/dev/work/cac_platform/cac_platform_web
     - /Users/skang/dev/work/cac_platform/cac_platform_api
-    - /Users/skang/dev/zig
+    - /Users/skang/dev/work/cac_platform/cac_platform_web
+    - /Users/skang/dev/work/cac_platform/cac_platform_infra
     - /Users/skang/dev/sketch/platform-king
+    - /Users/skang/dev/zig
     - /Users/skang/Library/Mobile Documents/iCloud~md~obsidian/Documents/w95-dev/.obsidian/themes/W95
     - /Users/skang/dev/work/purina/docker-magento-dev-env/src
     - /Users/skang/dev/work/purina/docker-magento-dev-env
@@ -13,7 +14,6 @@ recentrepos:
     - /Users/skang/dev/sketch/home-ass
     - /Users/skang/dev/sketch/timefront_api
     - /Users/skang/dev/work/cac_platform/cac_platform_docs
-    - /Users/skang/dev/work/cac_platform/cac_platform_infra
     - /Users/skang/dev/me/vial-qmk
     - /Users/skang/dev/me/beekeeb_qmk_firmware
     - /opt/homebrew

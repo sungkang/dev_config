@@ -42,7 +42,7 @@ function M.config()
   ------------
   -- quickfix
   ------------
-  set('n', '<leader>cc', '<Cmd>copen<CR>', opts)
+  set('n', '<leader>cc', '<Cmd>copen<CR><c-w>J', opts)
   set('n', '<leader>cl', '<Cmd>cclose<CR>', opts)
   set('n', '[q', '<Cmd>cp<CR>zz', opts)
   set('n', ']q', '<Cmd>cn<CR>zz', opts)
@@ -62,11 +62,11 @@ function M.config()
   set('n', 'vs', '<Cmd>vsplit<CR><c-w>w', opts)
   -- resize splits
   -- (vertical)
-  set('n', '_', '5<c-w><', opts)
-  set('n', '+', '5<c-w>>', opts)
+  set('n', '<m-h>', '5<c-w><', opts)
+  set('n', '<m-l>', '5<c-w>>', opts)
   -- (horizontal)
-  set('n', '<c-->', '5<c-w>-', opts)
-  set('n', '<c-_>', '5<c-w>+', opts)
+  set('n', '<m-j>', '5<c-w>-', opts)
+  set('n', '<m-k>', '5<c-w>+', opts)
 
   -----------
   -- buffers
