@@ -1,5 +1,5 @@
 return {
-  'nvim-lua/plenary.nvim',
+	'tpope/vim-abolish',
   {
     enabled = true,
     'numToStr/Comment.nvim',
