@@ -1,9 +1,10 @@
 lastupdatecheck: 1684093416
 recentrepos:
     - /Users/skang/dev/me/dev_config
+    - /Users/skang/dev/work/cac_platform/cac_platform_web
     - /Users/skang/dev/work/cac_platform/cac_platform_api
     - /Users/skang/dev/sketch/platform-king
-    - /Users/skang/dev/work/cac_platform/cac_platform_web
+    - /Users/skang/dev/sketch/sketch-apps
     - /Users/skang/dev/me/vial-qmk
     - /Users/skang/dev/work/cac_platform/cac_platform_infra
     - /Users/skang/dev/zig

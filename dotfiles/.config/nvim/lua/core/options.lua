@@ -21,7 +21,7 @@ M.config = function()
   vim.opt.mouse = 'nvi'
   vim.opt.signcolumn = 'yes'
   vim.opt.updatetime = 100
-  vim.opt.conceallevel = 0
+  vim.opt.conceallevel = 2
   vim.g.do_filetype_lua = 1
   -- vim.opt.cmdheight = 0
 
