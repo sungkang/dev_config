@@ -89,13 +89,6 @@ function M.config()
   set('n', '<space>gl', '<Cmd>G log --graph<CR>', opts)
   set('n', '<space>gla', '<Cmd>G log --graph --decorate --all<CR>', opts)
 
-  -----------
-  -- trouble
-  -----------
-  set('n', '<leader>xx', '<Cmd>TroubleToggle<CR>', opts)
-  set('n', '<leader>xw', '<Cmd>Trouble workspace_diagnostics<CR>', opts)
-  set('n', '<leader>xd', '<Cmd>Trouble document_diagnostics<CR>', opts)
-
   --------------
   -- formatting
   --------------

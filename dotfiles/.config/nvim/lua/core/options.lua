@@ -12,6 +12,7 @@ M.config = function()
   vim.opt.relativenumber = true
   vim.opt.tabstop = 2
   vim.opt.shiftwidth = 2
+	vim.opt.expandtab = true
   vim.opt.foldenable = false
   vim.opt.foldmethod = 'expr'
   vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -21,13 +22,12 @@ M.config = function()
   vim.opt.mouse = 'nvi'
   vim.opt.signcolumn = 'yes'
   vim.opt.updatetime = 100
-  vim.opt.conceallevel = 2
+  vim.opt.conceallevel = 0
   vim.g.do_filetype_lua = 1
   -- vim.opt.cmdheight = 0
 
   -- color scheme config
   vim.opt.background = 'dark'
-
 end
 
 return M

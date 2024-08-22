@@ -131,9 +131,9 @@ if status is-interactive
   # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
   # pyenv init - | source
 
-  if command -q tmux; and test -z "$TMUX"
-    tmux attach -t default; or tmux new -s default
-  end
+  # if command -q tmux; and test -z "$TMUX"
+  #   tmux attach -t default; or tmux new -s default
+  # end
 end
 
 # The next line updates PATH for the Google Cloud SDK.
