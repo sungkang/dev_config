@@ -122,7 +122,7 @@ return {
       require('telescope').load_extension('live_grep_args')
 
       -- mappings
-      set('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
+      -- set('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
       set('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)
       set('n', '<c-p>', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
 

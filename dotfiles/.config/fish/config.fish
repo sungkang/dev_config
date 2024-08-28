@@ -7,6 +7,7 @@ if status is-interactive
   set -xg TERMINFO_DIRS $HOME/.local/share/terminfo
   
   set -Ux EDITOR nvim
+  set -xg GOPATH $HOME/go
 
   # setup custom PATHs
   fish_add_path /opt/homebrew/bin
