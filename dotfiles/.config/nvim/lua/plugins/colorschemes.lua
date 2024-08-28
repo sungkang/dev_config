@@ -1,7 +1,7 @@
 return {
   {
     'rebelot/kanagawa.nvim',
-    enabled = true,
+    enabled = false,
     lazy = false,
     priority = 1000,
     config = function()
@@ -11,16 +11,27 @@ return {
   {
     'catppuccin/nvim',
     name = "catppuccin",
-    enabled = false,
+    enabled = true,
+    config = function ()
+      require('catppuccin').setup({
+        flavor = 'mocha',
+      })
+
+      vim.cmd('colorscheme catppuccin')
+      vim.cmd('highlight CursorLine guibg=#3f3d3b')
+      vim.cmd('highlight LineNr guifg=#5b5b5b')
+      vim.cmd('highlight CursorLineNr guifg=orange')
+      vim.cmd('highlight Visual guibg=#8f617a')
+    end
   },
   {
     'folke/tokyonight.nvim',
     enabled = false,
     config = function()
       vim.cmd('colorscheme tokyonight-moon')
-      vim.cmd('highlight CursorLineNr guifg=orange')
       vim.cmd('highlight CursorLine guibg=#3f3d3b')
       vim.cmd('highlight LineNr guifg=#5b5b5b')
+      vim.cmd('highlight CursorLineNr guifg=orange')
     end
   },
   {

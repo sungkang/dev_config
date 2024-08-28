@@ -15,17 +15,11 @@ return {
         bset(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
         bset(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
         bset(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+        bset(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
         bset(bufnr, "n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
         bset(bufnr, "n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", opts)
         bset(bufnr, "n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", opts)
-        bset(
-          bufnr,
-          "n",
-          "<space>wl",
-          "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
-          opts
-        )
-        bset(bufnr, "n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+        bset(bufnr, "n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", opts)
         bset(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
         bset(bufnr, "n", "<space>c", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
         bset(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
@@ -49,7 +43,7 @@ return {
 
       local servers = {
         "volar",
-        "tsserver",
+        "ts_ls",
         "svelte",
         "lua_ls",
         "gopls",
@@ -62,6 +56,7 @@ return {
         "gleam",
         "zls",
         "dockerls",
+        "templ",
       }
       for _, lsp in pairs(servers) do
         local config = {
@@ -80,12 +75,11 @@ return {
 
         if lsp == "svelte" then
           config.root_dir = nvim_lsp.util.root_pattern("svelte.config.js")
-          -- config.on_attach = with_null_ls_formatter
+          config.on_attach = with_null_ls_formatter
         end
 
-        if lsp == "tsserver" then
+        if lsp == "ts_ls" then
           if is_npm_package_installed("vue") then
-            -- ** this is for volar v2 ( which is currently kinda broken atm ) **
             config.init_options = {
               plugins = {
                 {
@@ -97,34 +91,6 @@ return {
             }
             config.filetypes = { "typescript", "javascript", "vue" }
           end
-
-          config.settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-            javascript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayVariableTypeHints = true,
-
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-          }
 
           config.root_dir = function(startpath)
             return nvim_lsp.util.root_pattern("package.json")(startpath)
@@ -180,7 +146,7 @@ return {
         sources = {
           null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.sql_formatter,
-          require("none-ls.diagnostics.eslint"),
+          require("none-ls.diagnostics.eslint_d"),
         },
         on_attach = function(client, bufnr)
           bset(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)

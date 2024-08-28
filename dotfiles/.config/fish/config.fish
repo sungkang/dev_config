@@ -7,6 +7,10 @@ if status is-interactive
   set -xg TERMINFO_DIRS $HOME/.local/share/terminfo
   
   set -Ux EDITOR nvim
+  set -xg GOPATH $HOME/go
+  set -xg TMUX_PROGRAM /opt/homebrew/bin/tmux
+  set -xg TMUX_CONF $XDG_CONFIG_HOME/tmux/tmux.conf
+  set -xg TMUX_CONF_LOCAL $XDG_CONFIG_HOME/tmux/tmux.conf.local
 
   # setup custom PATHs
   fish_add_path /opt/homebrew/bin
@@ -33,12 +37,12 @@ if status is-interactive
   # configurations
   alias f='nvim $XDG_CONFIG_HOME/fish/config.fish'
   alias ff='source $XDG_CONFIG_HOME/fish/config.fish'
-  alias a='nvim $XDG_CONFIG_HOME/alacritty/alacritty.toml'
+  # alias a='nvim $XDG_CONFIG_HOME/alacritty/alacritty.toml'
   alias t='nvim $XDG_CONFIG_HOME/tmux/tmux.conf'
   alias tl='nvim $XDG_CONFIG_HOME/tmux/tmux.conf.local'
   alias s='nvim $XDG_CONFIG_HOME/starship.toml'
   alias d='nvim $DEV_CONFIG_HOME'
-  alias r='ranger'
+  alias r='yazi'
 
   # neovim
   alias v="nvim $XDG_CONFIG_HOME/nvim/init.lua"

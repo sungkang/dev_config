@@ -78,8 +78,8 @@ function M.config()
   -----------
   -- diffing
   -----------
-  set('n', '<leader>dfa', '<Cmd>windo diffthis<CR>', opts)
-  set('n', '<leader>dfo', '<Cmd>windo diffoff<CR>', opts)
+  set('n', '<space>dt', '<Cmd>windo diffthis<CR>', opts)
+  set('n', '<space>do', '<Cmd>windo diffoff<CR>', opts)
 
   ------------
   -- fugitive
@@ -128,10 +128,15 @@ function M.config()
   ------------------
   set('n', '<leader>T', "<Cmd>pu=strftime('%c')<CR>kJ", opts)
 
-  ----------------
+  ---------------
   -- inlay hints
-  ----------------
+  ---------------
   set('n', '<leader>ih', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
+
+  -----------------
+  -- color helpers
+  -----------------
+  -- set('v', '<leader>ch', "<Cmd>'<,'>lua require'utils'.hexToRgba()<CR>", opts)
 end
 
 return M

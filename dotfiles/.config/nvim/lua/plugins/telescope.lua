@@ -122,7 +122,6 @@ return {
       require('telescope').load_extension('live_grep_args')
 
       -- mappings
-      set('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', opts)
       set('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)
       set('n', '<c-p>', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
 
@@ -131,11 +130,6 @@ return {
         require('telescope.builtin').find_files({ default_text = text })
       end, opts)
 
-      -- set('n', '<leader>f', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
-      -- set('v', '<leader>f', function()
-      --   local text = vim.getVisualSelection()
-      --   require('telescope.builtin').live_grep({ default_text = text })
-      -- end, opts)
       set('n', '<leader>f', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>', opts)
       set('v', '<leader>f', function()
         local text = vim.getVisualSelection()
