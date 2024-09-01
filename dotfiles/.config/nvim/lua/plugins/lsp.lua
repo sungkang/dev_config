@@ -56,6 +56,7 @@ return {
         "gleam",
         "zls",
         "dockerls",
+        "templ",
       }
       for _, lsp in pairs(servers) do
         local config = {

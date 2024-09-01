@@ -34,12 +34,12 @@ if status is-interactive
   # configurations
   alias f='nvim $XDG_CONFIG_HOME/fish/config.fish'
   alias ff='source $XDG_CONFIG_HOME/fish/config.fish'
-  alias a='nvim $XDG_CONFIG_HOME/alacritty/alacritty.toml'
+  # alias a='nvim $XDG_CONFIG_HOME/alacritty/alacritty.toml'
   alias t='nvim $XDG_CONFIG_HOME/tmux/tmux.conf'
   alias tl='nvim $XDG_CONFIG_HOME/tmux/tmux.conf.local'
   alias s='nvim $XDG_CONFIG_HOME/starship.toml'
   alias d='nvim $DEV_CONFIG_HOME'
-  alias r='ranger'
+  alias r='yazi'
 
   # neovim
   alias v="nvim $XDG_CONFIG_HOME/nvim/init.lua"
