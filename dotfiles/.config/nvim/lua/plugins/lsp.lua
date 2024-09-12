@@ -43,7 +43,7 @@ return {
 
       local servers = {
         "volar",
-        "tsserver",
+        "ts_ls",
         "svelte",
         "lua_ls",
         "gopls",
@@ -78,7 +78,7 @@ return {
           -- config.on_attach = with_null_ls_formatter
         end
 
-        if lsp == "tsserver" then
+        if lsp == "ts_ls" then
           if is_npm_package_installed("vue") then
             config.init_options = {
               plugins = {
@@ -146,7 +146,7 @@ return {
         sources = {
           null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.sql_formatter,
-          require("none-ls.diagnostics.eslint"),
+          require("none-ls.diagnostics.eslint_d"),
         },
         on_attach = function(client, bufnr)
           bset(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)

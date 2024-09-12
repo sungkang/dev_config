@@ -21,6 +21,7 @@ return {
       vim.cmd('highlight CursorLine guibg=#3f3d3b')
       vim.cmd('highlight LineNr guifg=#5b5b5b')
       vim.cmd('highlight CursorLineNr guifg=orange')
+      vim.cmd('highlight Visual guibg=#8f617a')
     end
   },
   {
