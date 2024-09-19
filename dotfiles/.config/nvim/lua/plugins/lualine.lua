@@ -9,15 +9,15 @@ return {
           theme = theme,
         },
         sections = {
-          -- lualine_b = {
-          --   'diff', 'diagnostics'
-          -- },
+          lualine_a = {{ 'mode', fmt = function(str) return str:sub(1,3) end }},
+          lualine_b = {},
           lualine_c = {
             {
               'filename',
               path = 1,
             }
-          }
+          },
+          lualine_x = {},
         },
         inactive_sections = {
           lualine_c = {

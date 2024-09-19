@@ -75,7 +75,7 @@ return {
 
         if lsp == "svelte" then
           config.root_dir = nvim_lsp.util.root_pattern("svelte.config.js")
-          -- config.on_attach = with_null_ls_formatter
+          config.on_attach = with_null_ls_formatter
         end
 
         if lsp == "ts_ls" then
