@@ -8,6 +8,9 @@ if status is-interactive
   
   set -Ux EDITOR nvim
   set -xg GOPATH $HOME/go
+  set -xg TMUX_PROGRAM 'tmux'
+  set -xg TMUX_CONF $XDG_CONFIG_HOME/tmux/tmux.conf
+  set -xg TMUX_CONF_LOCAL $XDG_CONFIG_HOME/tmux/tmux.conf.local
 
   # setup custom PATHs
   fish_add_path /opt/homebrew/bin

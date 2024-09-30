@@ -78,8 +78,8 @@ function M.config()
   -----------
   -- diffing
   -----------
-  set('n', '<leader>dfa', '<Cmd>windo diffthis<CR>', opts)
-  set('n', '<leader>dfo', '<Cmd>windo diffoff<CR>', opts)
+  set('n', '<space>dt', '<Cmd>windo diffthis<CR>', opts)
+  set('n', '<space>do', '<Cmd>windo diffoff<CR>', opts)
 
   ------------
   -- fugitive
