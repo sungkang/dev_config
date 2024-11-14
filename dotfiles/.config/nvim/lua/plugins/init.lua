@@ -1,4 +1,7 @@
 return {
+  {
+    "rest-nvim/rest.nvim",
+  },
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
@@ -77,6 +80,10 @@ return {
 				shfmt = {
 					prepend_args = { "-i", "2" },
 				},
+                datagrip = {
+                    command = "datagrip",
+                    args = { "format" },
+                },
 			},
 		},
 		init = function()
