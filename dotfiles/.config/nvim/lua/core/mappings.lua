@@ -29,7 +29,7 @@ function M.config()
   set('n', '<c-f>', '<Cmd>silent !tmux neww tmux-sessionizer<CR>', opts)
   set('n', 'L', 'Lzz', opts)
   set('n', 'H', 'Hzz', opts)
-  set('n', '<leader>,', ',', opts)
+  set('n', '<m-;>', '<Cmd>lua require("functions").repeatOpposite()<CR>', opts)
 
   ---------------------
   -- window management

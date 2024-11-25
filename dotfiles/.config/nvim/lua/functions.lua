@@ -36,4 +36,8 @@ function M.convertHexVisual()
     M.hexToRgba(hex)
 end
 
+function M.repeatOpposite()
+    vim.api.nvim_feedkeys(",", "n", false)
+end
+
 return M

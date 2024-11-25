@@ -458,9 +458,11 @@ mods = "Alt|Shift"
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/usr/local/bin/fish"
 
 [window]
 dynamic_padding = true
+
+[terminal]

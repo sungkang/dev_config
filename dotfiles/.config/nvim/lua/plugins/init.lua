@@ -80,10 +80,6 @@ return {
 				shfmt = {
 					prepend_args = { "-i", "2" },
 				},
-                datagrip = {
-                    command = "datagrip",
-                    args = { "format" },
-                },
 			},
 		},
 		init = function()

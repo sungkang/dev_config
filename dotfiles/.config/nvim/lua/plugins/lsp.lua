@@ -57,6 +57,7 @@ return {
         "zls",
         "dockerls",
         "templ",
+        "taplo",
       }
       for _, lsp in pairs(servers) do
         local config = {
@@ -75,7 +76,6 @@ return {
 
         if lsp == "svelte" then
           config.root_dir = nvim_lsp.util.root_pattern("svelte.config.js")
-          config.on_attach = with_null_ls_formatter
         end
 
         if lsp == "ts_ls" then
@@ -90,6 +90,7 @@ return {
               },
             }
             config.filetypes = { "typescript", "javascript", "vue" }
+            config.on_attach = with_null_ls_formatter
           end
 
           config.root_dir = function(startpath)
@@ -97,7 +98,6 @@ return {
           end
 
           config.single_file_support = false
-          config.on_attach = with_null_ls_formatter
         end
 
         if lsp == "lua_ls" then
@@ -145,7 +145,6 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.sql_formatter,
           require("none-ls.diagnostics.eslint_d"),
         },
         on_attach = function(client, bufnr)
