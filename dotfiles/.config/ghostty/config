@@ -1,0 +1,5 @@
+font-family = "MonoLisa2 Nerd Font"
+font-size = 14
+font-thicken
+theme = catppuccin-mocha
+shell-integration = fish

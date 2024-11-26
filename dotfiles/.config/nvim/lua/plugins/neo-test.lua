@@ -1,5 +1,6 @@
 return {
   {
+    enabled = false,
     'nvim-neotest/neotest',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -24,6 +25,7 @@ return {
 
       vim.keymap.set('n', '<space>ts', '<Cmd>lua require("neotest").summary.toggle()<CR>')
       vim.keymap.set('n', '<space>to', '<Cmd>lua require("neotest").output_panel.toggle()<CR>')
+      vim.keymap.set('n', '<space>tc', '<Cmd>lua require("neotest").output_panel.clear()<CR>')
       vim.keymap.set('n', '<space>ta', '<Cmd>lua require("neotest").run.run(vim.fn.getcwd())<CR>')
       vim.keymap.set('n', '<space>tn', '<Cmd>lua require("neotest").run.run()<CR>')
       vim.keymap.set('n', '<space>tt', '<Cmd>lua require("neotest").run.run_last()<CR>')

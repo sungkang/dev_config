@@ -1,0 +1,11 @@
+2024-12-07T22:23:23.118251-06:00 INFO kanata-tray config folder: /Users/skang/Library/Application Support/kanata-tray
+2024-12-07T22:23:23.20832-06:00 INFO Running preset 'internal keyboard'
+2024-12-07T22:23:23.213716-06:00 INFO Running command: /Users/skang/.local/bin/kanata-tray -c=/Users/skang/.config/kanata/kanata-internal.kbd --port 5829
+2024-12-07T22:23:23.215444-06:00 INFO Started kanata (pid=69473)
+2024-12-07T22:23:25.718693-06:00 ERROR Failed to connect to kanata via TCP: dial tcp [::1]:5829: connect: connection refused
+2024-12-07T22:23:25.918004-06:00 ERROR Failed to send ClientMessage: timeouted after 200 ms
+2024-12-07T22:23:25.918139-06:00 INFO Waiting for all post-start-async hooks to exit
+2024-12-07T22:23:25.91817-06:00 INFO All post-start-async hooks exited
+2024-12-07T22:23:25.918234-06:00 ERROR Kanata runner terminated with an error: exit status 2
+2024-12-07T23:07:30.397876-06:00 - Exiting...
+2024-12-07T23:07:31.402249-06:00 - Exiting

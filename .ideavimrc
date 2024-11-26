@@ -88,9 +88,9 @@ map <space>e <Action>(ShowErrorDescription)
 " === Debugging ===
 map <space><space> <Action>(ChooseRunConfiguration)
 map <space>dd <Action>(Debug)
-map <space>dn <Action>(DebugClass)
+map <space>dc <Action>(DebugClass)
 
-map <space>ru <Action>(RunClass)
+map <space>rc <Action>(RunClass)
 map <space>rr <Action>(Rerun)
 
 map <space>ru <Action>(Run)
