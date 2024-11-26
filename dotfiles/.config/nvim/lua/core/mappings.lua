@@ -62,11 +62,11 @@ function M.config()
   set('n', 'vs', '<Cmd>vsplit<CR><c-w>w', opts)
   -- resize splits
   -- (vertical)
-  set('n', '<m-h>', '5<c-w><', opts)
-  set('n', '<m-l>', '5<c-w>>', opts)
+  set('n', '<c-left>', '5<c-w><', opts)
+  set('n', '<c-right>', '5<c-w>>', opts)
   -- (horizontal)
-  set('n', '<m-j>', '5<c-w>-', opts)
-  set('n', '<m-k>', '5<c-w>+', opts)
+  set('n', '<c-down>', '5<c-w>-', opts)
+  set('n', '<c-up>', '5<c-w>+', opts)
 
   -----------
   -- buffers
