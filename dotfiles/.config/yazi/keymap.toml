@@ -1,0 +1,7 @@
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+[manager]
+
+append_keymap = [
+  { on = [ "g", "m" ], run = "cd ~/Movies", desc = "Go to Movies" },
+]

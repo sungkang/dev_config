@@ -48,7 +48,7 @@ if status is-interactive
 
   # neovim
   alias v="nvim"
-  alias vc="nvim $XDG_CONFIG_HOME/nvim/init.lua"
+  alias vv="nvim $XDG_CONFIG_HOME/nvim/init.lua"
 
   # git
   alias g="git"

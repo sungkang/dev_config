@@ -29,7 +29,7 @@
 )
 
 (defvar
-  tap-time 185 
+  tap-time 200 
   hold-time 185
 )
 

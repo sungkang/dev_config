@@ -55,7 +55,6 @@ return {
       local opts = { noremap = true, silent = true }
 
       set('n', '<leader>r', ':Neotree reveal reveal_force_cwd<cr>', opts)
-      set('n', '<leader>n', ':Neotree toggle reveal reveal_force_cwd<cr>', opts)
     end
   },
 }
