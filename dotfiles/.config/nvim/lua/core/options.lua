@@ -25,6 +25,8 @@ M.config = function()
   vim.opt.conceallevel = 0
   vim.opt.exrc = true
   vim.g.do_filetype_lua = 1
+  vim.opt.splitbelow = true
+  vim.opt.splitright = true
   -- vim.opt.cmdheight = 0
 
   -- color scheme config

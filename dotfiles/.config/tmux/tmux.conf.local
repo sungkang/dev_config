@@ -387,6 +387,7 @@ bind C-s send-prefix
 # custom bindings
 unbind C-f
 bind -T copy-mode-vi y send -X copy-selection
+bind C-k send-keys -R ; run 'sleep 0.2' ; clear-history
 
 # tmux command prompt
 bind \; command-prompt

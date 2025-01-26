@@ -62,6 +62,7 @@ return {
       },
       lazygit = { enabled = true },
       statuscolumn = { enabled = true },
+      terminal = { enabled = true },
     },
     keys = {
       { "<leader>D",  function() Snacks.dashboard() end,    desc = "Go to Dashboard" },

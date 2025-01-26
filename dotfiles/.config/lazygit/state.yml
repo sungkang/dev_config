@@ -4,12 +4,12 @@ recentrepos:
     - /Users/skang/dev/work/cac_platform/cac_platform_api
     - /Users/skang/dev/work/cac_platform/cac_platform_web
     - /Users/skang/dev/sketch/bappta
+    - /Users/skang/dev/me/vial-qmk
     - /Users/skang/dev/sketch/impact_marketplace
     - /Users/skang/oh-my-tmux
     - /Users/skang/dev/aoc
     - /Users/skang/dev/work/cac_platform/cac_platform_docs
     - /Users/skang/dev/sketch/bettertyping
-    - /Users/skang/dev/me/vial-qmk
     - /Users/skang/dev/sketch/flood_team/core
     - /Users/skang/dev/sketch/disaster-logic/astro
     - /Users/skang/dev/sketch/sketch-apps
@@ -46,7 +46,7 @@ recentrepos:
     - /Users/skang/dev/me/godot/sketchiverse
     - /Users/skang/dev/me/godot/stick-pong
 startuppopupversion: 5
-lastversion: HEAD-a04ad24
+lastversion: HEAD-40d6800
 customcommandshistory:
     - e /Users/skang/dev/work/cac_platform/cac_platform_web/src/services/v2/DocumentService.ts
     - gst

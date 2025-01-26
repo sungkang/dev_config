@@ -58,8 +58,8 @@ function M.config()
   ----------
   -- splits
   ----------
-  set('n', 'ss', '<Cmd>split<CR><c-w>w', opts)
-  set('n', 'vs', '<Cmd>vsplit<CR><c-w>w', opts)
+  set('n', 'ss', '<Cmd>split<CR>', opts)
+  set('n', 'vs', '<Cmd>vsplit<CR>', opts)
   -- resize splits
   -- (vertical)
   set('n', '<c-left>', '5<c-w><', opts)

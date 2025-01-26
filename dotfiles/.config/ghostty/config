@@ -1,5 +1,7 @@
 font-family = "MonoLisa2 Nerd Font"
-font-size = 14
+font-size = 13
 font-thicken
 theme = catppuccin-mocha
 shell-integration = fish
+
+keybind = alt+q=toggle_quick_terminal

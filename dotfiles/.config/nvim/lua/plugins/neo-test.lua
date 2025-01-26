@@ -1,19 +1,21 @@
 return {
   {
-    enabled = false,
+    enabled = true,
     'nvim-neotest/neotest',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim',
-      'nvim-neotest/neotest-go',
+      -- 'nvim-neotest/neotest-go',
+      'fredrikaverpil/neotest-golang',
       'marilari88/neotest-vitest',
       'thenbe/neotest-playwright',
     },
     config = function()
       require('neotest').setup({
         adapters = {
-          require('neotest-go')({}),
+          -- require('neotest-go')({}),
+          require('neotest-golang')({}),
           require('neotest-vitest')({}),
           require('neotest-playwright').adapter({
             options = {
