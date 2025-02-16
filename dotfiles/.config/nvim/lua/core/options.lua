@@ -27,6 +27,7 @@ M.config = function()
   vim.g.do_filetype_lua = 1
   vim.opt.splitbelow = true
   vim.opt.splitright = true
+  vim.opt.winminwidth = 10
   -- vim.opt.cmdheight = 0
 
   -- color scheme config

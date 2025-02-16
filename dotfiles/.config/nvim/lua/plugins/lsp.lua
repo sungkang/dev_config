@@ -126,6 +126,16 @@ return {
           config.on_attach = with_null_ls_formatter
         end
 
+        if lsp == "cssls" then
+          config.settings = {
+            css ={
+              lint = {
+                unknownAtRules = "ignore",
+              }
+            }
+          }
+        end
+
         nvim_lsp[lsp].setup(config)
         ::continue::
       end

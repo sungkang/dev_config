@@ -4,4 +4,7 @@ font-thicken
 theme = catppuccin-mocha
 shell-integration = fish
 
+cursor-style = block
+cursor-opacity = 0.4
+
 keybind = alt+q=toggle_quick_terminal
