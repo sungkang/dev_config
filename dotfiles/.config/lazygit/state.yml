@@ -2,10 +2,10 @@ lastupdatecheck: 1684093416
 recentrepos:
     - /Users/skang/dev/me/dev_config
     - /Users/skang/dev/sketch/bappta
-    - /Users/skang/dev/work/cac_platform/cac_platform_web
     - /Users/skang/dev/work/cac_platform/cac_platform_api
-    - /Users/skang/dev/work/tacony/taconyonline-magento-b2b
+    - /Users/skang/dev/work/cac_platform/cac_platform_web
     - /Users/skang/dev/work/tacony/taconyonline-pwa-v2-b2b
+    - /Users/skang/dev/work/tacony/taconyonline-magento-b2b
     - /Users/skang/dev/shopping-list
     - /Users/skang/dev/work/purina/purina-us-justrightpetfood-local
     - /Users/skang/dev/me/vial-qmk
@@ -49,7 +49,7 @@ recentrepos:
     - /Users/skang/dev/me/godot/sketchiverse
     - /Users/skang/dev/me/godot/stick-pong
 startuppopupversion: 5
-lastversion: HEAD-40d6800
+lastversion: HEAD-1b571f9
 customcommandshistory:
     - e /Users/skang/dev/work/cac_platform/cac_platform_web/src/services/v2/DocumentService.ts
     - gst

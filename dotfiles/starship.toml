@@ -2,6 +2,7 @@
 
 command_timeout = 10000
 format = """
+$python\
 $username\
 $directory\
 $git_branch\
@@ -12,6 +13,10 @@ $git_status\
 $line_break\
 $character
 """
+
+[python]
+style = "yellow"
+format = "via [${virtualenv}]($style) "
 
 [directory]
 style = "bg:#303030 fg:#00b2ff"

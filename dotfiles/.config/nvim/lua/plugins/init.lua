@@ -219,11 +219,6 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
   "RRethy/vim-illuminate",
   {
     "mfussenegger/nvim-dap",

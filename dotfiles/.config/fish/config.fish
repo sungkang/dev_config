@@ -15,7 +15,6 @@ if status is-interactive
   # setup custom PATHs
   fish_add_path /opt/homebrew/bin
   fish_add_path /opt/homebrew/sbin
-  # fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
   fish_add_path $HOME/.local/bin
   fish_add_path $HOME/go/bin
   fish_add_path $XDG_CONFIG_HOME/emacs/bin
