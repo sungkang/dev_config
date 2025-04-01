@@ -1,9 +1,10 @@
 M = {}
 
 M.config = function()
-  vim.api.nvim_create_autocmd("BufReadPost", {
+  vim.api.nvim_create_autocmd("BufWinEnter", {
     pattern = "*",
-    command = "normal zR"
+    command = "normal! zR",
+    once = true,
   })
 
   vim.cmd([[
