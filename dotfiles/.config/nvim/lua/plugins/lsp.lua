@@ -11,6 +11,8 @@ return {
       local bset = vim.api.nvim_buf_set_keymap
       local opts = { noremap = true, silent = true }
 
+      vim.diagnostic.config({ virtual_text = true })
+
       local on_attach = function(client, bufnr)
         bset(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
         bset(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
@@ -128,7 +130,7 @@ return {
 
         if lsp == "cssls" then
           config.settings = {
-            css ={
+            css = {
               lint = {
                 unknownAtRules = "ignore",
               }
