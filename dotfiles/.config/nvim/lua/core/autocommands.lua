@@ -1,12 +1,12 @@
 M = {}
 
 M.config = function()
-  vim.cmd([[
-    augroup _nvim_telescope_fold_workaround
-      autocmd!
-      autocmd BufRead * autocmd BufWinEnter * ++once normal! zx zR
-    augroup END
+  vim.api.nvim_create_autocmd("BufReadPost", {
+    pattern = "*",
+    command = "normal zR"
+  })
 
+  vim.cmd([[
     augroup _help
       autocmd!
       autocmd BufEnter * if &buftype == 'help' && winwidth(0) == &columns | wincmd L | endif
