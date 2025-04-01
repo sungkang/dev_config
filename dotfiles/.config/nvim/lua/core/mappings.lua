@@ -84,7 +84,6 @@ function M.config()
   ------------
   -- fugitive
   ------------
-  set('n', '<space>gst', '<Cmd>G<CR>', opts)
   set('n', '<space>ga', '<Cmd>G blame<CR>', opts)
   set('n', '<space>gl', '<Cmd>G log --graph<CR>', opts)
   set('n', '<space>gla', '<Cmd>G log --graph --decorate --all<CR>', opts)
