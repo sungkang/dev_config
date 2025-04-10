@@ -60,6 +60,7 @@ function M.config()
   ----------
   set('n', 'ss', '<Cmd>split<CR>', opts)
   set('n', 'vs', '<Cmd>vsplit<CR>', opts)
+  set('n', '<leader>ts', '<Cmd>tab split<CR>', opts)
   -- resize splits
   -- (vertical)
   set('n', '<c-left>', '5<c-w><', opts)
@@ -78,8 +79,8 @@ function M.config()
   -----------
   -- diffing
   -----------
-  set('n', '<space>dt', '<Cmd>windo diffthis<CR>', opts)
-  set('n', '<space>do', '<Cmd>windo diffoff<CR>', opts)
+  -- set('n', '<space>dt', '<Cmd>windo diffthis<CR>', opts)
+  -- set('n', '<space>do', '<Cmd>windo diffoff<CR>', opts)
 
   ------------
   -- fugitive
@@ -125,7 +126,7 @@ function M.config()
   ------------------
   -- timestamp line
   ------------------
-  set('n', '<leader>T', "<Cmd>pu=strftime('%c')<CR>kJ", opts)
+  -- set('n', '<leader>T', "<Cmd>pu=strftime('%c')<CR>kJ", opts)
 
   ---------------
   -- inlay hints

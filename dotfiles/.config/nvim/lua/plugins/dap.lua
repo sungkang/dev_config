@@ -6,7 +6,6 @@ return {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
       "theHamsta/nvim-dap-virtual-text",
-      "williamboman/mason.nvim",
     },
     config = function()
       local dap = require("dap")
@@ -49,21 +48,42 @@ return {
 
       ui.setup()
 
-      require("dap-go").setup({
-        dap_configurations = {
-          {
-            type = "go",
-            name = "Debug Go",
-            request = "launch",
-            program = "${fileDirname}",
-            env = env_vars,
-          },
-        }
-      })
+      require("dap-go").setup()
+      require("dap").configurations.go = {
+        {
+          type = "go",
+          name = "Debug Go",
+          request = "launch",
+          program = "${fileDirname}",
+          env = env_vars,
+        },
+        {
+          type = "go",
+          name = "Attach Remote",
+          mode = "remote",
+          request = "attach",
+          port = 43000,
+          host = "127.0.0.1",
+        },
+      }
+
+      vim.api.nvim_set_hl(0, "DapRed", { fg = "#d31617" })
+      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl="DapRed", numhl = "DiagnosticError" })
+
+      vim.api.nvim_set_hl(0, "DapStoppedFG", { fg = "#c6d525" })
+      vim.api.nvim_set_hl(0, "DapStoppedBG", { bg = "#2f8f77" })
+      vim.fn.sign_define("DapStopped", { text = ">>", texthl="DapStoppedFG", numhl = "DapStoppedFG", linehl = "DapStoppedBG" })
 
       require("nvim-dap-virtual-text").setup()
 
-      vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
+      -------------
+      -- keymaps --
+      -------------
+      vim.keymap.set("n", "<space>bb", dap.toggle_breakpoint)
+      vim.keymap.set("n", "<space>ba", dap.clear_breakpoints)
+      vim.keymap.set("n", "<space>dd", function() ui.toggle({reset = true}) end)
+      vim.keymap.set("n", "<space>dc", dap.continue)
+      vim.keymap.set("n", "<space>dt", dap.terminate)
       vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
 
       -- Eval var under cursor
@@ -78,6 +98,10 @@ return {
       vim.keymap.set("n", "<F5>", dap.step_back)
       vim.keymap.set("n", "<F12>", dap.restart)
 
+
+      --------------------------------
+      -- nvim-dap-ui event handlers --
+      --------------------------------
       dap.listeners.before.attach.dapui_config = function()
         ui.open()
       end
