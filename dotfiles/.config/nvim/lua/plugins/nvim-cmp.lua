@@ -80,14 +80,5 @@ return {
         { name = 'cmdline' }
       })
     })
-
-    -- setup for vim-dadbod
-    cmp.setup.filetype({ 'sql', 'mysql', 'plsql' }, {
-      sources = {
-        { name = 'vim-dadbod-completion' },
-        { name = 'buffer' },
-      },
-    })
-    set('n', '<leader>d', '<Cmd>DBUIToggle<cr>', opts)
   end
 }
