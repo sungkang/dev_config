@@ -29,7 +29,7 @@ return {
           layout_strategy = 'horizontal',
           file_ignore_patterns = { 'node_modules', '.git' },
           -- wrap_results = true,
-          path_display = { 'truncate' },
+          path_display = { 'filename_first' },
           layout_config = {
             prompt_position = 'top',
             height = 0.7,
@@ -103,6 +103,9 @@ return {
           },
           quickfix = {
             initial_mode = "normal",
+          },
+          lsp_document_symbols = {
+            symbol_width = 50,
           },
         },
         extensions = {
