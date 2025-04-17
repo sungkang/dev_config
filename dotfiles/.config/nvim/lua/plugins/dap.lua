@@ -84,7 +84,7 @@ return {
       vim.keymap.set("n", "<space>dd", function() ui.toggle({reset = true}) end)
       vim.keymap.set("n", "<space>dc", dap.continue)
       vim.keymap.set("n", "<space>dt", dap.terminate)
-      vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
+      vim.keymap.set("n", "<space>gc", dap.run_to_cursor)
 
       -- Eval var under cursor
       vim.keymap.set("n", "<space>v", function()
