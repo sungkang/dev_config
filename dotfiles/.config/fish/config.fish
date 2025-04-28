@@ -18,6 +18,7 @@ if status is-interactive
   fish_add_path $HOME/.local/bin
   fish_add_path $HOME/go/bin
   fish_add_path $XDG_CONFIG_HOME/emacs/bin
+  fish_add_path $HOME/dev/depot_tools
 
 
   # vi mode
@@ -66,6 +67,9 @@ if status is-interactive
 
   # youtube dlp
   alias yt="yt-dlp"
+
+  # cursor
+  alias c="cursor"
 
   # starship
   starship init fish | source

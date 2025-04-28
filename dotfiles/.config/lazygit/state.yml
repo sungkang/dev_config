@@ -1,9 +1,11 @@
 lastupdatecheck: 1684093416
 recentrepos:
     - /Users/skang/dev/me/dev_config
-    - /Users/skang/dev/sketch/tbd
     - /Users/skang/dev/work/cac_platform/cac_platform_api
+    - /Users/skang/dev/work/cac_platform/cac_platform_docs
     - /Users/skang/dev/work/cac_platform/cac_platform_web
+    - /Users/skang/dev/sketch/tbd
+    - /Users/skang/dev/chromium/src
     - /Users/skang/dev/bubbles
     - /Users/skang/dev/sketch/bappta
     - /Users/skang/dev/work/tacony/taconyonline-pwa-v2-b2b
@@ -14,7 +16,6 @@ recentrepos:
     - /Users/skang/dev/sketch/impact_marketplace
     - /Users/skang/oh-my-tmux
     - /Users/skang/dev/aoc
-    - /Users/skang/dev/work/cac_platform/cac_platform_docs
     - /Users/skang/dev/sketch/bettertyping
     - /Users/skang/dev/sketch/flood_team/core
     - /Users/skang/dev/sketch/disaster-logic/astro
@@ -51,7 +52,7 @@ recentrepos:
     - /Users/skang/dev/me/godot/sketchiverse
     - /Users/skang/dev/me/godot/stick-pong
 startuppopupversion: 5
-lastversion: HEAD-1b571f9
+lastversion: HEAD-2b43f5b
 customcommandshistory:
     - e /Users/skang/dev/work/cac_platform/cac_platform_web/src/services/v2/DocumentService.ts
     - gst
