@@ -28,6 +28,9 @@ if status is-interactive
   bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
   bind -M default \cf "tmux-sessionizer; commandline -f repaint"
 
+  bind -M insert \ch "eval (history | fzf); commandline -f repaint"
+  bind -M default \ch "eval (history | fzf); commandline -f repaint"
+
   # source autojump for fish
   set --local AUTOJUMP_PATH /opt/homebrew/share/autojump/autojump.fish
   if test -e $AUTOJUMP_PATH
@@ -45,6 +48,8 @@ if status is-interactive
   alias d="nvim $DEV_CONFIG_HOME"
   alias jd="cd $DEV_CONFIG_HOME"
   alias r="yazi"
+  alias c="claude"
+  alias cu="claude update"
 
   # neovim
   alias v="nvim"
@@ -52,14 +57,14 @@ if status is-interactive
 
   # eza
     # general use
-    alias ls="eza"                                               # ls
-    alias l="eza -lbF --git"                                     # list, size, type, git
-    alias lt="eza -lbF --git --tree --level=2"                   # all list
-    alias ll="eza -lbGF --git"                                   # long list
-    alias la="eza -lbhgma --git --color-scale"                   # all list
-    alias lat="eza -lbhgma --git --color-scale --tree --level=2" # all list
-    alias lx="eza -lbhgma@ --git --color-scale"                  # all + extended list
-    alias lS="eza -1"                                            # one column, just names
+    # alias ls="eza"                                               # ls
+    # alias l="eza -lbF --git"                                     # list, size, type, git
+    # alias lt="eza -lbF --git --tree --level=2"                   # all list
+    # alias ll="eza -lbGF --git"                                   # long list
+    # alias la="eza -lbhgma --git --color-scale"                   # all list
+    # alias lat="eza -lbhgma --git --color-scale --tree --level=2" # all list
+    # alias lx="eza -lbhgma@ --git --color-scale"                  # all + extended list
+    # alias lS="eza -1"                                            # one column, just names
 
   # lazygit
   alias lg="lazygit"
@@ -69,7 +74,7 @@ if status is-interactive
   alias yt="yt-dlp"
 
   # cursor
-  alias c="cursor"
+  alias cur="cursor"
 
   # starship
   starship init fish | source
@@ -91,6 +96,9 @@ if status is-interactive
   # if command -q tmux; and test -z "$TMUX"
   #   tmux attach -t default; or tmux new -s default
   # end
+
+  # rbenv
+  source (rbenv init -|psub)
 end
 
 # The next line updates PATH for the Google Cloud SDK.

@@ -1,10 +1,18 @@
 lastupdatecheck: 1684093416
 recentrepos:
     - /Users/skang/dev/me/dev_config
-    - /Users/skang/dev/work/cac_platform/cac_platform_api
-    - /Users/skang/dev/work/cac_platform/cac_platform_docs
-    - /Users/skang/dev/work/cac_platform/cac_platform_web
     - /Users/skang/dev/sketch/tbd
+    - /Users/skang/dev/me/discbounty
+    - /Users/skang/dev/work/cac_platform/cac_platform_api
+    - /Users/skang/dev/work/cac_platform/cac_platform_web
+    - /Users/skang/dev/ai/llm-prompt-architect
+    - /Users/skang/dev/me/vial-qmk
+    - /Users/skang/dev/me/vial-qmk/lib/chibios
+    - /Users/skang/dev/me/vial-qmk/lib/chibios-contrib
+    - /Users/skang/dev/sketch/MeetupCoordinationApp
+    - /Users/skang/dev/sketch/mobile_app
+    - /Users/skang/dev/sketch/meetup
+    - /Users/skang/dev/work/cac_platform/cac_platform_docs
     - /Users/skang/dev/chromium/src
     - /Users/skang/dev/bubbles
     - /Users/skang/dev/sketch/bappta
@@ -12,7 +20,6 @@ recentrepos:
     - /Users/skang/dev/work/tacony/taconyonline-magento-b2b
     - /Users/skang/dev/shopping-list
     - /Users/skang/dev/work/purina/purina-us-justrightpetfood-local
-    - /Users/skang/dev/me/vial-qmk
     - /Users/skang/dev/sketch/impact_marketplace
     - /Users/skang/oh-my-tmux
     - /Users/skang/dev/aoc
@@ -52,7 +59,7 @@ recentrepos:
     - /Users/skang/dev/me/godot/sketchiverse
     - /Users/skang/dev/me/godot/stick-pong
 startuppopupversion: 5
-lastversion: HEAD-2b43f5b
+lastversion: HEAD-4c92ffd
 customcommandshistory:
     - e /Users/skang/dev/work/cac_platform/cac_platform_web/src/services/v2/DocumentService.ts
     - gst

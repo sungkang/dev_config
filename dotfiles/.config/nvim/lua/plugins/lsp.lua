@@ -52,10 +52,10 @@ return {
         "cssls",
         "gdscript",
         "pyright",
+        "ruff",
         "tailwindcss",
         "emmet_ls",
         "clangd",
-        "gleam",
         "zls",
         "dockerls",
         "templ",
@@ -69,6 +69,18 @@ return {
           },
           capabilities = capabilities,
         }
+
+        if lsp == "tailwindcss" then
+          config.settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" }
+                },
+              },
+            },
+          }
+        end
 
         if lsp == "volar" then
           if is_npm_package_installed("vue") then
@@ -139,7 +151,6 @@ return {
         end
 
         nvim_lsp[lsp].setup(config)
-        ::continue::
       end
     end,
   },

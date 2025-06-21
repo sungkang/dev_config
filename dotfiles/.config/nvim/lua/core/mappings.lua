@@ -29,7 +29,7 @@ function M.config()
   set('n', '<c-f>', '<Cmd>silent !tmux neww tmux-sessionizer<CR>', opts)
   set('n', 'L', 'Lzz', opts)
   set('n', 'H', 'Hzz', opts)
-  set('n', '<m-;>', '<Cmd>lua require("functions").repeatOpposite()<CR>', opts)
+  set('n', '<m-;>', '<Cmd>lua require("functions.utils").repeatOpposite()<CR>', opts)
 
   ---------------------
   -- window management
@@ -79,8 +79,8 @@ function M.config()
   -----------
   -- diffing
   -----------
-  -- set('n', '<space>dt', '<Cmd>windo diffthis<CR>', opts)
-  -- set('n', '<space>do', '<Cmd>windo diffoff<CR>', opts)
+  set('n', '<space>dt', '<Cmd>windo diffthis<CR>', opts)
+  set('n', '<space>do', '<Cmd>windo diffoff<CR>', opts)
 
   ------------
   -- fugitive
@@ -123,6 +123,13 @@ function M.config()
   set('n', '<space>hs', '<Cmd>GitGutterStageHunk<CR>')
   set('n', '<space>hu', '<Cmd>GitGutterUndoHunk<CR>')
 
+  ----------------------------
+  -- claude reference copying
+  ----------------------------
+  set('n', '<space>r', '<Cmd>:lua require("functions.claude_reference").CopyClaudeReference()<CR>', opts)
+  set('v', '<space>r', '<Cmd>:lua require("functions.claude_reference").CopyClaudeReferenceWithSelection()<CR>', opts)
+  set('x', '<space>r', '<Cmd>:lua require("functions.claude_reference").CopyClaudeReferenceWithLineRange()<CR>', opts)
+
   ------------------
   -- timestamp line
   ------------------
@@ -137,6 +144,10 @@ function M.config()
   -- color helpers
   -----------------
   -- set('v', '<leader>ch', "<Cmd>'<,'>lua require'utils'.hexToRgba()<CR>", opts)
+  --
+  set('n', '<leader>cp', function()
+    vim.fn.setreg('+', vim.fn.expand('%:p'))
+  end, { desc = "Copy file path to clipboard" })
 end
 
 return M
