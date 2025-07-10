@@ -151,6 +151,10 @@ return {
         end
 
         nvim_lsp[lsp].setup(config)
+
+        -- neovim 0.11+, find the new way to configure lsp
+        -- vim.lsp.config(lsp, config)
+        -- vim.lsp.enable(lsp)
       end
     end,
   },

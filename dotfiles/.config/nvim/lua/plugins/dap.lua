@@ -74,7 +74,7 @@ return {
       vim.api.nvim_set_hl(0, "DapStoppedBG", { bg = "#2f8f77" })
       vim.fn.sign_define("DapStopped", { text = ">>", texthl="DapStoppedFG", numhl = "DapStoppedFG", linehl = "DapStoppedBG" })
 
-      require("nvim-dap-virtual-text").setup()
+      require("nvim-dap-virtual-text").setup({})
 
       -------------
       -- keymaps --

@@ -1,10 +1,11 @@
 lastupdatecheck: 1684093416
 recentrepos:
     - /Users/skang/dev/me/dev_config
+    - /Users/skang/dev/work/cac_platform/cac_platform_web
+    - /Users/skang/dev/work/cac_platform/cac_platform_api
     - /Users/skang/dev/sketch/tbd
     - /Users/skang/dev/me/discbounty
-    - /Users/skang/dev/work/cac_platform/cac_platform_api
-    - /Users/skang/dev/work/cac_platform/cac_platform_web
+    - /Users/skang/dev/sketch/clifford-tui
     - /Users/skang/dev/ai/llm-prompt-architect
     - /Users/skang/dev/me/vial-qmk
     - /Users/skang/dev/me/vial-qmk/lib/chibios
@@ -52,14 +53,13 @@ recentrepos:
     - /Users/skang/dev/sketch/clifford_api
     - /Users/skang/dev/sketch/wrestler
     - /Users/skang/dev/sketch/tui-do
-    - /Users/skang/dev/sketch/clifford-tui
     - /Users/skang/dev/sketch/waypointr-app
     - /Users/skang/dev/sketch/biomerieux-installer
     - /Users/skang/dev/sketch/sketchiverse
     - /Users/skang/dev/me/godot/sketchiverse
     - /Users/skang/dev/me/godot/stick-pong
 startuppopupversion: 5
-lastversion: HEAD-4c92ffd
+lastversion: HEAD-5587d70
 customcommandshistory:
     - e /Users/skang/dev/work/cac_platform/cac_platform_web/src/services/v2/DocumentService.ts
     - gst
