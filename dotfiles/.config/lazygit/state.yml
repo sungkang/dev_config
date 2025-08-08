@@ -1,20 +1,22 @@
 lastupdatecheck: 1684093416
 recentrepos:
     - /Users/skang/dev/me/dev_config
-    - /Users/skang/dev/work/cac_platform/cac_platform_web
     - /Users/skang/dev/work/cac_platform/cac_platform_api
-    - /Users/skang/dev/sketch/tbd
+    - /Users/skang/dev/work/cac_platform/cac_platform_web
+    - /opt/homebrew
+    - /Users/skang/dev/me/panchang
+    - /Users/skang/dev/work/cac_platform/python/ingest_docs
     - /Users/skang/dev/me/discbounty
+    - /Users/skang/dev/sketch/mobile_app
+    - /Users/skang/dev/sketch/tbd
     - /Users/skang/dev/sketch/clifford-tui
     - /Users/skang/dev/ai/llm-prompt-architect
     - /Users/skang/dev/me/vial-qmk
     - /Users/skang/dev/me/vial-qmk/lib/chibios
     - /Users/skang/dev/me/vial-qmk/lib/chibios-contrib
     - /Users/skang/dev/sketch/MeetupCoordinationApp
-    - /Users/skang/dev/sketch/mobile_app
     - /Users/skang/dev/sketch/meetup
     - /Users/skang/dev/work/cac_platform/cac_platform_docs
-    - /Users/skang/dev/chromium/src
     - /Users/skang/dev/bubbles
     - /Users/skang/dev/sketch/bappta
     - /Users/skang/dev/work/tacony/taconyonline-pwa-v2-b2b
@@ -43,7 +45,6 @@ recentrepos:
     - /Users/skang/dev/sketch/home-ass
     - /Users/skang/dev/sketch/timefront_api
     - /Users/skang/dev/me/beekeeb_qmk_firmware
-    - /opt/homebrew
     - /Users/skang/dev/fabric.js
     - /Users/skang/dev/sketch/ai-scrum-master
     - /Users/skang/dev/me/excalidraw

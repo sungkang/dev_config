@@ -2,6 +2,10 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     config = function()
+      local function nvim_pid()
+        return "pid:" .. vim.fn.getpid()
+      end
+
       local theme = 'auto'
       -- theme.normal.a.bg = '#bbd8e8'
       require('lualine').setup({
@@ -17,7 +21,7 @@ return {
               path = 1,
             }
           },
-          lualine_x = {},
+          lualine_x = {nvim_pid, 'filetype'},
         },
         inactive_sections = {
           lualine_c = {

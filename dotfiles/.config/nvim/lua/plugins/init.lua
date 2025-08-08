@@ -137,7 +137,9 @@ return {
       formatters_by_ft = {
         xml = { "xmllint" },
         json = { "jq" },
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        vue = { "prettierd", "prettier", stop_after_first = true },
         -- lua = { "stylua" },
         -- python = { "isort", "black" },
       },
@@ -307,6 +309,7 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
+    enabled = false,
     lazy = true,
     event = "InsertEnter",
     keys = {
@@ -368,5 +371,11 @@ return {
         },
       })
     end,
+  },
+  {
+    "mbbill/undotree",
+    config = function()
+      vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Toggle Undotree" })
+    end
   },
 }

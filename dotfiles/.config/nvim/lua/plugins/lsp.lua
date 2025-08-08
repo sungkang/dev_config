@@ -3,9 +3,6 @@ local is_npm_package_installed = require("utils").is_npm_package_installed
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "nvimtools/none-ls.nvim",
-    },
     config = function()
       local nvim_lsp = require("lspconfig")
       local bset = vim.api.nvim_buf_set_keymap
@@ -24,8 +21,8 @@ return {
         bset(bufnr, "n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", opts)
         bset(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
         bset(bufnr, "n", "<space>c", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-        bset(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-        bset(bufnr, "v", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+        -- bset(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+        -- bset(bufnr, "v", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
         bset(bufnr, "n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
         bset(bufnr, "n", "[e", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
         bset(bufnr, "n", "]e", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
@@ -38,14 +35,15 @@ return {
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
       -- choose default formatters for certain lsps
-      local with_null_ls_formatter = function(client, bufnr)
+      local on_attach_with_disabled_lsp_formatter = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
         on_attach(client, bufnr)
       end
 
       local servers = {
-        "volar",
-        "ts_ls",
+        "vue_ls",
+        "vtsls",
         "svelte",
         "lua_ls",
         "gopls",
@@ -82,36 +80,35 @@ return {
           }
         end
 
-        if lsp == "volar" then
-          if is_npm_package_installed("vue") then
-            config.on_attach = with_null_ls_formatter
-          end
-        end
-
         if lsp == "svelte" then
           config.root_dir = nvim_lsp.util.root_pattern("svelte.config.js")
         end
 
-        if lsp == "ts_ls" then
+        if lsp == "vtsls" then
           if is_npm_package_installed("vue") then
-            config.init_options = {
-              plugins = {
-                {
-                  name = "@vue/typescript-plugin",
-                  location = "node_modules/@vue/typescript-plugin",
-                  languages = { "javascript", "typescript", "vue" },
+            config.settings = {
+              vtsls = {
+                tsserver = {
+                  globalPlugins = {
+                    {
+                      name = '@vue/typescript-plugin',
+                      location = vim.fn.stdpath('data') ..
+                          "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                      languages = { 'typescript', 'javascript', 'vue' },
+                      configNamespace = 'typescript',
+                    }
+                  },
                 },
               },
             }
+
             config.filetypes = { "typescript", "javascript", "vue" }
-            config.on_attach = with_null_ls_formatter
+            config.on_attach = on_attach_with_disabled_lsp_formatter
           end
+        end
 
-          config.root_dir = function(startpath)
-            return nvim_lsp.util.root_pattern("package.json")(startpath)
-          end
-
-          config.single_file_support = false
+        if lsp == "vue_ls" then
+            config.on_attach = on_attach_with_disabled_lsp_formatter
         end
 
         if lsp == "lua_ls" then
@@ -137,7 +134,6 @@ return {
         if lsp == "denols" then
           config.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
           config.single_file_support = false
-          config.on_attach = with_null_ls_formatter
         end
 
         if lsp == "cssls" then
@@ -150,11 +146,11 @@ return {
           }
         end
 
-        nvim_lsp[lsp].setup(config)
+        -- nvim_lsp[lsp].setup(config)
 
         -- neovim 0.11+, find the new way to configure lsp
-        -- vim.lsp.config(lsp, config)
-        -- vim.lsp.enable(lsp)
+        vim.lsp.config(lsp, config)
+        vim.lsp.enable(lsp)
       end
     end,
   },
@@ -171,13 +167,8 @@ return {
 
       null_ls.setup({
         sources = {
-          null_ls.builtins.formatting.prettier,
           require("none-ls.diagnostics.eslint_d"),
         },
-        on_attach = function(client, bufnr)
-          bset(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-          bset(bufnr, "v", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-        end,
       })
     end,
   },
