@@ -150,9 +150,7 @@ return {
     },
     enabled = true,
     config = function()
-      local null_ls = require("null-ls")
-
-      null_ls.setup({
+      require("null-ls").setup({
         sources = {
           require("none-ls.diagnostics.eslint_d"),
         },

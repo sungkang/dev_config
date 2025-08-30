@@ -140,8 +140,8 @@ return {
       end
 
       -- One picker to show BOTH files and directories
-      local function find_anything(opts)
-        opts = opts or {}
+      local function find_anything(options)
+        options = options or {}
         require("telescope.builtin").find_files(vim.tbl_extend("force", {
           prompt_title = "Files & Folders",
           -- fd returns files and dirs when no --type is given
@@ -172,7 +172,7 @@ return {
 
             return true
           end,
-        }, opts))
+        }, options))
       end
 
       -- extensions
