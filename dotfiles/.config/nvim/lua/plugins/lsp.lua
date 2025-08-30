@@ -54,9 +54,7 @@ return {
         "tailwindcss",
         "clangd",
         "zls",
-        "dockerls",
         "templ",
-        "taplo",
       }
       for _, lsp in pairs(servers) do
         local config = {
@@ -130,11 +128,6 @@ return {
           }
         end
 
-        if lsp == "denols" then
-          config.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
-          config.single_file_support = false
-        end
-
         if lsp == "cssls" then
           config.settings = {
             css = {
@@ -145,9 +138,6 @@ return {
           }
         end
 
-        -- nvim_lsp[lsp].setup(config)
-
-        -- neovim 0.11+, find the new way to configure lsp
         vim.lsp.config(lsp, config)
         vim.lsp.enable(lsp)
       end
