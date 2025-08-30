@@ -57,14 +57,14 @@ if status is-interactive
 
   # eza
     # general use
-    # alias ls="eza"                                               # ls
-    # alias l="eza -lbF --git"                                     # list, size, type, git
-    # alias lt="eza -lbF --git --tree --level=2"                   # all list
-    # alias ll="eza -lbGF --git"                                   # long list
-    # alias la="eza -lbhgma --git --color-scale"                   # all list
-    # alias lat="eza -lbhgma --git --color-scale --tree --level=2" # all list
-    # alias lx="eza -lbhgma@ --git --color-scale"                  # all + extended list
-    # alias lS="eza -1"                                            # one column, just names
+    alias ls="eza"                                               # ls
+    alias l="eza -lbF --git"                                     # list, size, type, git
+    alias lt="eza -lbF --git --tree --level=2"                   # all list
+    alias ll="eza -lbGF --git"                                   # long list
+    alias la="eza -lbhgma --git --color-scale"                   # all list
+    alias lat="eza -lbhgma --git --color-scale --tree --level=2" # all list
+    alias lx="eza -lbhgma@ --git --color-scale"                  # all + extended list
+    alias lS="eza -1"                                            # one column, just names
 
   # lazygit
   alias lg="lazygit"
@@ -75,6 +75,10 @@ if status is-interactive
 
   # cursor
   alias cur="cursor"
+
+  #posting
+  # for CAC
+  alias pc="posting --collection $XDG_DATA_HOME/posting/cac --env $XDG_DATA_HOME/posting/cac/.env"
 
   # starship
   starship init fish | source
