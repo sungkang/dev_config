@@ -237,7 +237,6 @@ return {
     end,
   },
   "leoluz/nvim-dap-go",
-  "akinsho/toggleterm.nvim",
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-fugitive",
