@@ -52,7 +52,6 @@ return {
         "pyright",
         "ruff",
         "tailwindcss",
-        "emmet_ls",
         "clangd",
         "zls",
         "dockerls",
@@ -108,7 +107,7 @@ return {
         end
 
         if lsp == "vue_ls" then
-            config.on_attach = on_attach_with_disabled_lsp_formatter
+          config.on_attach = on_attach_with_disabled_lsp_formatter
         end
 
         if lsp == "lua_ls" then
@@ -161,8 +160,6 @@ return {
     },
     enabled = true,
     config = function()
-      local bset = vim.api.nvim_buf_set_keymap
-      local opts = { noremap = true, silent = true }
       local null_ls = require("null-ls")
 
       null_ls.setup({
