@@ -18,7 +18,6 @@ M.config = function()
   vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
   vim.opt.foldlevel = 99
   vim.opt.foldlevelstart = 99
-  vim.opt.foldenable = false
   vim.opt.timeoutlen = 400
   vim.opt.ttimeoutlen = 10
   vim.opt.termguicolors = true
