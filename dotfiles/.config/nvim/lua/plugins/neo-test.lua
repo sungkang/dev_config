@@ -16,11 +16,21 @@ return {
         adapters = {
           -- require('neotest-go')({}),
           require('neotest-golang')({}),
-          require('neotest-vitest')({}),
+          require('neotest-vitest')({
+            filter_dir = function(_, rel_path, _)
+              return not string.match(rel_path, "playwright")
+                  and not string.match(rel_path, "node_modules")
+            end,
+          }),
           require('neotest-playwright').adapter({
             options = {
+              persist_project_selection = true,
               enable_dynamic_test_discovery = true,
-            }
+            },
+            filter_dir = function(_, rel_path, _)
+              -- Only include playwright directory
+              return string.match(rel_path, "playwright")
+            end,
           }),
         },
       })
