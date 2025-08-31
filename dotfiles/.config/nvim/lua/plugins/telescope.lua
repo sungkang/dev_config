@@ -149,19 +149,10 @@ return {
           find_command = { "fd", "--hidden", "--exclude", ".git", "--strip-cwd-prefix" },
           -- Let us intercept <CR>
           attach_mappings = function(_, map)
-            map("i", "<CR>", open_file_or_dir_in_oil)
-            map("n", "<CR>", open_file_or_dir_in_oil)
+            map({ "i", "n" }, "<CR>", open_file_or_dir_in_oil)
 
             -- Optional: open the *containing* directory in Oil with <C-o>
-            map("i", "<C-o>", function(pb)
-              local e = action_state.get_selected_entry()
-              local p = (e and (e.path or e.filename or e.value or e[1])) or nil
-              if not p then return end
-              local dir = vim.fn.isdirectory(p) == 1 and p or vim.fn.fnamemodify(p, ":h")
-              actions.close(pb)
-              vim.cmd("Oil " .. vim.fn.fnameescape(dir))
-            end)
-            map("n", "<C-o>", function(pb)
+            map({ "i", "n" }, "<C-o>", function(pb)
               local e = action_state.get_selected_entry()
               local p = (e and (e.path or e.filename or e.value or e[1])) or nil
               if not p then return end
