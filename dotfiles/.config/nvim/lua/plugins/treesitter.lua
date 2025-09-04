@@ -1,6 +1,9 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = "master",
+    lazy = false,
+    build = ":TSUpdate",
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = 'all',
@@ -9,7 +12,6 @@ return {
           enable = true,
           additional_vim_regex_highlighting = false,
           disable = function(_, bufnr)
-            local buf_name = vim.api.nvim_buf_get_name(bufnr)
             local num_of_lines = vim.api.nvim_buf_line_count(bufnr)
             return num_of_lines > 50000
           end
