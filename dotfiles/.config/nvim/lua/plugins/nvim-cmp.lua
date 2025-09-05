@@ -10,8 +10,6 @@ return {
   config = function()
     -- opt.completeopt = menu, menuone, noselect
 
-    local set = vim.keymap.set
-    local opts = { noremap = true, silent = true }
     local luasnip = require('luasnip')
     local cmp = require('cmp')
 
@@ -20,6 +18,14 @@ return {
     })
 
     cmp.setup({
+      window = {
+        completion = cmp.config.window.bordered({
+          border = "rounded", -- options: "single", "double", "shadow", "rounded"
+        }),
+        documentation = cmp.config.window.bordered({
+          border = "rounded",
+        }),
+      },
       preselect = cmp.PreselectMode.None,
       snippet = {
         expand = function(args)

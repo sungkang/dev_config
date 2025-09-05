@@ -4,15 +4,16 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local nvim_lsp = require("lspconfig")
+      local lsp_config = require("lspconfig")
       local bset = vim.api.nvim_buf_set_keymap
       local opts = { noremap = true, silent = true }
 
       vim.diagnostic.config({ virtual_text = true })
 
+      -- configure default on_attach callback function
       local on_attach = function(client, bufnr)
         bset(bufnr, "n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-        bset(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+        bset(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover({ border = 'rounded'})<cr>", opts)
         bset(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
         bset(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
         bset(bufnr, "n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
@@ -20,10 +21,10 @@ return {
         bset(bufnr, "n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", opts)
         bset(bufnr, "n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", opts)
         bset(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-        bset(bufnr, "n", "<space>c", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+        bset(bufnr, "n", "<space>c", "<cmd>lua vim.lsp.buf.code_action({border = 'rounded'})<cr>", opts)
         -- bset(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
         -- bset(bufnr, "v", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-        bset(bufnr, "n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+        bset(bufnr, "n", "<space>e", "<cmd>lua vim.diagnostic.open_float({border = 'rounded'})<cr>", opts)
         bset(bufnr, "n", "[e", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
         bset(bufnr, "n", "]e", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
         bset(bufnr, "n", "<space>ll", "<cmd>LspRestart<cr>", opts)
@@ -71,7 +72,7 @@ return {
               experimental = {
                 classRegex = {
                   { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
-                  { "cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
+                  { "cn\\(([^)]*)\\)",  "[\"'`]([^\"'`]*)[\"'`]" },
                 },
               },
             },
@@ -79,7 +80,7 @@ return {
         end
 
         if lsp == "svelte" then
-          config.root_dir = nvim_lsp.util.root_pattern("svelte.config.js")
+          config.root_dir = lsp_config.util.root_pattern("svelte.config.js")
         end
 
         if lsp == "vtsls" then

@@ -23,27 +23,23 @@ return {
 
       local Terminal = require('toggleterm.terminal').Terminal
       local lazygit = Terminal:new({
-        cmd = 'lazygit',
-        dir = 'git_dir',
+        cmd = 'claude',
         hidden = true,
         direction = 'float',
-        env = {
-          GIT_EDITOR = [[nvr -cc vsplit +'set bufhidden=wipe']],
-        },
         on_open = function(term)
           vim.cmd('startinsert!')
-          vim.keymap.set('t', ',g', [[<Cmd>wincmd q<CR>]], { buffer = term.bufnr })
+          vim.keymap.set('t', '<c-u>', [[<Cmd>wincmd q<CR>]], { buffer = term.bufnr })
         end,
         on_close = function()
         end,
         count = 99,
       })
 
-      function _lazygit_toggle()
+      function _claude_code_toggle()
         lazygit:toggle()
       end
 
-      vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>lua _lazygit_toggle()<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<c-u>', '<cmd>lua _claude_code_toggle()<CR>', { noremap = true, silent = true })
     end
   },
 }
