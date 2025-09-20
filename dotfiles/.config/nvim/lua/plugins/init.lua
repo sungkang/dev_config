@@ -126,8 +126,8 @@ return {
   },
   "tpope/vim-abolish",
   {
-    enabled = true,
     "numToStr/Comment.nvim",
+    enabled = true,
     config = true,
   },
   {
@@ -189,27 +189,16 @@ return {
     "mfussenegger/nvim-dap",
     config = function() end,
   },
-  {
-    "fatih/vim-go",
-    enabled = false,
-    config = function()
-      -- vim.cmd([[:GoUpdateBinaries]])
-      -- vim.g.go_def_mode = 'gopls'
-      -- vim.g.go_info_mode = 'gopls'
-      -- vim.g.go_gopls_enabled = 0
-    end,
-  },
   "leoluz/nvim-dap-go",
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-fugitive",
   "tpope/vim-dotenv",
-  "easymotion/vim-easymotion",
   {
     "airblade/vim-gitgutter",
     config = function()
       vim.g.gitgutter_grep = "rg"
-    end,
+    end
   },
   {
     "vimwiki/vimwiki",
@@ -229,36 +218,13 @@ return {
       }
     end,
   },
-  {
-    "anuvyklack/pretty-fold.nvim",
-    enabled = false,
-    config = function()
-      require("pretty-fold").setup({
-        sections = {
-          left = {
-            "content",
-            "    ",
-            "number_of_folded_lines",
-            ": ",
-            "percentage",
-            " ",
-          },
-          right = {},
-        },
-        fill_char = " ",
-      })
-    end,
-  },
   "tommcdo/vim-exchange",
   "michaeljsmith/vim-indent-object",
   {
     "windwp/nvim-autopairs",
     config = true,
   },
-  {
-    "folke/neodev.nvim",
-    config = true,
-  },
+  "folke/lazydev.nvim",
   {
     "folke/trouble.nvim",
     opts = { mode = "document_diagnostics" },
