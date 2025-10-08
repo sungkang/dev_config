@@ -74,7 +74,10 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require("colorizer").setup()
+      require("colorizer").setup({
+        css = { rgb_fn = true, },
+        html = { names = false, },
+      })
     end,
   },
   {
@@ -100,9 +103,9 @@ return {
       formatters_by_ft = {
         xml = { "xmllint" },
         json = { "jq" },
-        javascript = { "prettierd", "prettier", stop_after_first = true },
-        typescript = { "prettierd", "prettier", stop_after_first = true },
-        vue = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { "prettier", stop_after_first = true },
+        typescript = { "prettier", stop_after_first = true },
+        vue = { "prettier", stop_after_first = true },
         -- lua = { "stylua" },
         -- python = { "isort", "black" },
       },
@@ -111,7 +114,7 @@ return {
         lsp_format = "fallback",
       },
       -- Set up format-on-save
-      format_on_save = { timeout_ms = 500 },
+      -- format_on_save = { timeout_ms = 500 },
       -- Customize formatters
       formatters = {
         shfmt = {
@@ -123,12 +126,6 @@ return {
       -- If you want the formatexpr, here is the place to set it
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
-  },
-  "tpope/vim-abolish",
-  {
-    "numToStr/Comment.nvim",
-    enabled = true,
-    config = true,
   },
   {
     "stevearc/oil.nvim",
@@ -185,11 +182,6 @@ return {
     end,
   },
   "RRethy/vim-illuminate",
-  {
-    "mfussenegger/nvim-dap",
-    config = function() end,
-  },
-  "leoluz/nvim-dap-go",
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-fugitive",
@@ -218,7 +210,6 @@ return {
       }
     end,
   },
-  "tommcdo/vim-exchange",
   "michaeljsmith/vim-indent-object",
   {
     "windwp/nvim-autopairs",
@@ -237,8 +228,7 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
-    enabled = false,
-    lazy = true,
+    enabled = true,
     event = "InsertEnter",
     keys = {
       { "<leader>ce", "<Cmd>Copilot enable<CR>" },
@@ -263,47 +253,5 @@ return {
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
-  },
-  {
-    "folke/noice.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-    config = function()
-      require("noice").setup({
-        lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-          },
-        },
-        -- you can enable a preset for easier configuration
-        presets = {
-          -- bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = true,       -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,       -- add a border to hover docs and signature help
-        },
-      })
-    end,
-  },
-  {
-    "mbbill/undotree",
-    config = function()
-      vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Toggle Undotree" })
-    end
   },
 }

@@ -28,7 +28,7 @@ return {
         bset(bufnr, "n", "[e", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
         bset(bufnr, "n", "]e", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
         bset(bufnr, "n", "<space>ll", "<cmd>LspRestart<cr>", opts)
-        require("illuminate").on_attach(client)
+        -- require("illuminate").on_attach(client)
       end
 
       -- update capabilities with completion
