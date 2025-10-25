@@ -194,16 +194,17 @@ return {
   },
   {
     "vimwiki/vimwiki",
+    enabled = false,
     config = function()
       vim.g.vimwiki_folding = "expr"
       vim.g.vimwiki_list = {
         {
-          path = "~/.local/share/vimwiki/purina_just_right",
+          path = "/Users/skang/.local/share/vimwiki/personal",
           syntax = "markdown",
           ext = ".md",
         },
         {
-          path = "~/.local/share/vimwiki/personal",
+          path = "/Users/skang/.local/share/vimwiki/purina_just_right",
           syntax = "markdown",
           ext = ".md",
         },
@@ -231,9 +232,9 @@ return {
     enabled = true,
     event = "InsertEnter",
     keys = {
-      { "<leader>ce", "<Cmd>Copilot enable<CR>" },
-      { "<leader>cd", "<Cmd>Copilot disable<CR>" },
-      { "<leader>cs", "<Cmd>Copilot status<CR>" },
+      { "<leader>CC", "<Cmd>Copilot enable<CR>" },
+      { "<leader>CD", "<Cmd>Copilot disable<CR>" },
+      { "<leader>CS", "<Cmd>Copilot status<CR>" },
     },
     config = function()
       require("copilot").setup({
