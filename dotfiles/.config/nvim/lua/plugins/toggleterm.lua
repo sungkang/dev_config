@@ -11,7 +11,7 @@ end
 
 return {
   {
-    enabled = false,
+    enabled = true,
     'akinsho/toggleterm.nvim',
     config = function()
       require('toggleterm').setup({
@@ -21,14 +21,15 @@ return {
         terminal_mappings = false,
       })
 
+      -- Claude Code floating terminal 
       local Terminal = require('toggleterm.terminal').Terminal
-      local lazygit = Terminal:new({
+      local cc = Terminal:new({
         cmd = 'claude',
         hidden = true,
         direction = 'float',
         on_open = function(term)
           vim.cmd('startinsert!')
-          vim.keymap.set('t', '<c-u>', [[<Cmd>wincmd q<CR>]], { buffer = term.bufnr })
+          vim.keymap.set('t', '<leader>cc', [[<Cmd>wincmd q<CR>]], { buffer = term.bufnr })
         end,
         on_close = function()
         end,
@@ -36,10 +37,10 @@ return {
       })
 
       function _claude_code_toggle()
-        lazygit:toggle()
+        cc:toggle()
       end
 
-      vim.api.nvim_set_keymap('n', '<c-u>', '<cmd>lua _claude_code_toggle()<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>cc', '<cmd>lua _claude_code_toggle()<CR>', { noremap = true, silent = true })
     end
   },
 }
