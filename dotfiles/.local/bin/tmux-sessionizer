@@ -5,7 +5,15 @@ if [[ $# -eq 1 ]]; then
 else
 selected=$({
     tmux ls | awk -F: '{print $1}';  # List tmux sessions and extract only the session names
-    find ~/dev/me ~/dev/ai ~/dev/work ~/dev/sketch ~/dev /Users/skang/dev/work/cac_platform/cac_platform_docs/obsidian/CAC/.obsidian/themes -mindepth 1 -maxdepth 1 -type d;  # Find directories one level deep in the specified paths
+    find \
+      ~/dev/me \
+      ~/dev/ai \
+      ~/dev/work \
+      ~/dev/sketch ~\
+      /dev \
+      -mindepth 1 \
+      -maxdepth 1 \
+      -type d  # Find directories one level deep in the specified paths
 } | fzf)  # Use fzf to select from the combined list
 fi
 

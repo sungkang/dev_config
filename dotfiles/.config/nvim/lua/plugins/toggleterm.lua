@@ -29,7 +29,7 @@ return {
         direction = 'float',
         on_open = function(term)
           vim.cmd('startinsert!')
-          vim.keymap.set('t', '<leader>cc', [[<Cmd>wincmd q<CR>]], { buffer = term.bufnr })
+          vim.keymap.set('t', '<c-c>', [[<Cmd>wincmd q<CR>]], { buffer = term.bufnr })
         end,
         on_close = function()
         end,

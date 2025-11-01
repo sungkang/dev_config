@@ -1,5 +1,35 @@
 return {
   {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("obsidian").setup({
+        workspaces = {
+          {
+            name = "personal",
+            path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Me"
+          },
+          {
+            name = "work",
+            path = "~/dev/work/cac_platform/cac_platform_docs/obsidian/CAC"
+          },
+        },
+        daily_notes = {
+          folder = "daily",
+          date_format = "%Y-%m-%d",
+        },
+      })
+
+      vim.keymap.set("n", "<space>ow", "<Cmd>ObsidianWorkspace<CR>", { desc = "Select an Obsidian Workspace" })
+      vim.keymap.set("n", "<space>on", "<Cmd>ObsidianNew<CR>", { desc = "Create a new Note" })
+      vim.keymap.set("n", "<space>os", "<Cmd>ObsidianSearch<CR>", { desc = "Search for a Note" })
+      vim.keymap.set("n", "<space>ot", "<Cmd>ObsidianToday<CR>", { desc = "Create or goto today's daily" })
+    end,
+  },
+  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -159,11 +189,7 @@ return {
         },
       })
 
-      -- Open parent directory in current window
-      -- vim.keymap.set('n', '-', '<Cmd>lua require("oil").open_float()<CR>', { desc = 'Open parent directory' })
-      -- vim.keymap.set('n', '<Space>o', '<Cmd>lua require("oil").open_float()<CR>', { desc = 'Open parent directory' })
       vim.keymap.set("n", "-", '<Cmd>lua require("oil").open()<CR>', { desc = "Open parent directory" })
-      vim.keymap.set("n", "<Space>o", '<Cmd>lua require("oil").open()<CR>', { desc = "Open parent directory" })
     end,
   },
   {
