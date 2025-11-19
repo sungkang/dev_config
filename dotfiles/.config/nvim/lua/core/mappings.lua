@@ -146,7 +146,7 @@ function M.config()
   -----------------
   -- set('v', '<leader>ch', "<Cmd>'<,'>lua require'utils'.hexToRgba()<CR>", opts)
   --
-  set('n', '<leader>cp', function()
+  set('n', '<leader>cd', function()
     vim.fn.setreg('+', vim.fn.expand('%:p'))
   end, { desc = "Copy file path to clipboard" })
 end

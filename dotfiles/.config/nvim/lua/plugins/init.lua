@@ -7,6 +7,9 @@ return {
     },
     config = function()
       require("obsidian").setup({
+        ui = {
+          enable = false,
+        },
         workspaces = {
           {
             name = "personal",
@@ -264,6 +267,7 @@ return {
     },
     config = function()
       require("copilot").setup({
+        copilot_node_command = "/opt/homebrew/bin/node",
         suggestion = {
           auto_trigger = true,
           keymap = {

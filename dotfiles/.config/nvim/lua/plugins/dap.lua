@@ -20,9 +20,9 @@ return {
       vim.fn.sign_define("DapStopped",
         { text = ">>", texthl = "DapStoppedFG", numhl = "DapStoppedFG", linehl = "DapStoppedBG" })
 
-      require("nvim-dap-virtual-text").setup({
-        clear_on_continue = true,
-      })
+      -- require("nvim-dap-virtual-text").setup({
+      --   clear_on_continue = true,
+      -- })
 
       -------------
       -- keymaps --
