@@ -95,6 +95,7 @@ return {
           },
           lsp_document_symbols = {
             symbol_width = 50,
+            symbols = { "class", "method", "function", "variable", "interface" },
           },
         },
         extensions = {

@@ -106,10 +106,21 @@ return {
   },
   {
     "norcalli/nvim-colorizer.lua",
+    enabled = false,
     config = function()
       require("colorizer").setup({
         css = { rgb_fn = true, },
+        ts = { rgb_fn = true, },
         html = { names = false, },
+      })
+    end,
+  },
+  {
+    "brenoprata10/nvim-highlight-colors",
+    enabled = true,
+    config = function()
+      require("nvim-highlight-colors").setup({
+        enable_tailwind = true,
       })
     end,
   },

@@ -21,8 +21,21 @@ return {
         terminal_mappings = false,
       })
 
-      -- Claude Code floating terminal 
       local Terminal = require('toggleterm.terminal').Terminal
+      -- general purpose terminal
+      local gt = Terminal:new({
+        hidden = true,
+        direction = 'float',
+        on_open = function(term)
+          vim.cmd('startinsert!')
+          vim.keymap.set('t', '<c-k>', [[<Cmd>wincmd q<CR>]], { buffer = term.bufnr })
+        end,
+        on_close = function()
+        end,
+        count = 99,
+      })
+
+      -- Claude Code floating terminal 
       local cc = Terminal:new({
         cmd = 'claude',
         hidden = true,
@@ -36,11 +49,16 @@ return {
         count = 99,
       })
 
+      function _general_terminal_toggle()
+        gt:toggle()
+      end
+
       function _claude_code_toggle()
         cc:toggle()
       end
 
       vim.api.nvim_set_keymap('n', '<leader>cc', '<cmd>lua _claude_code_toggle()<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>lua _general_terminal_toggle()<CR>', { noremap = true, silent = true })
     end
   },
 }

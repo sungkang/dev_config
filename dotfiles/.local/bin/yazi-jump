@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Usage: yazi-jump <pattern>
+# Prints the directory autojump would go to
+
+set -euo pipefail
+
+if [ $# -eq 0 ]; then
+  exit 1
+fi
+
+dir=$(autojump "$@") || exit 1
+[ -z "$dir" ] && exit 1
+
+printf '%s\n' "$dir"

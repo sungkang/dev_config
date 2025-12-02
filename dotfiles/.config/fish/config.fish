@@ -49,7 +49,6 @@ if status is-interactive
   alias jd="cd $DEV_CONFIG_HOME"
   alias r="yazi"
   alias c="claude"
-  alias cu="claude update"
 
   # neovim
   alias v="nvim"
