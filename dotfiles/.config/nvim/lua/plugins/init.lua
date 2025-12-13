@@ -117,7 +117,7 @@ return {
   },
   {
     "brenoprata10/nvim-highlight-colors",
-    enabled = true,
+    enabled = false,
     config = function()
       require("nvim-highlight-colors").setup({
         enable_tailwind = true,
@@ -278,6 +278,13 @@ return {
     },
     config = function()
       require("copilot").setup({
+        server_opts_overrides = {
+          settings = {
+            telemetry = {
+              telemetryLevel = "off",
+            },
+          },
+        },
         copilot_node_command = "/opt/homebrew/bin/node",
         suggestion = {
           auto_trigger = true,

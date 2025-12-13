@@ -7,17 +7,21 @@ end
 ---@param filename string
 ---@return table | nil
 function M.read_json_file(filename)
-  local Path = require 'plenary.path'
+  local ok, result = pcall(function()
+    local Path = require 'plenary.path'
+    local path = Path:new(filename)
+    if not path:exists() then
+      return nil
+    end
+    local json_contents = path:read()
+    return vim.fn.json_decode(json_contents)
+  end)
 
-  local path = Path:new(filename)
-  if not path:exists() then
+  if not ok then
     return nil
   end
 
-  local json_contents = path:read()
-  local json = vim.fn.json_decode(json_contents)
-
-  return json
+  return result
 end
 
 function M.read_package_json()
@@ -88,6 +92,29 @@ function M.lazygit_open_file(filename, line_number)
   line_number = tonumber(line_number) or 1
   vim.api.nvim_win_close(0, true)
   vim.api.nvim_command('edit +' .. line_number .. " " .. filename)
+end
+
+---Load environment variables from a .env file
+---@param file string Path to the .env file
+---@return table<string, string> Key-value pairs of environment variables
+function M.load_env(file)
+  local env = {}
+  local f = io.open(file, "r")
+  if f then
+    for line in f:lines() do
+      -- Skip comments and empty lines
+      if not line:match("^#") and line:match("=") then
+        local key, value = line:match("^([^=]+)=(.*)$")
+        if key and value then
+          -- Remove quotes if present
+          value = value:gsub('^"(.*)"$', "%1"):gsub("^'(.*)'$", "%1")
+          env[key:gsub("%s+", "")] = value:gsub("%s+$", "")
+        end
+      end
+    end
+    f:close()
+  end
+  return env
 end
 
 return M

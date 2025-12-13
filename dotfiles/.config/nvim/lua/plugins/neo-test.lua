@@ -6,16 +6,19 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim',
-      -- 'nvim-neotest/neotest-go',
       'fredrikaverpil/neotest-golang',
       'marilari88/neotest-vitest',
       'thenbe/neotest-playwright',
     },
     config = function()
+      local utils = require("utils")
+      local env_vars = utils.load_env(vim.fn.getcwd() .. "/.env")
+
       require('neotest').setup({
         adapters = {
-          -- require('neotest-go')({}),
-          require('neotest-golang')({}),
+          require('neotest-golang')({
+            env = env_vars,
+          }),
           require('neotest-vitest')({
             filter_dir = function(_, rel_path, _)
               return not string.match(rel_path, "playwright")

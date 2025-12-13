@@ -10,7 +10,19 @@ return {
     config = function()
       local dap = require("dap")
       local dv = require("dap-view")
+      local utils = require("utils")
       require('dap-go').setup()
+
+      -- Inject .env vars into all Go debug configurations
+      for _, config in ipairs(dap.configurations.go) do
+        local original_env = config.env or {}
+        -- Use a function so it loads fresh env vars each time
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        config.env = function()
+          local env_vars = utils.load_env(vim.fn.getcwd() .. "/.env")
+          return vim.tbl_extend("force", original_env, env_vars)
+        end
+      end
 
       vim.api.nvim_set_hl(0, "DapRed", { fg = "#d31617" })
       vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapRed", numhl = "DiagnosticError" })
