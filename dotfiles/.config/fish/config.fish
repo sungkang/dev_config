@@ -20,9 +20,8 @@ if status is-interactive
   fish_add_path $XDG_CONFIG_HOME/emacs/bin
   fish_add_path $HOME/dev/depot_tools
 
-
   # vi mode
-  fish_vi_key_bindings
+  set --global fish_key_bindings fish_vi_key_bindings
 
   # custom bindings
   bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
@@ -40,7 +39,7 @@ if status is-interactive
   # configurations
   alias f="nvim $XDG_CONFIG_HOME/fish/config.fish"
   alias ff="source $XDG_CONFIG_HOME/fish/config.fish"
-  alias a="nvim $XDG_CONFIG_HOME/aerospace/aerospace.toml"
+  # alias a="nvim $XDG_CONFIG_HOME/aerospace/aerospace.toml"
   # alias t="launch_tmux"
   alias tc="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"
   alias tl="nvim $XDG_CONFIG_HOME/tmux/tmux.conf.local"
@@ -90,11 +89,6 @@ if status is-interactive
   # # !! Contents within this block are managed by "conda init" !!
   # eval /opt/homebrew/anaconda3/bin/conda "shell.fish" "hook" $argv | source
   # # <<< conda initialize <<<
-
-  # pyenv
-  # set -Ux PYENV_ROOT $HOME/.pyenv
-  # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-  # pyenv init - | source
 
   # if command -q tmux; and test -z "$TMUX"
   #   tmux attach -t default; or tmux new -s default

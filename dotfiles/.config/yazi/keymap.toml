@@ -1,12 +1,47 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[mgr]
-prepend_keymap = [
-{ on = [ "g", "j" ], run = "plugin autojump", desc = "Jump via autojump" },
-]
+# Autojump
+[[mgr.prepend_keymap]]
+on = [ "g", "a" ]
+run = "plugin autojump"
+desc = "Jump via autojump"
 
-append_keymap = [
-  { on = [ "g", "i" ], run = "cd ~/Library/'Mobile Documents'", desc = "Go to iCloud" },
-  { on = [ "g", "m" ], run = "cd ~/Movies", desc = "Go to Movies" },
-  { on = [ "g", "r" ], run = "cd /", desc = "Go to root" },
-]
+
+# Bookmarks
+[[mgr.prepend_keymap]]
+on = [ "m" ]
+run = "plugin bookmarks save"
+desc = "Save current position as a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "'" ]
+run = "plugin bookmarks jump"
+desc = "Jump to a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "d" ]
+run = "plugin bookmarks delete"
+desc = "Delete a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "D" ]
+run = "plugin bookmarks delete_all"
+desc = "Delete all bookmarks"
+
+
+# Custom goto keymaps
+[[mgr.append_keymap]]
+on = [ "g", "i" ]
+run = "cd ~/Library/'Mobile Documents'"
+desc = "Go to iCloud"
+
+[[mgr.append_keymap]]
+on = [ "g", "m" ]
+run = "cd ~/Movies"
+desc = "Go to Movies"
+
+[[mgr.append_keymap]]
+on = [ "g", "r" ]
+run = "cd /"
+desc = "Go to root"
+

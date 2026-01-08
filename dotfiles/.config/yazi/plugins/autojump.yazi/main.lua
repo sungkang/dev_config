@@ -1,12 +1,27 @@
 local M = {}
 
+-- Subscribe to cd events and record to autojump database
+local record_visit = ya.sync(function()
+	ps.sub("cd", function()
+		ya.emit("shell", {
+			"autojump --add \"$PWD\"",
+			block = false,
+			orphan = true,
+		})
+	end)
+end)
+
+function M.setup()
+	record_visit()
+end
+
 -- async plugin (no ---@sync here)
 function M.entry()
   -- nice top-center modal like search
   local query, event = ya.input {
     title    = "Autojump:",
     value    = "",
-    position = { "top-center", y = 3, w = 40 },
+    pos = { "top-center", y = 3, w = 40 },
   }
 
   -- 1 = user confirmed

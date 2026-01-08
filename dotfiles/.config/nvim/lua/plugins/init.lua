@@ -1,5 +1,9 @@
 return {
   {
+    "andymass/vim-matchup",
+    event = "BufReadPost",
+  },
+  {
     "epwalsh/obsidian.nvim",
     version = "*",
     dependencies = {
@@ -105,19 +109,19 @@ return {
     },
   },
   {
-    "norcalli/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     enabled = false,
     config = function()
       require("colorizer").setup({
         css = { rgb_fn = true, },
-        ts = { rgb_fn = true, },
+        -- ts = { rgb_fn = true, },
         html = { names = false, },
       })
     end,
   },
   {
     "brenoprata10/nvim-highlight-colors",
-    enabled = false,
+    enabled = true,
     config = function()
       require("nvim-highlight-colors").setup({
         enable_tailwind = true,

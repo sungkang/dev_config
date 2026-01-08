@@ -34,11 +34,6 @@ require("lazy").setup({ import = "plugins" }, {
 -- loading internal plugins
 vim.cmd.packadd("cfilter")
 
------------------------------------------------
--- enable jumping between <tags></tags> with %
------------------------------------------------
-vim.cmd('runtime macros/matchit.vim')
-
 ---------------
 -- code fences
 ---------------
