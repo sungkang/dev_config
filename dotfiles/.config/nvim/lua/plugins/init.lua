@@ -4,6 +4,7 @@ return {
     event = "BufReadPost",
   },
   {
+    enabled = false,
     "epwalsh/obsidian.nvim",
     version = "*",
     dependencies = {
