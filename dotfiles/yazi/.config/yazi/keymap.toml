@@ -31,11 +31,6 @@ desc = "Delete all bookmarks"
 
 # Custom goto keymaps
 [[mgr.append_keymap]]
-on = [ "g", "i" ]
-run = "cd ~/Library/'Mobile Documents'"
-desc = "Go to iCloud"
-
-[[mgr.append_keymap]]
 on = [ "g", "m" ]
 run = "cd ~/Movies"
 desc = "Go to Movies"

@@ -274,7 +274,7 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
-    enabled = true,
+    enabled = false,
     event = "InsertEnter",
     keys = {
       { "<leader>CC", "<Cmd>Copilot enable<CR>" },
