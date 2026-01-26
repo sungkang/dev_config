@@ -74,7 +74,7 @@ return {
         },
         enabled = true,
       },
-      notifier = { enabled = true },
+      notifier = { enabled = false },
       quickfile = { enabled = true },
       dim = {
         enabled = true,

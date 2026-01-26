@@ -36,6 +36,7 @@ return {
           live_grep = {
             hidden = true,
             no_ignore = true,
+            additional_args = { "--follow" },
             mappings = {
               n = {
                 ["<C-c>"] = "close",
@@ -101,6 +102,7 @@ return {
         extensions = {
           live_grep_args = {
             auto_quoting = true,
+            additional_args = { "--follow" },
             mappings = {
               i = {
                 ["<C-k>"] = lga_actions.quote_prompt(),
@@ -147,7 +149,7 @@ return {
           prompt_title = "Files & Folders",
           -- fd returns files and dirs when no --type is given
           -- --hidden to include dotfiles, exclude .git for signal/noise
-          find_command = { "fd", "--hidden", "--exclude", ".git", "--strip-cwd-prefix" },
+          find_command = { "fd", "--hidden", "--no-ignore", "--follow", "--exclude", ".git", "--strip-cwd-prefix" },
           -- Let us intercept <CR>
           attach_mappings = function(_, map)
             map({ "i", "n" }, "<CR>", open_file_or_dir_in_oil)
