@@ -14,9 +14,17 @@ if status is-interactive
 	set -Ux TERMINAL ghostty
   set -Ux BROWSER firefox
 
+  # vi mode
 	set --global fish_key_bindings fish_vi_key_bindings
 
-  #SSH
+  # custom bindings
+  bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
+  bind -M default \cf "tmux-sessionizer; commandline -f repaint"
+
+  bind -M insert \ch "eval (history | fzf); commandline -f repaint"
+  bind -M default \ch "eval (history | fzf); commandline -f repaint"
+
+  # SSH
   set -Ux SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
 
   #PATH
