@@ -5,12 +5,15 @@ M.config = function()
 
   vim.api.nvim_create_autocmd('FileType', {
     pattern = '*',
-    callback = function()
+    callback = function(args)
       pcall(vim.treesitter.start)
       -- Recompute folds after parser has time to process
       vim.defer_fn(function()
+        if not vim.api.nvim_buf_is_valid(args.buf) then return end
+        -- make sure it's a valid buffer type (not terminals, quickfix, help, etc.)
+        if vim.bo[args.buf].buftype ~= '' then return end
         if vim.wo.foldmethod == 'expr' then
-          vim.cmd('normal! zx')
+          pcall(vim.cmd, 'normal! zx')
         end
       end, 100)
     end,
