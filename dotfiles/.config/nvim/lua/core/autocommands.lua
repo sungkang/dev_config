@@ -2,15 +2,16 @@ M = {}
 
 M.config = function()
   local option = vim.opt
-  vim.api.nvim_create_autocmd("BufReadPost", {
+
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = '*',
     callback = function()
+      pcall(vim.treesitter.start)
+      -- Recompute folds after parser has time to process
       vim.defer_fn(function()
-        option.foldmethod = "expr"
-        option.foldexpr = "nvim_treesitter#foldexpr()"
-        option.foldcolumn = "1"
-        option.foldnestmax = 3
-        option.foldlevel = 99
-        option.foldlevelstart = 99
+        if vim.wo.foldmethod == 'expr' then
+          vim.cmd('normal! zx')
+        end
       end, 100)
     end,
   })

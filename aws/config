@@ -1,0 +1,28 @@
+[default]
+sso_session = dev
+sso_account_id = 292594165565
+sso_role_name = AdministratorAccess
+region = us-east-1
+output = json
+
+[profile dev]
+sso_session = dev
+sso_account_id = 292594165565
+sso_role_name = AdministratorAccess
+region = us-east-1
+
+[sso-session dev]
+sso_start_url = https://sketcdev.awsapps.com/start/#
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access
+
+[profile prod]
+sso_session = prod 
+sso_account_id = 224121886921
+sso_role_name = AdministratorAccess
+region = us-east-1
+
+[sso-session prod]
+sso_start_url = https://sketcdev.awsapps.com/start/#
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access

@@ -1,102 +1,62 @@
+if status is-login
+	if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
+		exec startx
+	end
+end
+
 if status is-interactive
-  set -xg XDG_CONFIG_HOME $HOME/.config
-  set -xg XDG_DATA_HOME $HOME/.local/share
-  set -xg XDG_STATE_HOME $HOME/.local/state
+	set -xg XDG_CONFIG_HOME $HOME/.config
+	set -xg XDG_DATA_HOME $HOME/.local/share
+	set -xg XDG_STATE_HOME $HOME/.local/state
 
-  set -xg DEV_CONFIG_HOME $HOME/dev/me/dev_config
-  set -xg TERMINFO_DIRS $HOME/.local/share/terminfo
-  
-  set -Ux EDITOR nvim
-  set -xg GOPATH $HOME/go
-  set -xg TMUX_PROGRAM /opt/homebrew/bin/tmux
-  set -xg TMUX_CONF $XDG_CONFIG_HOME/tmux/tmux.conf
-  set -xg TMUX_CONF_LOCAL $XDG_CONFIG_HOME/tmux/tmux.conf.local
+	set -Ux EDITOR nvim
+	set -Ux VISUAL nvim
+	set -Ux TERMINAL ghostty
+  set -Ux BROWSER firefox
 
-  # setup custom PATHs
-  fish_add_path /opt/homebrew/bin
-  fish_add_path /opt/homebrew/sbin
+	set --global fish_key_bindings fish_vi_key_bindings
+
+  #SSH
+  set -Ux SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
+
+  #PATH
   fish_add_path $HOME/.local/bin
   fish_add_path $HOME/go/bin
-  fish_add_path $XDG_CONFIG_HOME/emacs/bin
-  fish_add_path $HOME/dev/depot_tools
+  fish_add_path /home/sung/.local/share/JetBrains/Toolbox/scripts
 
-  # vi mode
-  set --global fish_key_bindings fish_vi_key_bindings
+	# custom functions (alias)
 
-  # custom bindings
-  bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
-  bind -M default \cf "tmux-sessionizer; commandline -f repaint"
+	# fish
+	alias f="$EDITOR $XDG_CONFIG_HOME/fish/config.fish"
+	alias ff="source $XDG_CONFIG_HOME/fish/config.fish"
 
-  bind -M insert \ch "eval (history | fzf); commandline -f repaint"
-  bind -M default \ch "eval (history | fzf); commandline -f repaint"
+  # .xinitrc
+  alias x="$EDITOR $HOME/.xinitrc"
 
-  # source autojump for fish
-  set --local AUTOJUMP_PATH /opt/homebrew/share/autojump/autojump.fish
-  if test -e $AUTOJUMP_PATH
-      source $AUTOJUMP_PATH
-  end
+	# neovim
+	alias v="nvim"
+	alias vv="$EDITOR $XDG_CONFIG_HOME/nvim/init.lua"
 
-  # configurations
-  alias f="nvim $XDG_CONFIG_HOME/fish/config.fish"
-  alias ff="source $XDG_CONFIG_HOME/fish/config.fish"
-  # alias a="nvim $XDG_CONFIG_HOME/aerospace/aerospace.toml"
-  # alias t="launch_tmux"
-  alias tc="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"
-  alias tl="nvim $XDG_CONFIG_HOME/tmux/tmux.conf.local"
-  alias s="nvim $XDG_CONFIG_HOME/starship.toml"
-  alias d="nvim $DEV_CONFIG_HOME"
-  alias jd="cd $DEV_CONFIG_HOME"
+	# dwm
+	alias d="$EDITOR $HOME/src/suckless/dwm/config.def.h"
+
+  # yazi
   alias r="yazi"
-  alias c="claude"
-
-  # neovim
-  alias v="nvim"
-  alias vv="nvim $XDG_CONFIG_HOME/nvim/init.lua"
-
-  # eza
-    # general use
-    alias ls="eza"                                               # ls
-    alias l="eza -lbF --git"                                     # list, size, type, git
-    alias lt="eza -lbF --git --tree --level=2"                   # all list
-    alias ll="eza -lbGF --git"                                   # long list
-    alias la="eza -lbhgma --git --color-scale"                   # all list
-    alias lat="eza -lbhgma --git --color-scale --tree --level=2" # all list
-    alias lx="eza -lbhgma@ --git --color-scale"                  # all + extended list
-    alias lS="eza -1"                                            # one column, just names
 
   # lazygit
   alias lg="lazygit"
-  alias gb="echo (git branch --show-current)"
 
-  # youtube dlp
-  alias yt="yt-dlp"
+  # claude code
+  alias c="claude"
 
-  # cursor
-  alias cur="cursor"
-
-  #posting
-  # for CAC
-  alias pc="posting --collection $XDG_DATA_HOME/posting/cac --env $XDG_DATA_HOME/posting/cac/.env"
-
-  # starship
+  # starship init
   starship init fish | source
 
+  # autojump init
+  if test -f /home/sung/.cache/yay/autojump/pkg/autojump/usr/share/autojump/autojump.fish; . /home/sung/.cache/yay/autojump/pkg/autojump/usr/share/autojump/autojump.fish; end
+
   # nvm
-  bass source $HOME/.nvm/nvm.sh
+  set --universal nvm_default_version v25.5.0
   nvm use default --silent
 
-  # # >>> conda initialize >>>
-  # # !! Contents within this block are managed by "conda init" !!
-  # eval /opt/homebrew/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-  # # <<< conda initialize <<<
-
-  # if command -q tmux; and test -z "$TMUX"
-  #   tmux attach -t default; or tmux new -s default
-  # end
-
-  # rbenv
-  source (rbenv init -|psub)
 end
-
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f "/Users/skang/google-cloud-sdk/path.fish.inc" ]; . "/Users/skang/google-cloud-sdk/path.fish.inc"; end
