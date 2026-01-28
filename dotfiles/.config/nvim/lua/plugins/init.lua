@@ -2,6 +2,11 @@ return {
   {
     "sindrets/diffview.nvim",
     enabled = true,
+    config = function()
+      vim.keymap.set("n", "<space>do", ":DiffviewOpen")
+      vim.keymap.set("n", "<space>dc", "<Cmd>DiffviewClose<CR>")
+      vim.keymap.set("n", "<space>df", "<Cmd>DiffviewFileHistory<CR>")
+    end,
   },
   {
     "andymass/vim-matchup",

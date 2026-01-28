@@ -77,17 +77,12 @@ function M.config()
   set('n', '<leader>BB', '<Cmd>bd<CR>', opts)
   set('n', '<leader>BA', '<Cmd>%bd<CR>', opts)
 
-  -----------
-  -- diffing
-  -----------
-  set('n', '<space>dt', '<Cmd>windo diffthis<CR>', opts)
-  set('n', '<space>do', '<Cmd>windo diffoff<CR>', opts)
-
   ------------
   -- fugitive
   ------------
   set('n', '<space>ga', '<Cmd>G blame<CR>', opts)
   set('n', '<space>gl', '<Cmd>G log --graph<CR>', opts)
+  set('n', '<space>glf', '<Cmd>G log --graph --follow -- %<CR>', opts)
   set('n', '<space>gla', '<Cmd>G log --graph --decorate --all<CR>', opts)
 
   --------------
