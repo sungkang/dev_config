@@ -1,15 +1,19 @@
 return {
   {
+    "sindrets/diffview.nvim",
+    enabled = true,
+  },
+  {
     "andymass/vim-matchup",
     event = "BufReadPost",
   },
   {
-    enabled = false,
     "epwalsh/obsidian.nvim",
     version = "*",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    enabled = false,
     config = function()
       require("obsidian").setup({
         ui = {

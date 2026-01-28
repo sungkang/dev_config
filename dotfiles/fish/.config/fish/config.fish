@@ -32,7 +32,7 @@ if status is-interactive
   fish_add_path $HOME/go/bin
   fish_add_path /home/sung/.local/share/JetBrains/Toolbox/scripts
 
-	# custom functions (alias)
+	## custom functions (alias) ##
 
 	# fish
 	alias f="$EDITOR $XDG_CONFIG_HOME/fish/config.fish"
@@ -56,6 +56,15 @@ if status is-interactive
 
   # claude code
   alias c="claude"
+
+
+  ## custom abbreviations ##
+
+  # ghostty settings
+  abbr -a gconf 'nvim ~/.config/ghostty/config'
+
+  # jump to dev_config
+  abbr -a dconf 'cd $HOME/dev/dev_config'
 
   # starship init
   starship init fish | source
