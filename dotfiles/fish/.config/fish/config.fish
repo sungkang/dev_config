@@ -61,10 +61,13 @@ if status is-interactive
   ## custom abbreviations ##
 
   # ghostty settings
-  abbr -a gconf 'nvim ~/.config/ghostty/config'
+  abbr -a ghost 'nvim ~/.config/ghostty/config'
 
   # jump to dev_config
-  abbr -a dconf 'cd $HOME/dev/dev_config'
+  abbr -a dev 'cd $HOME/dev/dev_config'
+
+  # jump to .local
+  abbr -a loc 'cd $HOME/.local'
 
   # starship init
   starship init fish | source
