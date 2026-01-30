@@ -80,7 +80,7 @@ return {
         end
 
         if lsp == "svelte" then
-          config.root_dir = lsp_config.util.root_pattern("svelte.config.js")
+          config.on_attach = on_attach_with_disabled_lsp_formatter
         end
 
         if lsp == "vtsls" then
@@ -101,9 +101,9 @@ return {
               },
             }
 
+          end
             config.filetypes = { "typescript", "javascript", "vue" }
             config.on_attach = on_attach_with_disabled_lsp_formatter
-          end
         end
 
         if lsp == "vue_ls" then
