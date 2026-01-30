@@ -61,7 +61,7 @@ function M.config()
   ----------
   set('n', 'ss', '<Cmd>split<CR>', opts)
   set('n', 'vs', '<Cmd>vsplit<CR>', opts)
-  set('n', '<leader>ts', '<Cmd>tab split<CR>', opts)
+
   -- resize splits
   -- (vertical)
   set('n', '<c-left>', '5<c-w><', opts)
@@ -74,8 +74,6 @@ function M.config()
   -- buffers
   -----------
   set('n', '<c-n>', '<c-^>', opts)
-  set('n', '<leader>BB', '<Cmd>bd<CR>', opts)
-  set('n', '<leader>BA', '<Cmd>%bd<CR>', opts)
 
   ------------
   -- fugitive

@@ -41,7 +41,7 @@ return {
       -------------
       vim.keymap.set("n", "<space>bb", dap.toggle_breakpoint)
       vim.keymap.set("n", "<space>ba", dap.clear_breakpoints)
-      vim.keymap.set("n", "<space>dc", dap.continue)
+      vim.keymap.set("n", "<space>dd", dap.continue)
       vim.keymap.set("n", "<space>de", dap.terminate)
       vim.keymap.set("n", "<space>gc", dap.run_to_cursor)
 
