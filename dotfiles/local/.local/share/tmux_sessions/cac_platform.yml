@@ -1,5 +1,5 @@
 session: cac_platform
-root: ~/dev/work/cac_platform
+root: ~/dev/work/cac
 windows:
 - name: web
   root: cac_platform_web
@@ -23,7 +23,6 @@ windows:
   panes:
   - type: horizontal
   - type: horizontal
-
 
 - name: docs 
   root: cac_platform_docs
