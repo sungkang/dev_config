@@ -1,6 +1,6 @@
 if status is-login
-	if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
-		exec startx
+	if test "$XDG_VTNR" = "1"; and test -z "$DISPLAY"; and test -z "$WAYLAND_DISPLAY"
+		exec start-hyprland
 	end
 end
 
@@ -38,8 +38,11 @@ if status is-interactive
 	alias f="$EDITOR $XDG_CONFIG_HOME/fish/config.fish"
 	alias ff="source $XDG_CONFIG_HOME/fish/config.fish"
 
-  # .xinitrc
-  alias x="$EDITOR $HOME/.xinitrc"
+  # .xinitrc (X11)
+  # alias x="$EDITOR $HOME/.xinitrc"
+
+  # hyprland config
+  alias h="$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf"
 
 	# neovim
 	alias v="nvim"
@@ -63,8 +66,15 @@ if status is-interactive
   # ghostty settings
   abbr -a ghost 'nvim ~/.config/ghostty/config'
 
+  # waybar config
+  abbr -a way 'nvim ~/.config/waybar/config'
+  abbr -a wr 'pkill waybar && waybar &'
+
   # jump to dev_config
   abbr -a dev 'cd $HOME/dev/dev_config'
+
+  # jump to .local
+  abbr -a conf 'cd $HOME/.config'
 
   # jump to .local
   abbr -a loc 'cd $HOME/.local'
