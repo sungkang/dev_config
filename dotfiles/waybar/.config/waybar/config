@@ -1,12 +1,11 @@
 {
-  "layer": "top",
-  "position": "top",
-  "margin-bottom": -10,
+  "layer": "bottom",
+  "position": "bottom",
+  "margin-bottom": 0,
   "spacing" : 0,
   "modules-left": [
   "hyprland/workspaces",
   "custom/uptime",
-  "cpu"
   ],
 
   "modules-center": ["clock"],
@@ -16,7 +15,6 @@
     "bluetooth",
     "network",
     "pulseaudio", 
-    "backlight",
   ],
 
   "hyprland/workspaces": {

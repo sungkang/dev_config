@@ -38,18 +38,18 @@ if status is-interactive
 	alias f="$EDITOR $XDG_CONFIG_HOME/fish/config.fish"
 	alias ff="source $XDG_CONFIG_HOME/fish/config.fish"
 
-  # .xinitrc (X11)
-  # alias x="$EDITOR $HOME/.xinitrc"
-
-  # hyprland config
+  # hyprland config(s)
   alias h="$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf"
 
 	# neovim
 	alias v="nvim"
 	alias vv="$EDITOR $XDG_CONFIG_HOME/nvim/init.lua"
 
+  # .xinitrc (X11)
+  # alias x="$EDITOR $HOME/.xinitrc"
+
 	# dwm
-	alias d="$EDITOR $HOME/src/suckless/dwm/config.def.h"
+	# alias d="$EDITOR $HOME/src/suckless/dwm/config.def.h"
 
   # yazi
   alias r="yazi"
@@ -67,8 +67,8 @@ if status is-interactive
   abbr -a ghost 'nvim ~/.config/ghostty/config'
 
   # waybar config
-  abbr -a way 'nvim ~/.config/waybar/config'
-  abbr -a wr 'pkill waybar && waybar &'
+  abbr -a ww '$EDITOR $XDG_CONFIG_HOME/waybar/config'
+  abbr -a wr 'pkill waybar &>/dev/null; and waybar &>/dev/null &'
 
   # jump to dev_config
   abbr -a dev 'cd $HOME/dev/dev_config'

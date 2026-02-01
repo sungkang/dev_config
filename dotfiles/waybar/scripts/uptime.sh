@@ -1,0 +1,1 @@
+../../../dev/dev_config/dotfiles/waybar/.config/waybar/scripts/uptime.sh
