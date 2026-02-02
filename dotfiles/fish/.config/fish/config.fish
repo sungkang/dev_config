@@ -60,6 +60,7 @@ if status is-interactive
   # claude code
   alias c="claude"
 
+  alias yt="yt-dlp"
 
   ## custom abbreviations ##
 
