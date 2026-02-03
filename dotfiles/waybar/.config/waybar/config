@@ -5,7 +5,6 @@
   "spacing" : 0,
   "modules-left": [
   "hyprland/workspaces",
-  "custom/uptime",
   ],
 
   "modules-center": ["clock"],
