@@ -15,14 +15,13 @@ $character
 """
 
 [python]
-style = "yellow"
-format = "via [${virtualenv}]($style) "
+format = '[${virtualenv}]($style) '
+style = 'yellow bold'
 
 [directory]
 style = "bg:#303030 fg:#00b2ff"
 format = "[ $path ]($style)"
 truncate_to_repo = false
-
 
 [git_branch]
 style = "bg:#303030 fg:#00da00"

@@ -1,1 +1,4 @@
 dotfiles/.config/lazygit/state.yml
+dotfiles/macos/fish/.config/fish/functions/__bass.py
+dotfiles/macos/fish/.config/fish/functions/bass.fish
+dotfiles/macos/fish/.config/fish/functions/fisher.fish
