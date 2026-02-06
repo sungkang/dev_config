@@ -9,8 +9,8 @@ selected=$({
       ~/dev/me \
       ~/dev/ai \
       ~/dev/work \
-      ~/dev/sketch ~\
-      /dev \
+      ~/dev/sketch \
+      ~/dev \
       -mindepth 1 \
       -maxdepth 1 \
       -type d  # Find directories one level deep in the specified paths
