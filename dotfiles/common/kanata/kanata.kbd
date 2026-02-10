@@ -1,0 +1,23 @@
+;; Default mappings
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps
+)
+
+(deflayer base 
+  @escctrl
+)
+
+(defvar
+  tap-time  200
+  hold-time 185
+)
+
+(defalias
+  escctrl (tap-hold $tap-time $hold-time esc lctl)
+)
+
