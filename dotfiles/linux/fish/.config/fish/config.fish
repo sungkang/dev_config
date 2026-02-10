@@ -1,7 +1,13 @@
-if status is-login
-	if test "$XDG_VTNR" = "1"; and test -z "$DISPLAY"; and test -z "$WAYLAND_DISPLAY"
-		exec start-hyprland
-	end
+if status is-login; and status is-interactive
+    if test "$XDG_VTNR" = "1"
+        if test -z "$DISPLAY"; and test -z "$WAYLAND_DISPLAY"
+            if not set -q NIRI_STARTED
+                set -gx NIRI_STARTED 1
+                exec niri-session
+            end
+            # exec start-hyprland
+        end
+    end
 end
 
 if status is-interactive
@@ -40,6 +46,9 @@ if status is-interactive
 
   # hyprland config(s)
   alias h="$EDITOR $XDG_CONFIG_HOME/hypr/hyprland.conf"
+
+  # niri config(s)
+  alias n="$EDITOR $XDG_CONFIG_HOME/niri/config.kdl"
 
 	# neovim
 	alias v="nvim"
