@@ -76,7 +76,7 @@
   border-radius: 6px; /* This module is always rounded */
   box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2);
   min-width: 0;
-  border: none;
+  border: solid;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
