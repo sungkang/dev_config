@@ -81,10 +81,6 @@ if status is-interactive
   # starship
   starship init fish | source
 
-  # nvm
-  bass source $HOME/.nvm/nvm.sh
-  nvm use default --silent
-
   # # >>> conda initialize >>>
   # # !! Contents within this block are managed by "conda init" !!
   # eval /opt/homebrew/anaconda3/bin/conda "shell.fish" "hook" $argv | source
