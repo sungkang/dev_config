@@ -145,7 +145,7 @@ output "DP-2" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 12
+    gaps 14
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -302,8 +302,8 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-sh-at-startup "swayidle -w timeout 300 'qs -c noctalia-shell ipc call sessionMenu lockAndSuspend' timeout 600 'niri msg action power-off-monitors'"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "hypridle"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -381,6 +381,13 @@ window-rule {
   open-floating true
   default-column-width { fixed 1088; }
   default-window-height { fixed 1134; }
+}
+
+window-rule {
+  match app-id="signal"
+  open-floating true
+  default-column-width { fixed 1132; }
+  default-window-height { fixed 882; }
 }
 
 // Example: block out two password managers from screen capture.
