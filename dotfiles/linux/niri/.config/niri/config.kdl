@@ -625,16 +625,14 @@ binds {
     Mod+Period { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
-    // Cycling through the presets in reverse order is also possible.
-    // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
     Mod+M { maximize-column; }
     Mod+F { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
-    Mod+Shift+M { expand-column-to-available-width; }
+    Mod+0 { expand-column-to-available-width; }
+    Mod+Shift+0 { reset-window-height; }
 
     Mod+C { center-column; }
 
