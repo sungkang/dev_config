@@ -77,17 +77,17 @@ if status is-interactive
   abbr -a ghost 'nvim ~/.config/ghostty/config'
 
   # waybar config
-  abbr -a ww '$EDITOR $XDG_CONFIG_HOME/waybar/config'
-  abbr -a wr 'pkill waybar &>/dev/null; and waybar &>/dev/null &'
+  # abbr -a ww '$EDITOR $XDG_CONFIG_HOME/waybar/config'
+  # abbr -a wr 'pkill waybar &>/dev/null; and waybar &>/dev/null &'
 
   # jump to dev_config
-  abbr -a dev 'cd $HOME/dev/dev_config'
+  abbr -a god 'cd $HOME/dev/dev_config'
 
   # jump to .local
-  abbr -a conf 'cd $HOME/.config'
+  abbr -a goc 'cd $HOME/.config'
 
   # jump to .local
-  abbr -a loc 'cd $HOME/.local'
+  abbr -a gol 'cd $HOME/.local'
 
   # starship init
   starship init fish | source

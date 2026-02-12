@@ -674,9 +674,9 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     // Hyper = Ctrl+Shift+Alt+Super
-    Ctrl+Shift+Alt+Super+4 { screenshot; }
-    Ctrl+Shift+Alt+Super+3 { screenshot-screen; }
-    Ctrl+Shift+Alt+Super+2 { screenshot-window; }
+    Mod+S { screenshot; }
+    Mod+Shift+S { screenshot-screen; }
+    Mod+Shift+Ctrl+S { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
