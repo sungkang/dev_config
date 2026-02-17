@@ -71,6 +71,12 @@ input {
     focus-follows-mouse max-scroll-amount="10%"
 }
 
+gestures {
+  hot-corners {
+    off
+  }
+}
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
@@ -301,8 +307,12 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
+// Start up Noctalia Desktop Shell
 spawn-sh-at-startup "qs -c noctalia-shell"
+
+// Idle auto-lock and monitor(s) power down
 spawn-sh-at-startup "swayidle -w timeout 300 'qs -c noctalia-shell ipc call sessionMenu lockAndSuspend' timeout 600 'niri msg action power-off-monitors'"
+
 spawn-at-startup "xwayland-satellite"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -388,6 +398,20 @@ window-rule {
   open-floating true
   default-column-width { fixed 1132; }
   default-window-height { fixed 882; }
+}
+
+window-rule {
+  match app-id="1password"
+  open-floating true
+  default-column-width { fixed 883; }
+  default-window-height { fixed 881; }
+}
+
+window-rule {
+  match app-id="spotify"
+  open-floating true
+  default-column-width { fixed 1734; }
+  default-window-height { fixed 1313; }
 }
 
 // Example: block out two password managers from screen capture.
