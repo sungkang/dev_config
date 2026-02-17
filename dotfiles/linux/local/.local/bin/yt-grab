@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Default folder (respects XDG user dirs if present)
+DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
+DEFAULT_DIR="$DOWNLOAD_DIR/yt"
+
+# If the user passes a directory as the first arg, use it (optional)
+TARGET_DIR="${1:-$DEFAULT_DIR}"
+
+# Prefill URL from clipboard if it looks like a URL
+CLIP="$(wl-paste -n 2>/dev/null || true)"
+if [[ "$CLIP" =~ ^https?:// ]]; then
+  PREFILL_URL="$CLIP"
+else
+  PREFILL_URL=""
+fi
+
+# Ask for URL
+URL="$(
+  zenity --entry \
+    --title="yt-dlp download" \
+    --text="Paste a URL to download (saves to $TARGET_DIR):" \
+    --entry-text="$PREFILL_URL" \
+  2>/dev/null || true
+)"
+
+URL="$(echo "$URL" | xargs)"
+
+if [[ -z "$URL" ]]; then
+  exit 0
+fi
+
+mkdir -p "$TARGET_DIR"
+
+# Download:
+# -P sets destination directory in yt-dlp. :contentReference[oaicite:1]{index=1}
+# Output template keeps it tidy under that directory.
+OUT_TMPL="%(title).200s [%(id)s].%(ext)s"
+
+# Cap progress at 99 during download; send 100 only after yt-dlp fully
+# finishes (merge, embed, cleanup) so --auto-close fires at the right time.
+{
+  yt-dlp \
+    -P "$TARGET_DIR" \
+    -o "$OUT_TMPL" \
+    --embed-metadata \
+    --embed-thumbnail \
+    --no-mtime \
+    --newline \
+    "$URL" 2>&1 \
+    | stdbuf -oL grep --line-buffered -oP '\d+(\.\d+)?(?=%)' \
+    | stdbuf -oL awk -F. '{v=int($1); print (v>=100 ? 99 : v); fflush()}'
+  echo 100
+} | zenity --progress \
+      --title="yt-dlp" \
+      --text="Downloading..." \
+      --auto-close \
+      --auto-kill \
+      2>/dev/null
+
+notify-send "yt-dlp" "Done: $URL → $TARGET_DIR"
+

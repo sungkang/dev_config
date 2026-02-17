@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=yt-grab (yt-dlp)
+Comment=Paste URL → download with yt-dlp
+Exec=/home/sung/.local/bin/yt-grab
+Icon=folder-download
+Terminal=false
+Categories=Network;Utility;
