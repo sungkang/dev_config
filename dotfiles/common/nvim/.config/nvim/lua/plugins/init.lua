@@ -1,4 +1,14 @@
 return {
+  -- {
+  --   "rest-nvim/rest.nvim",
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     opts = function (_, opts)
+  --       opts.ensure_installed = opts.ensure_installed or {}
+  --       table.insert(opts.ensure_installed, "http")
+  --     end,
+  --   }
+  -- },
   {
     "sindrets/diffview.nvim",
     enabled = true,
@@ -246,34 +256,6 @@ return {
       { "<leader>xl", "<Cmd>Trouble loclist<CR>",            silent = true, desc = "Open Location Trouble" },
       { "<leader>xq", "<Cmd>Trouble quickfix toggle<CR>",    silent = true, desc = "Open Quickfix Trouble" },
     },
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    enabled = false,
-    event = "InsertEnter",
-    keys = {
-      { "<leader>CC", "<Cmd>Copilot enable<CR>" },
-      { "<leader>CD", "<Cmd>Copilot disable<CR>" },
-      { "<leader>CS", "<Cmd>Copilot status<CR>" },
-    },
-    config = function()
-      require("copilot").setup({
-        server_opts_overrides = {
-          settings = {
-            telemetry = {
-              telemetryLevel = "off",
-            },
-          },
-        },
-        copilot_node_command = "/opt/homebrew/bin/node",
-        suggestion = {
-          auto_trigger = true,
-          keymap = {
-            accept = "<C-y>",
-          },
-        },
-      })
-    end,
   },
   {
     "iamcco/markdown-preview.nvim",
