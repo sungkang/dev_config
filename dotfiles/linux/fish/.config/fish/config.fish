@@ -92,9 +92,6 @@ if status is-interactive
   # starship init
   starship init fish | source
 
-  # autojump init
-  if test -f /home/sung/.cache/yay/autojump/pkg/autojump/usr/share/autojump/autojump.fish; . /home/sung/.cache/yay/autojump/pkg/autojump/usr/share/autojump/autojump.fish; end
-
   # nvm
   set --universal nvm_default_version v25.5.0
   nvm use default --silent
