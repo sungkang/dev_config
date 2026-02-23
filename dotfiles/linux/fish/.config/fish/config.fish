@@ -19,6 +19,7 @@ if status is-interactive
 	set -Ux VISUAL nvim
 	set -Ux TERMINAL ghostty
   set -Ux BROWSER firefox
+  set -Ux MOZ_ENABLE_WAYLAND 1
 
   # vi mode
 	set --global fish_key_bindings fish_vi_key_bindings
