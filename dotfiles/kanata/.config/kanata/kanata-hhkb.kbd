@@ -1,0 +1,40 @@
+;; HHKB mappings
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  esc 1 2 3 4 5 6 7 8 9 0 - =
+  tab { }
+  lctl a s d h j k l
+  spc
+)
+
+(deflayer base 
+  grv _ _ _ _ _ _ _ _ _ _ _ _
+  @tab-hyper _ _
+  @escctrl _ _ _ _ _ _ _
+  @space-fn 
+)
+
+(deflayer fn
+  _ f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 
+  _ @cmd-sft-l @cmd-sft-r
+  _ voldwn volu mute lft down up rght 
+  _
+)
+
+(defvar
+  tap-time 10 
+  hold-time 185
+)
+
+(defalias
+  escctrl (tap-hold $tap-time $hold-time esc lctl)
+  tab-hyper (tap-hold $tap-time $hold-time tab (multi lctl lalt lsft lmet))
+  space-fn (tap-hold $tap-time $hold-time spc (layer-while-held fn))
+  cmd-sft-l (multi lsft lmet {)
+  cmd-sft-r (multi lsft lmet })
+)
+

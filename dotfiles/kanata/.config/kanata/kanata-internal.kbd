@@ -1,0 +1,43 @@
+;; Default mappings
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 
+  grv 1 2 3 4 5 6 7 8 9 0 - =
+  tab { }
+  super a s d h j k l
+  lalt spc
+)
+
+(deflayer base 
+  _ _ _ _ _ _ _ _ _ _ _ _ _
+  _ _ _ _ _ _ _ _ _ _ _ _ _
+  @tab-hyper _ _
+  @escctrl _ _ _ _ _ _ _
+  @space-fn @space-fn 
+)
+
+(deflayer fn
+  _ brdn brup _ _ _ _ prev pp next mute vold 
+  _ f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 
+  _ @cmd-sft-l @cmd-sft-r
+  _ voldwn volu mute lft down up rght 
+  _ _
+)
+
+(defvar
+  tap-time 200 
+  hold-time 185
+)
+
+(defalias
+  escctrl (tap-hold $tap-time $hold-time esc lctl)
+  tab-hyper (tap-hold $tap-time $hold-time tab (multi lctl lalt lsft lmet))
+  space-fn (tap-hold $tap-time $hold-time spc (layer-while-held fn))
+  cmd-sft-l (multi lsft lmet {)
+  cmd-sft-r (multi lsft lmet })
+)
+
