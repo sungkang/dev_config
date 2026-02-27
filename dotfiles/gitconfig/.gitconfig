@@ -5,7 +5,7 @@
 	name = Sung Kang
 	email = sk5156@gmail.com 
 
-[includeIf "gitdir:~/dev/work/cac_platform/"]
+[includeIf "gitdir:~/dev/work/cac/"]
   path = .gitconfig-cac
 
 [core]
