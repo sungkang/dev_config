@@ -1,0 +1,47 @@
+'$schema' = 'https://starship.rs/config-schema.json'
+
+command_timeout = 10000
+format = """
+$python\
+$username\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+[](fg:#303030)\
+$line_break\
+$character
+"""
+
+[python]
+format = '[${virtualenv}]($style) '
+style = 'yellow bold'
+
+[directory]
+style = "bg:#303030 fg:#00b2ff"
+format = "[ $path ]($style)"
+truncate_to_repo = false
+
+[git_branch]
+style = "bg:#303030 fg:#00da00"
+format = "[[](bg:#303030 fg:#808080) $branch ]($style)"
+
+[git_commit]
+style = "bg:#303030"
+format = "[\\($hash$tag\\)]($style) "
+
+[git_state]
+style = "bg:#303030"
+format = '[\($state( $progress_current of $progress_total)\)]($style)'
+
+[git_status]
+conflicted = "[ ~${count}](fg:red bg:#303030)"
+ahead = "[ ⇡${count}](fg:112 bg:#303030)"
+behind = "[ ⇣${count}](fg:112 bg:#303030)"
+diverged = "[ ⇣${behind_count}⇡${ahead_count}](fg:112 bg:#303030)"
+untracked = "[ ?${count}](fg:44 bg:#303030)"
+stashed = "[ *${count}](fg:112 bg:#303030)"
+modified = "[ !${count}](fg:bold yellow bg:#303030)"
+staged = "[ +${count}](bg:#303030)"
+format = "[$ahead_behind$all_status ](bg:#303030 fg:#303030)"

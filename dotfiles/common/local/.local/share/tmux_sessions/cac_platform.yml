@@ -1,0 +1,33 @@
+session: cac_platform
+root: ~/dev/work/cac
+windows:
+- name: web
+  root: cac_platform_web
+  layout: "fe74,213x77,0,0[213x54,0,0,1,213x22,0,55{106x22,0,55,3,106x22,107,55,2}]"
+  commands:
+  - nvm use
+  - nvim
+  panes:
+  - type: horizontal
+    commands:
+    - nvm use
+  - type: horizontal
+    commands:
+    - nvm use
+  
+- name: api
+  root: cac_platform_api
+  layout: "fe74,213x77,0,0[213x54,0,0,1,213x22,0,55{106x22,0,55,3,106x22,107,55,2}]"
+  commands:
+  - nvim
+  panes:
+  - type: horizontal
+  - type: horizontal
+
+- name: docs 
+  root: cac_platform_docs
+  layout: "fe74,213x77,0,0[213x54,0,0,1,213x22,0,55{106x22,0,55,3,106x22,107,55,2}]"
+
+- name: infra
+  root: cac_platform_infra
+  layout: "fe74,213x77,0,0[213x54,0,0,1,213x22,0,55{106x22,0,55,3,106x22,107,55,2}]"
