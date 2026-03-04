@@ -38,7 +38,7 @@ input {
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
+        accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
@@ -377,8 +377,8 @@ window-rule {
 window-rule {
   match app-id="teams-for-linux"
   open-floating true
-  default-column-width { fixed 1500; }
-  default-window-height { fixed 1370; }
+  default-column-width { fixed 900; }
+  default-window-height { fixed 820; }
 }
 
 window-rule {
@@ -648,8 +648,10 @@ binds {
 
     Mod+C { center-column; }
 
-    // Center all fully visible columns on screen.
-    Mod+Shift+C { center-visible-columns; }
+    // Center, float, and resize focused window 
+    Mod+Shift+C { 
+      spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 1500 && niri msg action set-window-height 1200 && niri msg action center-window";
+    }
 
     // Finer width adjustments.
     // This command can also:
