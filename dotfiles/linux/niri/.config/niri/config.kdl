@@ -430,6 +430,13 @@ window-rule {
   default-window-height { fixed 466; }
 }
 
+window-rule {
+  match app-id="opensnitch_ui"
+  open-floating true
+  default-column-width { fixed 858; }
+  default-window-height { fixed 466; }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -650,7 +657,7 @@ binds {
 
     // Center, float, and resize focused window 
     Mod+Shift+C { 
-      spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 1500 && niri msg action set-window-height 1200 && niri msg action center-window";
+      spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 914 && niri msg action set-window-height 754 && niri msg action center-window";
     }
 
     // Finer width adjustments.
