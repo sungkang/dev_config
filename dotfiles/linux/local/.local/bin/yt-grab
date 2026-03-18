@@ -12,23 +12,35 @@ TARGET_DIR="${1:-$DEFAULT_DIR}"
 CLIP="$(wl-paste -n 2>/dev/null || true)"
 if [[ "$CLIP" =~ ^https?:// ]]; then
   PREFILL_URL="$CLIP"
+  FORM_TEXT="Download to $TARGET_DIR\nClipboard: $PREFILL_URL (paste with Ctrl+V)"
 else
   PREFILL_URL=""
+  FORM_TEXT="Download to $TARGET_DIR"
 fi
 
-# Ask for URL
-URL="$(
-  zenity --entry \
+# Single form: URL + optional cookies-from-browser
+FORM_OUT="$(
+  zenity --forms \
     --title="yt-dlp download" \
-    --text="Paste a URL to download (saves to $TARGET_DIR):" \
-    --entry-text="$PREFILL_URL" \
+    --text="$FORM_TEXT" \
+    --add-entry="URL" \
+    --add-combo="Cookies from browser (optional)" \
+    --combo-values="none|brave|chrome|chromium|edge|firefox|opera|safari|vivaldi" \
+    --separator="|" \
+    --width=480 \
   2>/dev/null || true
 )"
 
-URL="$(echo "$URL" | xargs)"
+URL="$(echo "$FORM_OUT" | cut -d'|' -f1 | xargs)"
+BROWSER="$(echo "$FORM_OUT" | cut -d'|' -f2 | xargs)"
 
 if [[ -z "$URL" ]]; then
   exit 0
+fi
+
+COOKIE_FLAG=()
+if [[ -n "$BROWSER" && "$BROWSER" != "none" ]]; then
+  COOKIE_FLAG=(--cookies-from-browser "$BROWSER")
 fi
 
 mkdir -p "$TARGET_DIR"
@@ -48,6 +60,7 @@ OUT_TMPL="%(title).200s [%(id)s].%(ext)s"
     --embed-thumbnail \
     --no-mtime \
     --newline \
+    "${COOKIE_FLAG[@]}" \
     "$URL" 2>&1 \
     | stdbuf -oL grep --line-buffered -oP '\d+(\.\d+)?(?=%)' \
     | stdbuf -oL awk -F. '{v=int($1); print (v>=100 ? 99 : v); fflush()}'
