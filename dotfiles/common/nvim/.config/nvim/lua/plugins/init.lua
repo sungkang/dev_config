@@ -140,6 +140,7 @@ return {
         javascript = { "prettier", stop_after_first = true },
         typescript = { "prettier", stop_after_first = true },
         vue = { "prettier", stop_after_first = true },
+        svelte = { "prettier", stop_after_first = true },
         -- lua = { "stylua" },
         -- python = { "isort", "black" },
       },
