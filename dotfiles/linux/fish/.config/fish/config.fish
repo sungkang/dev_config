@@ -1,5 +1,5 @@
 if status is-login; and status is-interactive
-    if test "$XDG_VTNR" = "1"
+    if test "$XDG_VTNR" = "1" # tty1
         if test -z "$DISPLAY"; and test -z "$WAYLAND_DISPLAY"
             if not set -q NIRI_STARTED
                 set -gx NIRI_STARTED 1
@@ -20,6 +20,8 @@ if status is-interactive
 	set -Ux TERMINAL ghostty
   set -Ux BROWSER firefox
   set -Ux MOZ_ENABLE_WAYLAND 1
+  set -Ux XCURSOR_THEME "Bibata-Modern-Ice"
+  set -Ux XCURSOR_SIZE 24
 
   # vi mode
 	set --global fish_key_bindings fish_vi_key_bindings

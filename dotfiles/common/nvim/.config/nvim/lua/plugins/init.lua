@@ -116,7 +116,6 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    -- lazy = false,
     cmd = { "ConformInfo" },
     keys = {
       {

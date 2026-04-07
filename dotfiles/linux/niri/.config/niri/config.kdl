@@ -132,7 +132,7 @@ output "DP-2" {
     mode "2560x2880"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1.25
+    scale 1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -668,7 +668,7 @@ binds {
 
     // Center, float, and resize focused window 
     Mod+Shift+C { 
-      spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 914 && niri msg action set-window-height 754 && niri msg action center-window";
+      spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 1325 && niri msg action set-window-height 1250 && niri msg action center-window";
     }
 
     // Finer width adjustments.
