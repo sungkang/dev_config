@@ -1,28 +1,15 @@
 M = {}
 
 M.config = function()
-  local option = vim.opt
-
+  -- starts the syntax highlighting
   vim.api.nvim_create_autocmd('FileType', {
     pattern = '*',
-    callback = function(args)
-      -- starts the syntax highlighting
+    callback = function()
       pcall(vim.treesitter.start)
-
-      -- Recompute folds after parser has time to process
-      vim.defer_fn(function()
-        if not vim.api.nvim_buf_is_valid(args.buf) then return end
-
-        -- make sure it's a valid buffer type (not terminals, quickfix, help, etc.)
-        if vim.bo[args.buf].buftype ~= '' then return end
-
-        if vim.wo.foldmethod == 'expr' then
-          pcall(vim.cmd, 'normal! zx')
-        end
-      end, 100)
     end,
   })
 
+  -- use lsp fold expression if the lsp client supports text folding for the buffer
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
       local client = vim.lsp.get_client_by_id(args.data.client_id)

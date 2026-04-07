@@ -4,7 +4,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lsp_config = require("lspconfig")
       local bset = vim.api.nvim_buf_set_keymap
       local opts = { noremap = true, silent = true }
 

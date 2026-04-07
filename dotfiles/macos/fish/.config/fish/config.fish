@@ -39,8 +39,6 @@ if status is-interactive
   # configurations
   alias f="nvim $XDG_CONFIG_HOME/fish/config.fish"
   alias ff="source $XDG_CONFIG_HOME/fish/config.fish"
-  # alias a="nvim $XDG_CONFIG_HOME/aerospace/aerospace.toml"
-  # alias t="launch_tmux"
   alias tc="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"
   alias tl="nvim $XDG_CONFIG_HOME/tmux/tmux.conf.local"
   alias s="nvim $XDG_CONFIG_HOME/starship.toml"
@@ -70,13 +68,6 @@ if status is-interactive
 
   # youtube dlp
   alias yt="yt-dlp"
-
-  # cursor
-  alias cur="cursor"
-
-  #posting
-  # for CAC
-  alias pc="posting --collection $XDG_DATA_HOME/posting/cac --env $XDG_DATA_HOME/posting/cac/.env"
 
   # starship
   starship init fish | source
