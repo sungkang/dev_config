@@ -1,14 +1,4 @@
 return {
-  -- {
-  --   "rest-nvim/rest.nvim",
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     opts = function (_, opts)
-  --       opts.ensure_installed = opts.ensure_installed or {}
-  --       table.insert(opts.ensure_installed, "http")
-  --     end,
-  --   }
-  -- },
   {
   "romus204/tree-sitter-manager.nvim",
   dependencies = {}, -- tree-sitter CLI must be installed system-wide
@@ -109,26 +99,6 @@ return {
       { "<leader>n", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
       { "<leader>g", function() Snacks.lazygit.open() end },
     },
-  },
-  {
-    "catgoose/nvim-colorizer.lua",
-    enabled = false,
-    config = function()
-      require("colorizer").setup({
-        css = { rgb_fn = true, },
-        -- ts = { rgb_fn = true, },
-        html = { names = false, },
-      })
-    end,
-  },
-  {
-    "brenoprata10/nvim-highlight-colors",
-    enabled = false,
-    config = function()
-      require("nvim-highlight-colors").setup({
-        enable_tailwind = true,
-      })
-    end,
   },
   {
     "stevearc/conform.nvim",

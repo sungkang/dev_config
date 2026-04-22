@@ -4,7 +4,6 @@ return {
     'nvim-neotest/neotest',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim',
       'fredrikaverpil/neotest-golang',
       'marilari88/neotest-vitest',
