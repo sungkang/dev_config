@@ -150,10 +150,6 @@ output "DP-2" {
     position x=3840 y=0
 }
 
-workspace "chat" {
-  open-on-output "DP-2"
-}
-
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
@@ -387,7 +383,6 @@ window-rule {
   open-floating true
   default-column-width { fixed 900; }
   default-window-height { fixed 820; }
-  open-on-workspace "chat"
 }
 
 window-rule {
@@ -395,7 +390,6 @@ window-rule {
   open-floating true
   default-column-width { fixed 1240; }
   default-window-height { fixed 1130; }
-  open-on-workspace "chat"
 }
 
 window-rule {
@@ -403,7 +397,6 @@ window-rule {
   open-floating true
   default-column-width { fixed 1088; }
   default-window-height { fixed 1134; }
-  open-on-workspace "chat"
 }
 
 window-rule {
@@ -411,7 +404,6 @@ window-rule {
   open-floating true
   default-column-width { fixed 1132; }
   default-window-height { fixed 882; }
-  open-on-workspace "chat"
 }
 
 window-rule {
@@ -458,6 +450,13 @@ window-rule {
 
 window-rule {
   match app-id="braindump.run"
+  open-floating true
+  default-column-width { fixed 1400; }
+  default-window-height { fixed 1034; }
+}
+
+window-rule {
+  match app-id="firefox" title="^Little Snitch"
   open-floating true
   default-column-width { fixed 1400; }
   default-window-height { fixed 1034; }
@@ -683,7 +682,7 @@ binds {
 
     // Center, float, and resize focused window 
     Mod+Shift+C { 
-      spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 1325 && niri msg action set-window-height 1250 && niri msg action center-window";
+      spawn-sh "niri msg action move-window-to-floating && niri msg action set-window-width 1325 && niri msg action set-window-height 1250 && niri msg action center-window && sleep 0.03 && niri msg action center-window";
     }
 
     // Finer width adjustments.
