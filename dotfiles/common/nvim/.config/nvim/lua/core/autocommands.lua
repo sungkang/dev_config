@@ -1,26 +1,24 @@
-M = {}
+local M = {}
 
 M.config = function()
-  -- starts the syntax highlighting
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = '*',
-    callback = function()
-      pcall(vim.treesitter.start)
-    end,
-  })
+	-- starts the syntax highlighting
+	vim.api.nvim_create_autocmd('FileType', {
+		pattern = '*',
+		callback = function(args)
+			pcall(vim.treesitter.start)
 
-  -- use lsp fold expression if the lsp client supports text folding for the buffer
-  vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      if client and client:supports_method("textDocument/foldingRange") then
-        vim.wo.foldmethod = "expr"
-        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-      end
-    end
-  })
+			-- Recompute folds after parser has time to process
+			vim.defer_fn(function()
+				if not vim.api.nvim_buf_is_valid(args.buf) then return end
+				if vim.bo[args.buf].buftype ~= '' then return end
+				if vim.wo.foldmethod == 'expr' then
+					pcall(vim.cmd, 'normal! zx')
+				end
+			end, 100)
+		end,
+	})
 
-  vim.cmd([[
+	vim.cmd([[
     augroup _help
       autocmd!
       autocmd BufEnter * if &buftype == 'help' && winwidth(0) == &columns | wincmd L | endif
@@ -38,16 +36,16 @@ M.config = function()
     augroup END
 
   ]])
-  -- Notes: _help
-  -- When opening the help buffer, upon open, set the buffer to the right most vertical split.
-  -- The winwidth() check is to determine whether a help buffer is already open, if so, do not issue the wincmd.
-  -- The reason for this is because telescope.nvim issues a close window command when closing the prompt buffer and when
-  -- the BufEnter event is triggered which then tries to issue the wincmd, you will get an error stating that a split
-  -- cannot be issued while a window is closing.
-  --
-  -- Notes: _init_on_file_open
-  -- When opening a file or directory directly with neovim, I want the current working directory to be the directory
-  -- containing the file OR the directory itself if it is passed in instead of a file.
+	-- Notes: _help
+	-- When opening the help buffer, upon open, set the buffer to the right most vertical split.
+	-- The winwidth() check is to determine whether a help buffer is already open, if so, do not issue the wincmd.
+	-- The reason for this is because telescope.nvim issues a close window command when closing the prompt buffer and when
+	-- the BufEnter event is triggered which then tries to issue the wincmd, you will get an error stating that a split
+	-- cannot be issued while a window is closing.
+	--
+	-- Notes: _init_on_file_open
+	-- When opening a file or directory directly with neovim, I want the current working directory to be the directory
+	-- containing the file OR the directory itself if it is passed in instead of a file.
 end
 
 return M
