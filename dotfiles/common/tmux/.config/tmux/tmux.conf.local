@@ -405,6 +405,12 @@ tmux_conf_theme_right_separator_sub='\uE0B3'
 # Keep selection and stay in copy mode
 bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-no-clear
 
+# Drag to copy, clear selection, but stay in copy mode
+# bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection \; send-keys -X clear-selection
+
+# Bind Escape to clear the selection but stay in copy mode
+bind-key -T copy-mode-vi Escape send-keys -X clear-selection
+
 # Yank and then clear selection without leaving copy mode
 bind-key -T copy-mode-vi y send-keys -X copy-selection \; send-keys -X clear-selection
 
