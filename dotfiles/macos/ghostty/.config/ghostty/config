@@ -9,3 +9,5 @@ cursor-opacity = 0.4
 
 keybind = alt+q=toggle_quick_terminal
 keybind = shift+enter=text:\n
+
+background-opacity = 1.00
