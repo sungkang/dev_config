@@ -402,6 +402,11 @@ tmux_conf_theme_left_separator_sub='\uE0B1'
 tmux_conf_theme_right_separator_main='\uE0B2'
 tmux_conf_theme_right_separator_sub='\uE0B3'
 
+# Keep selection and stay in copy mode
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-no-clear
+
+# Yank and then clear selection without leaving copy mode
+bind-key -T copy-mode-vi y send-keys -X copy-selection \; send-keys -X clear-selection
 
 # -- tpm -----------------------------------------------------------------------
 
