@@ -21,7 +21,7 @@ return {
     config = function()
       vim.keymap.set("n", "<space>do", ":DiffviewOpen")
       vim.keymap.set("n", "<space>dc", "<Cmd>DiffviewClose<CR>")
-      vim.keymap.set("n", "<space>df", "<Cmd>DiffviewFileHistory<CR>")
+      vim.keymap.set("n", "<space>df", ":DiffviewFileHistory")
     end,
   },
   {
@@ -102,15 +102,16 @@ return {
   },
   {
     "stevearc/conform.nvim",
+    event = { "VeryLazy", "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = {
       {
         -- Customize or remove this keymap to your liking
         "<Space>f",
         function()
-          require("conform").format({ async = true })
+          require("conform").format({ async = true, lsp_format = "fallback" })
         end,
-        mode = "",
+        mode = { "n", "v"},
         desc = "Format buffer with conform.nvim",
       },
     },
@@ -208,25 +209,6 @@ return {
       vim.g.gitgutter_grep = "rg"
     end
   },
-  {
-    "vimwiki/vimwiki",
-    enabled = false,
-    config = function()
-      vim.g.vimwiki_folding = "expr"
-      vim.g.vimwiki_list = {
-        {
-          path = "/Users/skang/.local/share/vimwiki/personal",
-          syntax = "markdown",
-          ext = ".md",
-        },
-        {
-          path = "/Users/skang/.local/share/vimwiki/purina_just_right",
-          syntax = "markdown",
-          ext = ".md",
-        },
-      }
-    end,
-  },
   "michaeljsmith/vim-indent-object",
   {
     "windwp/nvim-autopairs",
@@ -250,5 +232,9 @@ return {
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = {},
   },
 }
