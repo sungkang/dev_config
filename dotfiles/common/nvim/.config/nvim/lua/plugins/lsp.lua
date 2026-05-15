@@ -117,10 +117,7 @@ return {
                 globals = { "vim" },
               },
               workspace = {
-                library = vim.list_extend(
-                  vim.api.nvim_get_runtime_file("", true),
-                  { vim.fn.expand("~/.config/yazi/plugins/types.yazi") }
-                ),
+                -- library is provided by lazydev.nvim (see plugins/init.lua)
                 checkThirdParty = false,
               },
               telemetry = {
