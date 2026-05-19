@@ -53,6 +53,8 @@ return {
         "clangd",
         "zls",
         "templ",
+        "elmls",
+        "expert",
       }
       for _, lsp in pairs(servers) do
         local config = {

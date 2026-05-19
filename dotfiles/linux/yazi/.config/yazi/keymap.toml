@@ -1,4 +1,4 @@
-"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+# yaml-language-server: "$schema=https://yazi-rs.github.io/schemas/keymap.json"
 
 # Autojump
 [[mgr.prepend_keymap]]

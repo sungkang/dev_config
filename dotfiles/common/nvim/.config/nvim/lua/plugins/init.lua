@@ -286,5 +286,9 @@ return {
 			-- OR "folke/snacks.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
-	}
+	},
+	{
+		"mason-org/mason.nvim",
+		opts = {},
+	},
 }
