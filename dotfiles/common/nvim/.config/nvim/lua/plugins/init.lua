@@ -127,7 +127,7 @@ return {
 				typescript = { "prettier", stop_after_first = true },
 				vue = { "prettier", stop_after_first = true },
 				svelte = { "prettier", stop_after_first = true },
-				-- lua = { "stylua" },
+				lua = { "stylua" },
 				-- python = { "isort", "black" },
 			},
 			-- Set default options
