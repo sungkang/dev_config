@@ -386,14 +386,14 @@ window-rule {
 }
 
 window-rule {
-  match app-id="ZapZap"
+  match app-id="com.rtosta.zapzap"
   open-floating true
   default-column-width { fixed 1240; }
   default-window-height { fixed 1130; }
 }
 
 window-rule {
-  match app-id="discord"
+  match app-id="vesktop"
   open-floating true
   default-column-width { fixed 1088; }
   default-window-height { fixed 1134; }
@@ -414,7 +414,7 @@ window-rule {
 }
 
 window-rule {
-  match app-id="spotify"
+  match app-id="Spotify"
   open-floating true
   default-column-width { fixed 1734; }
   default-window-height { fixed 1313; }
@@ -738,6 +738,7 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     // Mod+Shift+P { power-off-monitors; }
+
     Mod+B {
       spawn-sh "niri msg action set-column-width 100% && niri msg action set-window-height 50% && niri msg action center-window"
     }
