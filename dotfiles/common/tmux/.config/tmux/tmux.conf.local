@@ -9,6 +9,7 @@ set -g default-terminal "xterm-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 set -g xterm-keys on
+set -g allow-passthrough on
 
 # -- session creation ----------------------------------------------------------
 
@@ -355,7 +356,7 @@ tmux_conf_theme_clock_style="24"
 #   - false (default)
 #   - disabled
 # on Linux, this requires xsel, xclip or wl-copy
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
@@ -395,6 +396,10 @@ bind C-k send-keys -R ; run 'sleep 0.2' ; clear-history
 bind \; command-prompt
 
 set -sg repeat-time 200
+
+# extended keys (ghostty / kitty-protocol terminals) — makes C-S-H / C-S-L work
+set -s extended-keys on
+set -as terminal-features 'xterm*:extkeys'
 
 # statusline
 tmux_conf_theme_left_separator_main='\uE0B0'
