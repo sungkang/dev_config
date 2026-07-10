@@ -15,6 +15,23 @@ return {
           indent = {
             with_expanders = true,
           },
+          file_size = {
+            enabled = true,
+            width = 12,
+            required_width = 64, -- only show when window is at least this wide
+          },
+          type = {
+            enabled = false, -- drop the "sql" column entirely
+          },
+          last_modified = {
+            enabled = true,
+            width = 20,
+            required_width = 88,
+            format = "relative", -- "3 days ago" instead of a timestamp
+          },
+          created = {
+            enabled = false,
+          },
         },
         window = {
           position = "float",

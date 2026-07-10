@@ -40,6 +40,7 @@ if status is-interactive
   fish_add_path $HOME/.local/bin
   fish_add_path $HOME/go/bin
   fish_add_path /home/sung/.local/share/JetBrains/Toolbox/scripts
+  fish_add_path $HOME/.config/emacs/bin
 
 	## custom functions (alias) ##
 
@@ -64,33 +65,35 @@ if status is-interactive
 	# alias d="$EDITOR $HOME/src/suckless/dwm/config.def.h"
 
   # yazi
-  alias r="yazi"
+  abbr -a r 'yazi'
 
   # lazygit
-  alias lg="lazygit"
+  abbr -a lg 'lazygit'
 
   # claude code
-  alias c="claude"
+  abbr -a c 'env -u DISPLAY claude'
 
-  alias yt="yt-dlp"
-
-  ## custom abbreviations ##
+  # youtube-dl
+  abbr -a yt 'yt-dlp'
 
   # ghostty settings
-  abbr -a ghost 'nvim ~/.config/ghostty/config'
+  abbr -a ghost "$EDITOR $XDG_CONFIG_HOME/ghostty/config"
+
+  # herdr settings
+  abbr -a hr "$EDITOR $XDG_CONFIG_HOME/herdr/config.toml"
 
   # waybar config
   # abbr -a ww '$EDITOR $XDG_CONFIG_HOME/waybar/config'
   # abbr -a wr 'pkill waybar &>/dev/null; and waybar &>/dev/null &'
 
   # jump to dev_config
-  abbr -a god 'cd $HOME/dev/dev_config'
+  abbr -a dconf 'cd $HOME/dev/dev_config'
 
   # jump to .local
-  abbr -a goc 'cd $HOME/.config'
+  abbr -a conf 'cd $HOME/.config'
 
   # jump to .local
-  abbr -a gol 'cd $HOME/.local'
+  abbr -a loc 'cd $HOME/.local'
 
   # starship init
   starship init fish | source
