@@ -1,3 +1,4 @@
+onboarding = false
 # herdr configuration
 # Place this file at ~/.config/herdr/config.toml
 
@@ -63,7 +64,7 @@ prefix = "ctrl+s"
 
 # Prefix-mode actions
 # help = "prefix+?"
-# settings = "prefix+s"
+settings = "prefix+,"
 # detach = "prefix+q"
 # reload_config = "prefix+shift+r"
 # open_notification_target = "prefix+o"
@@ -81,10 +82,10 @@ previous_agent = "prefix+ctrl+["     # optional, unset by default
 next_agent = "prefix+ctrl+]"         # optional, unset by default
 # focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
 # remote_image_paste = "ctrl+v" # only active in herdr --remote; empty disables raw-key image paste
-# new_tab = "prefix+c"
+new_tab = "prefix+n"
 # rename_tab = "prefix+shift+t"
-previous_tab = ["prefix+p", "prefix+ctrl+h"]
-next_tab = ["prefix+n", "prefix+ctrl+l"]
+previous_tab = "prefix+ctrl+h"
+next_tab = "prefix+ctrl+l"
 # switch_tab = "prefix+1..9"
 # switch_workspace = ""   # optional indexed binding, e.g. "prefix+shift+1..9"
 # close_tab = "prefix+shift+x"
@@ -94,11 +95,11 @@ next_tab = ["prefix+n", "prefix+ctrl+l"]
 # focus_pane_down = "prefix+j"
 # focus_pane_up = "prefix+k"
 # focus_pane_right = "prefix+l"
-# cycle_pane_next = "prefix+tab"
-# cycle_pane_previous = "prefix+shift+tab"
+cycle_pane_next = "prefix+ctrl+n"
+cycle_pane_previous = "prefix+ctrl+p"
 # last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
 # split_vertical = "prefix+v"
-# split_horizontal = "prefix+minus"
+split_horizontal = "prefix+s"
 # close_pane = "prefix+x"
 # zoom = "prefix+z"       # legacy alias: fullscreen
 # resize_mode = "prefix+r"
@@ -121,6 +122,11 @@ next_tab = ["prefix+n", "prefix+ctrl+l"]
 # type = "pane"
 # command = "lazygit"
 
+[[keys.command]]
+key = "prefix+f"
+type = "pane"
+command = "herdr-spaces"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
@@ -134,6 +140,7 @@ next_tab = ["prefix+n", "prefix+ctrl+l"]
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
 # sidebar_width = 26
+# sidebar_hidden_width=0		# currently doesn't exist, it's a proposed idea. https://github.com/ogulcancelik/herdr/discussions/533
 
 # Minimum sidebar width when expanded (columns)
 # sidebar_min_width = 18
