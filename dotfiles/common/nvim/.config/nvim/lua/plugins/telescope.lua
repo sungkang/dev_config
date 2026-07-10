@@ -149,7 +149,7 @@ return {
           prompt_title = "Files & Folders",
           -- fd returns files and dirs when no --type is given
           -- --hidden to include dotfiles, exclude .git for signal/noise
-          find_command = { "fd", "--hidden", "--no-ignore", "--follow", "--exclude", ".git", "--strip-cwd-prefix" },
+          find_command = { "fd", "--hidden", "--follow", "--exclude", ".git", "--strip-cwd-prefix" },
           -- Let us intercept <CR>
           attach_mappings = function(_, map)
             map({ "i", "n" }, "<CR>", open_file_or_dir_in_oil)
