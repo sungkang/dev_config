@@ -46,6 +46,7 @@ if status is-interactive
   alias jd="cd $DEV_CONFIG_HOME"
   alias r="yazi"
   alias c="claude"
+  abbr --a hr "nvim $XDG_CONFIG_HOME/herdr/config.toml"
 
   # neovim
   alias v="nvim"

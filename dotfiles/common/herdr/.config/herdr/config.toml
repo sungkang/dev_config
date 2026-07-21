@@ -99,7 +99,7 @@ cycle_pane_next = "prefix+ctrl+n"
 cycle_pane_previous = "prefix+ctrl+p"
 # last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
 # split_vertical = "prefix+v"
-# split_horizontal = "prefix+minus"
+split_horizontal = "prefix+s"
 # close_pane = "prefix+x"
 # zoom = "prefix+z"       # legacy alias: fullscreen
 # resize_mode = "prefix+r"
@@ -141,6 +141,7 @@ command = "herdr-spaces"
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
 # sidebar_width = 26
+# sidebar_hidden_width=0		# currently doesn't exist, it's a proposed idea. https://github.com/ogulcancelik/herdr/discussions/533
 
 # Minimum sidebar width when expanded (columns)
 # sidebar_min_width = 18
