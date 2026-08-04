@@ -24,9 +24,6 @@ if status is-interactive
   set --global fish_key_bindings fish_vi_key_bindings
 
   # custom bindings
-  bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
-  bind -M default \cf "tmux-sessionizer; commandline -f repaint"
-
   bind -M insert \ch "eval (history | fzf); commandline -f repaint"
   bind -M default \ch "eval (history | fzf); commandline -f repaint"
 
