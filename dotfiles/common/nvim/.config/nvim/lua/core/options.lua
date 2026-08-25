@@ -30,6 +30,7 @@ M.config = function()
   vim.opt.splitright = true
   vim.opt.winminwidth = 10
   vim.opt.syntax = 'on'
+  vim.opt.diffopt:append("algorithm:histogram")
   -- vim.opt.cmdheight = 0
 
   -- color scheme config
