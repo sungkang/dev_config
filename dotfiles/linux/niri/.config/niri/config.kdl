@@ -314,10 +314,10 @@ layout {
 // See the binds section below for more spawn examples.
 
 // Start up Noctalia Desktop Shell
-spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-sh-at-startup "noctalia"
 
 // Idle auto-lock and monitor(s) power down
-spawn-sh-at-startup "swayidle -w timeout 300 'qs -c noctalia-shell ipc call sessionMenu lockAndSuspend' timeout 600 'niri msg action power-off-monitors'"
+spawn-sh-at-startup "swayidle -w timeout 300 'noctalia msg session lock-and-suspend' timeout 600 'niri msg action power-off-monitors'"
 
 spawn-at-startup "xwayland-satellite"
 
@@ -462,6 +462,11 @@ window-rule {
   default-window-height { fixed 1034; }
 }
 
+window-rule {
+	match app-id="zoom" title=".*menu.*"
+	open-floating true
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -503,8 +508,8 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Shift+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+Space hotkey-overlay-title="Run a Launcher: " { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+Ctrl+Q hotkey-overlay-title="Lock the Screen: noctalia" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu lockAndSuspend"; }
+    Mod+Space hotkey-overlay-title="Run a Launcher: " { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Ctrl+Q hotkey-overlay-title="Lock the Screen: noctalia" { spawn-sh "noctalia msg session lock-and-suspend"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -742,4 +747,7 @@ binds {
     Mod+B {
       spawn-sh "niri msg action set-column-width 100% && niri msg action set-window-height 50% && niri msg action center-window"
     }
+
+    // Toggle shmooz magnifier (Starts at 10% zoom, use mouse wheel to scale further)
+    Mod+Z { spawn "sh" "-c" "pgrep shmooz && killall shmooz || shmooz --zoom-in 10%"; }
 }
