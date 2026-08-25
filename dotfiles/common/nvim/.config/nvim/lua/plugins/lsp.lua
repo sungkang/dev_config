@@ -153,7 +153,22 @@ return {
     config = function()
       require("null-ls").setup({
         sources = {
-          require("none-ls.diagnostics.eslint_d"),
+          require("none-ls.diagnostics.eslint_d").with({
+            condition = function(utils)
+              return utils.root_has_file({
+                ".eslintrc",
+                ".eslintrc.js",
+                ".eslintrc.cjs",
+                ".eslintrc.json",
+                ".eslintrc.yml",
+                ".eslintrc.yaml",
+                "eslint.config.js",
+                "eslint.config.mjs",
+                "eslint.config.cjs",
+                "eslint.config.ts",
+              })
+            end,
+          }),
         },
       })
     end,
