@@ -142,14 +142,25 @@ return {
         end
       end
 
+      -- Directories pruned at the fd level (never traversed); add/remove freely
+      local find_excludes = {
+        ".git",
+        "node_modules",
+      }
+
       -- One picker to show BOTH files and directories
       local function find_anything(options)
         options = options or {}
+        -- fd returns files and dirs when no --type is given
+        -- --hidden to include dotfiles; excludes pruned for signal/noise + speed
+        local find_command = { "fd", "--hidden", "--no-ignore", "--follow", "--strip-cwd-prefix" }
+        for _, dir in ipairs(find_excludes) do
+          table.insert(find_command, "--exclude")
+          table.insert(find_command, dir)
+        end
         require("telescope.builtin").find_files(vim.tbl_extend("force", {
           prompt_title = "Files & Folders",
-          -- fd returns files and dirs when no --type is given
-          -- --hidden to include dotfiles, exclude .git for signal/noise
-          find_command = { "fd", "--hidden", "--follow", "--exclude", ".git", "--strip-cwd-prefix" },
+          find_command = find_command,
           -- Let us intercept <CR>
           attach_mappings = function(_, map)
             map({ "i", "n" }, "<CR>", open_file_or_dir_in_oil)

@@ -100,8 +100,8 @@ return {
               },
             }
 
-          end
             config.filetypes = { "typescript", "javascript", "vue" }
+          end
             config.on_attach = on_attach_with_disabled_lsp_formatter
         end
 

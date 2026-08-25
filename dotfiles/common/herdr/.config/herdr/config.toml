@@ -127,6 +127,7 @@ toggle_sidebar = "prefix+p"
 # width = "80%"
 # height = "80%"
 
+# herdr-spaces: fzf project-folder picker -> open/focus workspace
 [[keys.command]]
 key = "prefix+f"
 type = "pane"
