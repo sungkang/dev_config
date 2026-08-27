@@ -40,3 +40,14 @@ on = [ "g", "r" ]
 run = "cd /"
 desc = "Go to root"
 
+
+# Sudo edit
+[[mgr.prepend_keymap]]
+on = [ "E" ]
+run = "plugin sudo-edit"
+desc = "Edit as root (sudoedit)"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-e>" ]
+run = "plugin sudo-edit -- root"
+desc = "Open in editor running as root"
