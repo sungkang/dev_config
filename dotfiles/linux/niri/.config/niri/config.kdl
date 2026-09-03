@@ -317,7 +317,7 @@ layout {
 spawn-sh-at-startup "noctalia"
 
 // Idle auto-lock and monitor(s) power down
-spawn-sh-at-startup "swayidle -w timeout 300 'noctalia msg session lock-and-suspend' timeout 600 'niri msg action power-off-monitors'"
+// spawn-sh-at-startup "swayidle -w timeout 300 'noctalia msg session lock-and-suspend' timeout 600 'niri msg action power-off-monitors'"
 
 spawn-at-startup "xwayland-satellite"
 
