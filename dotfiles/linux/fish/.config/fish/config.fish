@@ -24,7 +24,7 @@ if status is-interactive
 	set -Ux XCURSOR_SIZE 24
 
 	# vi mode
-	set --global fish_key_bindings fish_vi_key_bindings
+	# set --global fish_key_bindings fish_vi_key_bindings
 
 	# custom bindings
 	bind -M insert \cf "tmux-sessionizer; commandline -f repaint"

@@ -320,14 +320,6 @@ layout {
 // scope with every app launched from it, and oomd killed the lot.
 // spawn-sh-at-startup "noctalia"
 
-// Idle auto-lock and monitor(s) power down
-// spawn-sh-at-startup "swayidle -w timeout 300 'noctalia msg session lock-and-suspend' timeout 600 'niri msg action power-off-monitors'"
-
-spawn-at-startup "xwayland-satellite"
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
@@ -385,6 +377,7 @@ window-rule {
 window-rule {
   match app-id="teams-for-linux"
   open-floating true
+  open-on-output "DP-2"
   default-column-width { fixed 900; }
   default-window-height { fixed 820; }
 }
@@ -392,6 +385,7 @@ window-rule {
 window-rule {
   match app-id="com.rtosta.zapzap"
   open-floating true
+  open-on-output "DP-2"
   default-column-width { fixed 1240; }
   default-window-height { fixed 1130; }
 }
@@ -399,6 +393,7 @@ window-rule {
 window-rule {
   match app-id="vesktop"
   open-floating true
+  open-on-output "DP-2"
   default-column-width { fixed 1088; }
   default-window-height { fixed 1134; }
 }
@@ -406,6 +401,7 @@ window-rule {
 window-rule {
   match app-id="signal"
   open-floating true
+  open-on-output "DP-2"
   default-column-width { fixed 1132; }
   default-window-height { fixed 882; }
 }
@@ -420,6 +416,7 @@ window-rule {
 window-rule {
   match app-id="Spotify"
   open-floating true
+  open-on-output "DP-2"
   default-column-width { fixed 1734; }
   default-window-height { fixed 1313; }
 }
@@ -469,6 +466,13 @@ window-rule {
 window-rule {
 	match app-id="zoom" title=".*menu.*"
 	open-floating true
+}
+
+window-rule {
+	match app-id="com.onepassword.OnePassword"
+	open-floating true
+	default-column-width { fixed 700; }
+	default-window-height { fixed 525; }
 }
 
 // Example: block out two password managers from screen capture.
@@ -658,7 +662,7 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-    Mod+Tab { focus-workspace-previous; }
+    Mod+Tab { focus-window-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
